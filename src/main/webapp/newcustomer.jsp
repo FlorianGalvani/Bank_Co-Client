@@ -63,7 +63,7 @@
         <div class="error">${errors.get("country")}</div>
 
         <h2>Documents</h2>
-        <%-- TODO limité la taille max d'un fichier        --%>
+        <%-- TODO limité la taille max d'un fichier et son limité les types de formats --%>
         <label for="idCard">Carte d'intentité : </label>
         <input type="file" accept="pdf, docx, doc, jpg, png, txt, rtf, jpeg, jpe, jif, jfif, gif, tif, tiff" name="idCard" id="idCard">
         <div class="error">${errors.get("idCard")}</div>

@@ -5,7 +5,7 @@ import com.nfs.bank_co.entities.NewCustomerRequest;
 import javax.persistence.*;
 
 public class NewCustomerRequestDao {
-    private EntityManager em;
+    private final EntityManager em;
 
     public NewCustomerRequestDao() {
         em = PersistenceManager.getEmf().createEntityManager();

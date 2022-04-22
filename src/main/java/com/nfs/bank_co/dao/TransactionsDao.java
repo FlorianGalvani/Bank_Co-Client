@@ -12,7 +12,6 @@ public class TransactionsDao {
     }
 
     public Transaction create(Transaction c) {
-        System.out.println("toto " + c);
         try {
             em.getTransaction().begin();
             em.persist(c);

@@ -1,6 +1,7 @@
 package com.nfs.bank_co.entities;
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "accounts")
@@ -16,9 +17,11 @@ public class CustomerAccounts {
     private int balance;
     private int authorizedDebt;
 
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "id_transaction", nullable = false, insertable = false, updatable = false)
-    private Collection<Transaction> transactions;
+//    @ManyToOne
+//    private Customer owner;
+//
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<Transaction> transactions;
 
     public CustomerAccounts(String accountNumber, String accountType, int balance, int authorizedDebt) {
         this.accountNumber = accountNumber;
@@ -28,9 +31,7 @@ public class CustomerAccounts {
     }
 
     public CustomerAccounts() {
-
     }
-
 
     public int getId() {
         return id;

@@ -24,6 +24,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
     /*
      *  Chemins dans lesquels les documents seront sauvegardées.
      */
+
     public static String DOCUMENTS_FOLDER = "/New_Customers_Documents";
 
     public String IdCardUploadPath;
@@ -56,16 +57,13 @@ public class NewCustomerRequestServlet extends HttpServlet {
          *  Creation d'une nouvelle demande d'ouverture de compte et
          *  verification et ajout des different(e)s informations
          *  et documents
-         *  TODO Verification de la presence et la validité des infos/docus.
+         *  TODO Verification de la presence et la validité des infos/docus
          *   + Trim des infos
          *   + verification si la demande n'est pas déja presente
          */
 
         NewCustomerRequest newCustomerRequest = new NewCustomerRequest();
 
-        /*
-         *  TODO MODIFIER LA VERIFICATION DE TITLE.
-         */
         String title = request.getParameter("title").trim();
         FormToolBox.checkStringValidity(errors,"title",title,6,9);
 
@@ -76,7 +74,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
         FormToolBox.checkStringValidity(errors,"lastname",lastname,3,20);
 
         String phone = request.getParameter("phone").trim();
-        FormToolBox.checkStringValidity(errors,"phone",phone,10,10);
+        FormToolBox.checkStringValidity(errors,"phone",phone,10,20);
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
         try {
@@ -102,9 +100,9 @@ public class NewCustomerRequestServlet extends HttpServlet {
         FormToolBox.checkStringValidity(errors,"country",country,2,50);
 
         /*
-         * Ajout de la carte d'identitée
-         * TODO modifier l'emplacement d'enregistrement vers celle du serveur de prod (Windows)
-         *  TODO VERIFICATION du/des documents (taille,dimensions,format ...)
+         * Ajout des documents
+         *  TODO modifier l'emplacement d'enregistrement des documents
+         *  TODO VERIFICATION/VALIDATION du/des documents (taille,dimensions,format...)
          *  type de fichier possible pdf, docx, doc, jpg, png, txt, rtf, jpeg, jpe, jif, jfif, gif, tif, tiff
          */
 
@@ -132,6 +130,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
             System.out.println("Nouvelle demande d'ouverture de compte de la part de " + request.getParameter("firstname") + " " + request.getParameter("lastname"));
             DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
         } else {
+
             /*
              * TODO Faire en sorte que les (certaines ?) données persistent apres l'envoi du formulaire si il est invalide
              */

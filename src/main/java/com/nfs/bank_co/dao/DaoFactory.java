@@ -3,6 +3,7 @@ package com.nfs.bank_co.dao;
 public class DaoFactory {
    private static TransactionsDao transactionDao;
     private static NewCustomerRequestDao newCustomerRequestDao;
+    private static CustomerDao customerDao;
 
     private DaoFactory(){}
 
@@ -19,5 +20,10 @@ public class DaoFactory {
         return newCustomerRequestDao;
     }
 
-
+    public static CustomerDao getCustomerDao() {
+        if (customerDao == null) {
+            customerDao  = new CustomerDao();
+        }
+        return customerDao;
+    }
 }

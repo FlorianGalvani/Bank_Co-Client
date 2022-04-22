@@ -10,20 +10,22 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_customer")
+
     private int id;
     private String firstname;
     private String lastname;
     private String title;
     private String phone;
     private String birthdate;
-    private String adress;
+    private String address;
     private String postal;
     private String city;
     private String country;
     private String customerNumber;
     private String password;
 
-
+//    @OneToMany
+//    private List<CustomerAccounts> accounts;
 
     public int getId() {
         return id;
@@ -73,12 +75,12 @@ public class Customer {
         this.birthdate = birthdate;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPostal() {
@@ -109,10 +111,6 @@ public class Customer {
         return customerNumber;
     }
 
-    public void setCustomerNumber(String customerNumber) {
-        this.customerNumber = customerNumber;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -120,4 +118,9 @@ public class Customer {
     public void setPassword(String password) {
         this.password = password;
     }
+
+//    public Collection<CustomerAccounts> getAccounts() {
+//        return accounts;
+//    }
+
 }
