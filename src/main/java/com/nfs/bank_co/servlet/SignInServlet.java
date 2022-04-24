@@ -3,6 +3,7 @@ package com.nfs.bank_co.servlet;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.google.gson.Gson;
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.Customer;
 import com.nfs.bank_co.entities.NewCustomerRequest;
@@ -12,13 +13,19 @@ import javax.persistence.NoResultException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 
 @WebServlet(name = "SignInServlet", urlPatterns = {"/login"})
 public class SignInServlet extends HttpServlet {
+
+    private Gson gson = new Gson();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,7 +44,6 @@ public class SignInServlet extends HttpServlet {
         FormToolBox.checkStringValidity(errors, "customerNumber", customerNumber, 24, 26);
 
         String password = request.getParameter("password").trim();
-        FormToolBox.checkStringValidity(errors, "password", password, 3, 20);
 
         if (errors.size() == 0) {
             try {
@@ -52,8 +58,8 @@ public class SignInServlet extends HttpServlet {
                     Cookie tokenCookie = new Cookie("token", token);
                     tokenCookie.setMaxAge(3600 * 3);
                     response.addCookie(tokenCookie);
-                    Cookie customerIDcookie = new Cookie("id", "1");
-                    response.addCookie(customerIDcookie);
+                    Cookie customerIdCookie = new Cookie("id", "1");
+                    response.addCookie(customerIdCookie);
                     response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
                 } catch (JWTCreationException e) {
                     System.out.println(e);
@@ -64,8 +70,6 @@ public class SignInServlet extends HttpServlet {
                 request.getSession().setAttribute("errors", errors);
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
             }
-
-
         } else {
             request.getSession().setAttribute("errors", errors);
             response.sendRedirect(request.getContextPath() + "/login.jsp");

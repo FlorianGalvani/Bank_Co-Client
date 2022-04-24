@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/customer"})
+@WebFilter(urlPatterns = {"/customer","/dashboard"})
 public class AuthorizationFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
@@ -46,10 +46,11 @@ public class AuthorizationFilter implements Filter {
                             .build(); //Reusable verifier instance
                     DecodedJWT jwt = verifier.verify(token);
                     System.out.println(jwt.getToken());
+                    res.sendRedirect(req.getContextPath() + "/dashboard");
                     chain.doFilter(request, response);
                 } catch (JWTVerificationException e) {
                     System.out.println(e);
-                    // TODO Redirection vers pae de connexion ou landing page
+                    // TODO Redirection vers page de connexion ou landing page
                 }
             }
         }

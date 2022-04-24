@@ -1,0 +1,80 @@
+.Home {
+  //TODO Modifier le style
+  background: var(--secondary-bg-color) url("../img/bg-left.png");
+  overflow: hidden;
+  padding-left: 100px;
+  .header {
+    padding-top: 25px;
+    margin-bottom: 150px;
+    .navbar  {
+      display: flex;
+      justify-content: space-between;
+      .logo {
+        strong {
+          font-weight: bold;
+        }
+        color: #fff;
+        font-size: 36px;
+        text-decoration: none;
+      }
+      ul {
+        margin-right: 100px;
+        display: flex;
+        justify-content: space-between;
+        width: 30%;
+        li {
+          display: flex;
+          align-items: center;
+          a {
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .left {
+
+    h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 30px;
+      top: 0;
+      left: 16%;
+    }
+    h1::after {
+      content: "";
+      width: 74px;
+      height: 8px;
+      background: #00FFDD;
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+    }
+    p {
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 30px;
+      width: 45%;
+    }
+    a {
+      width: 170px;
+      text-decoration: none;
+
+    }
+  }
+
+  .right {
+    background: var(--primary-bg-color);
+    width: 55%;
+    transform: rotate(-45deg) translate(100%, 682px) scale(1.5);
+    position: relative;
+    height: 100vh;
+    img {
+      position: absolute;
+      transform:rotate(45deg) scale(1) translate(0, -225px);
+    }
+  }
+}

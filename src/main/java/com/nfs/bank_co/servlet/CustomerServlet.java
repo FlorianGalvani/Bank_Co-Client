@@ -12,11 +12,11 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = {"/customer"})
 public class CustomerServlet extends HttpServlet {
+
     private Gson gson = new Gson();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         Customer customer = DaoFactory.getCustomerDao().getOneById(1);
         customer.setPassword(null);
         String employeeJsonString = this.gson.toJson(customer);

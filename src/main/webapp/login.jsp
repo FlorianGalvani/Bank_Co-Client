@@ -14,9 +14,11 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body class="Login">
+
 <div class="formContainer">
 
-    <form method="post" action="login">
+    <form method="post" action="login" id="loginForm">
+        <a class="goHome" href="home.html"><i class="ri-arrow-left-line"></i></a>
         <h1>Accéder à mon  espace</h1>
         <div class="noAccount"><p>Pas de compte ? </p> <a href="newcustomer">Faites une demande</a></div>
         <c:if test="${errors.get('account').length() > 0 }">
@@ -53,9 +55,5 @@
 <style>
 
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<script>
-
-</script>
 </html>
