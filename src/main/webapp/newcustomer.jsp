@@ -5,6 +5,7 @@
   Time: 6:23 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%--TODO Faire le style de cette page--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -37,6 +38,10 @@
         <label for="phone">Telephone : </label>
         <input type="tel" name="phone" id="phone">
         <div class="error">${errors.get("phone")}</div>
+
+        <label for="phone">Email : </label>
+        <input type="email" name="email" id="email">
+        <div class="error">${errors.get("email")}</div>
 
         <label for="birthdate">Date de naissance : </label>
         <input type="date" name="birthdate" id="birthdate">

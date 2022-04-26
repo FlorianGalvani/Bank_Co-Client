@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.Customer;
 import com.nfs.bank_co.entities.NewCustomerRequest;
+import com.nfs.bank_co.utils.AuthenticationUtility;
 import com.nfs.bank_co.utils.FormToolBox;
 
 import javax.persistence.NoResultException;
@@ -42,27 +43,21 @@ public class SignInServlet extends HttpServlet {
 
         String customerNumber = request.getParameter("customerNumber").trim();
         FormToolBox.checkStringValidity(errors, "customerNumber", customerNumber, 24, 26);
-
+        // TODO Ajouter verification mot de passe
         String password = request.getParameter("password").trim();
 
         if (errors.size() == 0) {
             try {
+                System.out.println("recup customer");
                 Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
-                // TODO Ajouter verification mot de passe
-                try {
-                    Algorithm algorithm = Algorithm.HMAC256("secret"); // TODO Modifier le secret
-                    String token = JWT.create()
-                            .withIssuer("auth0")
-                            .sign(algorithm);
 
+                String token = AuthenticationUtility.createToken();
+                if (token != null) {
                     Cookie tokenCookie = new Cookie("token", token);
                     tokenCookie.setMaxAge(3600 * 3);
                     response.addCookie(tokenCookie);
-                    Cookie customerIdCookie = new Cookie("id", "1");
-                    response.addCookie(customerIdCookie);
+                    request.getSession().setAttribute("customer",customer);
                     response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
-                } catch (JWTCreationException e) {
-                    System.out.println(e);
                 }
             } catch (NoResultException e) {
                 System.out.println(e);

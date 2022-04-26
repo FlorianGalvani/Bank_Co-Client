@@ -18,9 +18,10 @@
 <div class="formContainer">
 
     <form method="post" action="login" id="loginForm">
-        <a class="goHome" href="home.html"><i class="ri-arrow-left-line"></i></a>
+        <a class="goHome" href="./"><i class="ri-arrow-left-line"></i></a>
         <h1>Accéder à mon  espace</h1>
         <div class="noAccount"><p>Pas de compte ? </p> <a href="newcustomer">Faites une demande</a></div>
+
         <c:if test="${errors.get('account').length() > 0 }">
             <div class="error">${errors.get("account")}</div>
         </c:if>
@@ -51,9 +52,4 @@
     </div>
 </div>
 </body>
-
-<style>
-
-</style>
-
 </html>

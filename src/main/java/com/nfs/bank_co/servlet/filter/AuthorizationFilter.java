@@ -5,16 +5,16 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.nfs.bank_co.utils.AuthenticationUtility;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/customer","/dashboard"})
+@WebFilter(urlPatterns = {"/dashboard.jsp"})
 public class AuthorizationFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
@@ -29,30 +29,20 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
-
-        Cookie[] cookies = req.getCookies();
-        String token = null;
-        if (cookies != null) {
-            for (Cookie cookie : cookies){
-                if (cookie.getName().equals("token"))
-                    token = cookie.getValue();
+        String token = AuthenticationUtility.getCookieByName(req.getCookies(), "token");
+        if (token != null) {
+            boolean isTokenValid = AuthenticationUtility.checkTokenValidity(token);
+            if (isTokenValid) {
+                System.out.println("Token Valide");
+                chain.doFilter(request, response);
+            } else {
+                // TODO Redirection vers page de connexion ou landing page
+                System.out.println("Token Invalide");
+                res.sendRedirect(req.getContextPath() + "/login");
             }
-            if (token != null){
-                System.out.println("token : " + token);
-                try {
-                    Algorithm algorithm = Algorithm.HMAC256("secret"); // TODO Modifier le secret
-                    JWTVerifier verifier = JWT.require(algorithm)
-                            .withIssuer("auth0")
-                            .build(); //Reusable verifier instance
-                    DecodedJWT jwt = verifier.verify(token);
-                    System.out.println(jwt.getToken());
-                    res.sendRedirect(req.getContextPath() + "/dashboard");
-                    chain.doFilter(request, response);
-                } catch (JWTVerificationException e) {
-                    System.out.println(e);
-                    // TODO Redirection vers page de connexion ou landing page
-                }
-            }
+        } else {
+            System.out.println("Token Introuvable");
+            res.sendRedirect(req.getContextPath() + "/login");
         }
     }
 }

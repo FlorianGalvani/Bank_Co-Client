@@ -47,11 +47,9 @@ public class TokenServlet extends HttpServlet {
                     System.out.println(e);
                     response.addCookie(new Cookie("token", null));
                     response.addCookie(new Cookie("id", null));
-                    // TODO Redirection vers pae de connexion ou landing page
                     PrintWriter out = response.getWriter();
                     response.setContentType("application/json");
                     response.setCharacterEncoding("UTF-8");
-
                     out.print("false");
                     out.flush();
                 }

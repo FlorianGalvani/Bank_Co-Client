@@ -11,11 +11,13 @@
 <head>
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.min.css">
 
 </head>
-<body>
+<body class="Dashboard">
     <h1>Dashboard</h1>
-    <button class="bouton" id="logout">Deconnexion</button>
+    <p>${customer.getId()}</p>
+    <a href="logout" class="button">Deconnexion</a>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="assets/js/utils.js"></script>

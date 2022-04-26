@@ -1,2 +1,4 @@
 /.idea/
 /target/
+/src/main/java/com/nfs/bank_co/servlet/filter/TestFilter.java
+/src/main/webapp/assets/img/Sora.zip

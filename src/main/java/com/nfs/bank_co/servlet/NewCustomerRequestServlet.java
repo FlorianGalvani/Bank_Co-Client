@@ -3,6 +3,7 @@ package com.nfs.bank_co.servlet;
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.NewCustomerRequest;
 import com.nfs.bank_co.utils.FormToolBox;
+import com.nfs.bank_co.utils.EmailUtility;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+
 
 @WebServlet(name = "NewCustomerRequestServlet", urlPatterns = {"/newcustomer"})
 @MultipartConfig(
@@ -57,15 +59,13 @@ public class NewCustomerRequestServlet extends HttpServlet {
          *  Creation d'une nouvelle demande d'ouverture de compte et
          *  verification et ajout des different(e)s informations
          *  et documents
-         *  TODO Verification de la presence et la validité des infos/docus
-         *   + Trim des infos
-         *   + verification si la demande n'est pas déja presente
+         *  TODO verification si la demande n'est pas déja presente
          */
 
         NewCustomerRequest newCustomerRequest = new NewCustomerRequest();
 
         String title = request.getParameter("title").trim();
-        FormToolBox.checkStringValidity(errors,"title",title,6,9);
+        FormToolBox.checkStringValidity(errors,"title",title,0,20);
 
         String firstname = request.getParameter("firstname").trim();
         FormToolBox.checkStringValidity(errors,"firstname",firstname,3,20);
@@ -74,7 +74,11 @@ public class NewCustomerRequestServlet extends HttpServlet {
         FormToolBox.checkStringValidity(errors,"lastname",lastname,3,20);
 
         String phone = request.getParameter("phone").trim();
-        FormToolBox.checkStringValidity(errors,"phone",phone,10,20);
+        FormToolBox.checkStringValidity(errors,"phone",phone,9,20);
+
+        String email = request.getParameter("email").trim();
+        FormToolBox.checkStringValidity(errors,"email",email,10,50);
+
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
         try {
@@ -94,10 +98,10 @@ public class NewCustomerRequestServlet extends HttpServlet {
         FormToolBox.checkStringValidity(errors,"city",city,2,50);
 
         String postal = request.getParameter("postal").trim();
-        FormToolBox.checkStringValidity(errors,"postal",postal,2,50);
+        FormToolBox.checkStringValidity(errors,"postal",postal,4,50);
 
         String country = request.getParameter("country").trim();
-        FormToolBox.checkStringValidity(errors,"country",country,2,50);
+        FormToolBox.checkStringValidity(errors,"country",country,1,50);
 
         /*
          * Ajout des documents
@@ -117,8 +121,9 @@ public class NewCustomerRequestServlet extends HttpServlet {
         if (errors.size() == 0) {
             newCustomerRequest.setTitle(title);
             newCustomerRequest.setFirstname(firstname);
-            newCustomerRequest.setFirstname(lastname);
-            newCustomerRequest.setFirstname(phone);
+            newCustomerRequest.setLastname(lastname);
+            newCustomerRequest.setPhone(phone);
+            newCustomerRequest.setEmail(email);
             newCustomerRequest.setAddress(address);
             newCustomerRequest.setCity(city);
             newCustomerRequest.setPostal(postal);
@@ -129,6 +134,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
 
             System.out.println("Nouvelle demande d'ouverture de compte de la part de " + request.getParameter("firstname") + " " + request.getParameter("lastname"));
             DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
+//            EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email);
         } else {
 
             /*

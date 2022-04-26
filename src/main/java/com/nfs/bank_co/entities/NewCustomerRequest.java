@@ -14,6 +14,7 @@ public class NewCustomerRequest {
     private String firstname;
     private String lastname;
     private String phone;
+    private String email;
     private Date birthdate;
     private String address;
     private String city;
@@ -52,6 +53,10 @@ public class NewCustomerRequest {
     public String getPhone() { return phone; }
 
     public void setPhone(String phone) { this.phone = phone; }
+
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) {this.email = email;}
 
     public Date getBirthdate() { return birthdate; }
 

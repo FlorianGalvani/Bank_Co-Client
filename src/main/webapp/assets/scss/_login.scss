@@ -5,7 +5,7 @@
   user-select: none;
 
   .formContainer {
-    padding: 25px;
+
     background: var(--secondary-bg-color) url("../img/bg-left.png");
     width: 55%;
     display: flex;
@@ -13,20 +13,20 @@
       display: flex;
       align-items: center;
       text-decoration: none;
-      color: #fff;
-      font-size: 32px;
+      font-size: 25px;
       margin-bottom: 16px;
       width: 20%;
       i {
-        border: var(--primary-bg-color) solid 4px;
+        border: #fff solid 2px;
         border-radius: 25px;
-        color: var(--primary-bg-color);
+        color: #fff;
       }
     }
     form {
       margin: auto;
-      width: 50%;
+      width: 45%;
       opacity: 1;
+      transform: scale(1.2);
       h1 {
         color: #fff;
         font-size: 48px;
@@ -108,9 +108,7 @@
         justify-content: center;
         cursor: pointer;
       }
-      i {
-        margin-left: 5px;
-      }
+
     }
   }
   .cardContainer {
