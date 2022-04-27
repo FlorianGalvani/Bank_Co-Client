@@ -14,23 +14,42 @@ public class Transaction {
     private int amount;
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "from_account")
-    private CustomerAccounts fromAccount;
+//    @ManyToOne
+//    @JoinColumn(name = "from_account")
+//    private CustomerAccounts fromAccount;
+//
+//    private CustomerAccounts toAccount;
 
-    @ManyToOne
-    @JoinColumn(name = "to_account")
-    private CustomerAccounts toAccount;
 
-    public Transaction(Date date, CustomerAccounts fromAccount, CustomerAccounts toAccount, int amount, String description) {
-        this.date = date;
-        this.fromAccount = fromAccount;
-        this.toAccount = toAccount;
-        this.amount = amount;
-        this.description = description;
+    public int getId() {
+        return id;
     }
 
-    public Transaction() {
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

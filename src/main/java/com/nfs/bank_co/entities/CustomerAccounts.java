@@ -15,23 +15,18 @@ public class CustomerAccounts {
     @Column(name = "account_type")
     private String accountType;
     private int balance;
+    @Column(name = "authorized_debt")
     private int authorizedDebt;
 
-//    @ManyToOne
-//    private Customer owner;
-//
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<Transaction> transactions;
+    // CREDITS
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "from_account")
+    private List<Transaction> credits;
 
-    public CustomerAccounts(String accountNumber, String accountType, int balance, int authorizedDebt) {
-        this.accountNumber = accountNumber;
-        this.accountType = accountType;
-        this.balance = balance;
-        this.authorizedDebt = authorizedDebt;
-    }
-
-    public CustomerAccounts() {
-    }
+    // DEBITS
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "to_account")
+    private List<Transaction> debts;
 
     public int getId() {
         return id;
@@ -52,4 +47,21 @@ public class CustomerAccounts {
     public int getAuthorizedDebt() {
         return authorizedDebt;
     }
+
+    public List<Transaction> getCredits() {
+        return credits;
+    }
+
+    public void setCredits(List<Transaction> credits) {
+        this.credits = credits;
+    }
+
+    public List<Transaction> getDebts() {
+        return debts;
+    }
+
+    public void setDebts(List<Transaction> debts) {
+        this.debts = debts;
+    }
+
 }

@@ -60,6 +60,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
          *  verification et ajout des different(e)s informations
          *  et documents
          *  TODO verification si la demande n'est pas déja presente
+         *   + limitation a une inscription par adresse email
          */
 
         NewCustomerRequest newCustomerRequest = new NewCustomerRequest();

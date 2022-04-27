@@ -1,10 +1,60 @@
+/*
+  Form
+ */
+
+/*
+ Input
+ */
+.goHome {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 25px;
+  margin-bottom: 16px;
+  width: 29px;
+  i {
+    border: #fff solid 2px;
+    border-radius: 25px;
+    color: #fff;
+  }
+}
+.input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px #818181 solid;
+  color: #fff;
+  width: 100%;
+  outline: none;
+  transition: 0.2s border-bottom;
+}
+
+.input::placeholder {
+  color: #818181;
+}
+.input:focus {
+  border: none;
+  border-bottom: 1px #fff solid;
+}
+
+.select {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px #818181 solid;
+  color: #fff;
+  width: 100%;
+  outline: none;
+  transition: 0.2s border-bottom;
+}
+
 .button {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px 5px;
-  background-color: #00FFDD;
+  padding: 8px 8px;
+  background-color: #0fd;
   border-radius: 4px;
   cursor: pointer;
   color: #000 !important;
+  gap: 8px;
+  text-decoration: none;
 }

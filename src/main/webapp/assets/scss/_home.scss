@@ -1,22 +1,26 @@
 .Home {
   //TODO Modifier le style
   // + responsif
-  background: var(--secondary-bg-color) url("../img/bg-left.png");
+  background: var(--primary-bg-color) url("../img/bg-left.png");
   overflow: hidden;
   padding-left: 100px;
   .header {
     padding-top: 25px;
-    margin-bottom: 150px;
+    margin-bottom: 125px;
     .navbar  {
       display: flex;
       justify-content: space-between;
       .logo {
-        strong {
-          font-weight: bold;
-        }
-        color: #fff;
         font-size: 36px;
         text-decoration: none;
+        background-color: #fff;
+        border-radius: 10%;
+        width: 5%;
+        display: flex;
+        padding: 2px;
+        img {
+          width: 100%;
+        }
       }
       ul {
         margin-right: 100px;
@@ -36,14 +40,13 @@
     }
   }
   .left {
-
     h1 {
+      position: relative;
       font-size: 48px;
       font-weight: bold;
       color: #fff;
-      margin-bottom: 30px;
-      top: 0;
-      left: 16%;
+      margin-bottom: 45px;
+      line-height: 60px;
     }
     h1::after {
       content: "";
@@ -59,23 +62,24 @@
       font-size: 14px;
       margin-bottom: 30px;
       width: 45%;
+      line-height: 17.64px;
     }
     a {
-      width: 170px;
+      width: 130px;
       text-decoration: none;
-
     }
   }
-
   .right {
-    background: var(--primary-bg-color);
+    background: var(--secondary-bg-color);
     width: 55%;
-    transform: rotate(-45deg) translate(100%, 682px) scale(1.5);
+    transform: rotate(-45deg) translate(100%, 655px) scale(1.5);
     position: relative;
     height: 100vh;
     img {
       position: absolute;
-      transform:rotate(45deg) scale(1) translate(0, -225px);
+      transform: rotate(45deg) scale(0.75);
+      left: 27%;
+      top: -23%;
     }
   }
 }

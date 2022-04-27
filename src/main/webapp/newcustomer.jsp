@@ -10,88 +10,65 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+
 </head>
-<body>
-    <h1>Demande d'ouverture de compte</h1>
-    <form method="post" action="newcustomer" enctype="multipart/form-data" class="newCustomerForm">
+<body class="NewCustomer formPage">
+    <div class="left">
+        <form method="post" action="newcustomer" enctype="multipart/form-data" class="newCustomerForm">
+            <a class="goHome" href="./"><i class="ri-arrow-left-line"></i></a>
+            <select name="title" id="title">
+                <option value="">Choix</option>
+                <option value="mr">Monsieur</option>
+                <option value="ms">Madame</option>
+            </select>
+            <div class="error">${errors.get("title")}</div>
 
-        <h2>Informations</h2>
+            <input class="input" type="text" placeholder="Prenom" name="firstname" id="firstname" value="${formData.get("firstname") ? formData.get("firstname") : ""}">
+            <div class="error">${errors.get("firstname")}</div>
 
-        <label for="title">Civilité : </label>
-        <select name="title" id="title">
-            <option value="">Choix</option>
-            <option value="mr">Monsieur</option>
-            <option value="ms">Madame</option>
-        </select>
-        <div class="error">${errors.get("title")}</div>
+            <input class="input" type="text" placeholder="Nom" name="lastname" id="lastname">
+            <div class="error">${errors.get("lastname")}</div>
 
+            <input class="input" type="tel" placeholder="Telephone" name="phone" id="phone">
+            <div class="error">${errors.get("phone")}</div>
 
-        <label for="firstname">Prenom : </label>
-        <input type="text" name="firstname" id="firstname" value="${formData.get("firstname") ? formData.get("firstname") : ""}">
-        <div class="error">${errors.get("firstname")}</div>
+            <input class="input" type="email" placeholder="Email" name="email" id="email">
+            <div class="error">${errors.get("email")}</div>
 
-        <label for="lastname">Nom : </label>
-        <input type="text" name="lastname" id="lastname">
-        <div class="error">${errors.get("lastname")}</div>
+            <input class="input" type="date" placeholder="Date de naissance" name="birthdate" id="birthdate">
+            <div class="error">${errors.get("birthdate")}</div>
 
-        <label for="phone">Telephone : </label>
-        <input type="tel" name="phone" id="phone">
-        <div class="error">${errors.get("phone")}</div>
+            <input class="input" type="text" placeholder="Addresse de résidence" name="address" id="address">
+            <div class="error">${errors.get("address")}</div>
 
-        <label for="phone">Email : </label>
-        <input type="email" name="email" id="email">
-        <div class="error">${errors.get("email")}</div>
+            <input class="input" type="text" placeholder="Ville" name="city" id="city">
+            <div class="error">${errors.get("city")}</div>
 
-        <label for="birthdate">Date de naissance : </label>
-        <input type="date" name="birthdate" id="birthdate">
-        <div class="error">${errors.get("birthdate")}</div>
+            <input class="input" type="text" placeholder="Code postal" name="postal" id="postal">
+            <div class="error">${errors.get("postal")}</div>
 
-        <label for="address">Adresse de résidence : </label>
-        <input type="text" name="address" id="address">
-        <div class="error">${errors.get("address")}</div>
+            <select name="country" id="country">
+                <option value="">Choix</option>
+                <option value="fr">France</option>
+                <option value="us">United State</option>
+            </select>
+            <div class="error">${errors.get("country")}</div>
 
-        <label for="city">Ville : </label>
-        <input type="text" name="city" id="city">
-        <div class="error">${errors.get("city")}</div>
+            <%-- TODO limité la taille max d'un fichier et son limité les types de formats --%>
+            <input class="input" type="file" placeholder="Carte d'identité" accept="pdf, docx, doc, jpg, png, txt, rtf, jpeg, jpe, jif, jfif, gif, tif, tiff" name="idCard" id="idCard">
+            <div class="error">${errors.get("idCard")}</div>
+            <input type="submit" value="Envoyer">
 
-        <label for="postal">Code postal : </label>
-        <input type="text" name="postal" id="postal">
-        <div class="error">${errors.get("postal")}</div>
+        </form>
+    </div>
+    <div class="right">
+        <img src="assets/img/signup.png" >
+    </div>
 
-        <label for="country">Pays : </label>
-        <select name="country" id="country">
-            <option value="">Choix</option>
-            <option value="fr">France</option>
-            <option value="us">United State</option>
-        </select>
-        <div class="error">${errors.get("country")}</div>
-
-        <h2>Documents</h2>
-        <%-- TODO limité la taille max d'un fichier et son limité les types de formats --%>
-        <label for="idCard">Carte d'intentité : </label>
-        <input type="file" accept="pdf, docx, doc, jpg, png, txt, rtf, jpeg, jpe, jif, jfif, gif, tif, tiff" name="idCard" id="idCard">
-        <div class="error">${errors.get("idCard")}</div>
-
-        <input type="submit" value="Envoyer">
-
-    </form>
 </body>
-<style>
-    h1,h2 {
-        text-align: center;
-    }
-    .newCustomerForm {
-        width: 30%;
-        padding: 10px 10px;
-        margin: auto;
-        background: blueviolet;
-        display: flex;
-        flex-direction: column;
-    }
-    .error {
-        background: #f00;
-        color: #fff;
-    }
-</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </html>

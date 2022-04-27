@@ -30,11 +30,7 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(request.getMethod());
-        if (request.getMethod().equals("GET")) {
-            request.getSession().setAttribute("errors", null);
-        }
-        response.sendRedirect(request.getContextPath() + "/login.jsp");
+
     }
 
     @Override
@@ -44,20 +40,22 @@ public class SignInServlet extends HttpServlet {
         String customerNumber = request.getParameter("customerNumber").trim();
         FormToolBox.checkStringValidity(errors, "customerNumber", customerNumber, 24, 26);
         // TODO Ajouter verification mot de passe
+
         String password = request.getParameter("password").trim();
 
         if (errors.size() == 0) {
             try {
                 System.out.println("recup customer");
-                Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
 
+                Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
+                System.out.println(customer.getAccounts().toString());
                 String token = AuthenticationUtility.createToken();
                 if (token != null) {
                     Cookie tokenCookie = new Cookie("token", token);
                     tokenCookie.setMaxAge(3600 * 3);
                     response.addCookie(tokenCookie);
                     request.getSession().setAttribute("customer",customer);
-                    response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
+                    response.sendRedirect(request.getContextPath() + "/dashboard/");
                 }
             } catch (NoResultException e) {
                 System.out.println(e);

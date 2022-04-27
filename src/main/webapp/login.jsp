@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="assets/css/style.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
-<body class="Login">
+<body class="Login formPage">
 
-<div class="formContainer">
+<div class="left">
 
     <form method="post" action="login" id="loginForm">
         <a class="goHome" href="./"><i class="ri-arrow-left-line"></i></a>
@@ -26,13 +26,13 @@
             <div class="error">${errors.get("account")}</div>
         </c:if>
 
-        <input type="text" name="customerNumber" id="customerNumber" placeholder="Numero client">
+        <input class="input" type="text" name="customerNumber" id="customerNumber" placeholder="Numero client">
         <c:if test="${errors.get('customerNumber').length() > 0 }">
             <div class="error">${errors.get("customerNumber")}</div>
         </c:if>
 
 
-        <input type="password" name="password" id="password" placeholder="Mot de passe" pla>
+        <input class="input" type="password" name="password" id="password" placeholder="Mot de passe" pla>
         <c:if test="${errors.get('password').length() > 0 }">
             <div class="error">${errors.get("password")}</div>
         </c:if>
@@ -41,11 +41,11 @@
         </div>
 
 
-        <button class="submit" type="submit" value="">Se connecter <i class="ri-arrow-right-line"></i></button>
+        <button class="submit button" type="submit" id="submit" value="">Se connecter <i class="ri-arrow-right-line"></i></button>
     </form>
 
 </div>
-<div class="cardContainer">
+<div class="right">
     <div class="card">
         <img class="cardIMG" id="cardIMG" src="assets/img/bg-right__Card.png">
         <img class="cardShadow" src="assets/img/Card%20shadow.png">

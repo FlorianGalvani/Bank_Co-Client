@@ -28,6 +28,7 @@ public class CustomerDao {
         query.setParameter("id", id);
         return (Customer) query.getSingleResult();
     }
+
     public Customer getOneByCustomerNumber(String customerNumber) {
         Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.customerNumber = :customerNumber");
         query.setParameter("customerNumber", customerNumber);

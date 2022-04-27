@@ -1,0 +1,27 @@
+.formPage {
+  display: flex;
+  .left {
+    display: flex;
+    width: 55%;
+    background: var(--primary-bg-color) url("../img/bg-left.png");
+    .newCustomerForm {
+      width: 30%;
+      padding: 10px 10px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .right{
+    display: flex;
+    width: 45%;
+    background-color: var(--secondary-bg-color);
+    img {
+      margin: auto;
+    }
+  }
+
+}
+.NewCustomer {
+
+}

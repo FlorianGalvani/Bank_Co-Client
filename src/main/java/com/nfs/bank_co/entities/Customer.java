@@ -16,6 +16,7 @@ public class Customer {
     private String lastname;
     private String title;
     private String phone;
+    private String email;
     private String birthdate;
     private String address;
     private String postal;
@@ -24,8 +25,9 @@ public class Customer {
     private String customerNumber;
     private String password;
 
-//    @OneToMany
-//    private List<CustomerAccounts> accounts;
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
+    private List<CustomerAccounts> accounts;
 
     public int getId() {
         return id;
@@ -67,7 +69,13 @@ public class Customer {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getBirthdate() {
         return birthdate;
@@ -121,7 +129,15 @@ public class Customer {
         this.password = password;
     }
 
-//    public Collection<CustomerAccounts> getAccounts() {
+    public List<CustomerAccounts> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<CustomerAccounts> accounts) {
+        this.accounts = accounts;
+    }
+
+    //    public Collection<CustomerAccounts> getAccounts() {
 //        return accounts;
 //    }
 

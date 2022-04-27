@@ -7,11 +7,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "DashboardServlet", urlPatterns = {"/dashboard", "/dashboard.jsp"})
+@WebServlet(name = "DashboardServlet", urlPatterns = {"/dashboard/"})
 public class DashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        System.out.println("dashboard servlet");
+        response.sendRedirect(request.getContextPath() + "/dashboard/index.jsp");
     }
 
     @Override

@@ -1,10 +1,10 @@
 .E404 {
-  background: var(--primary-bg-color);
+  background: var(--secondary-bg-color);
   display: flex;
   height: 100vh;
   overflow: hidden;
     .left {
-      background: var(--secondary-bg-color) url("../img/bg-left.png");
+      background: var(--primary-bg-color) url("../img/bg-left.png");
       width: 55%;
       .container {
         display: flex;
@@ -16,7 +16,7 @@
           font-size: 36px;
           color: #fff;
           font-weight: bold;
-          margin-bottom: 10px;
+          margin-bottom: 40px;
         }
         a {
 
