@@ -20,8 +20,8 @@ public class EmailUtility {
     private static final String HOST = "smtp.gmail.com";
     private static final String TLS_PORT = "587";
     private static final String SSL_PORT = "465";
-    private static final String USERNAME = "bankco.noreply@gmail.com";
-    private static final String PASSWORD = "P@s$w0rd76";
+    private static final String USERNAME = "";
+    private static final String PASSWORD = "";
     public static void createNewCustomerRequestPendingConfirmationEmail(String toAddress) {
          String subject = "Confirmation de reception de votre demande";
          String message = "BLABLA ";
