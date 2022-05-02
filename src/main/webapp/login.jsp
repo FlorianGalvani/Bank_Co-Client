@@ -9,9 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Connexion</title>
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
 </head>
 <body class="Login formPage">
 
@@ -43,13 +45,14 @@
 
         <button class="submit button" type="submit" id="submit" value="">Se connecter <i class="ri-arrow-right-line"></i></button>
     </form>
-
 </div>
+
 <div class="right">
     <div class="card">
         <img class="cardIMG" id="cardIMG" src="assets/img/bg-right__Card.png">
         <img class="cardShadow" src="assets/img/Card%20shadow.png">
     </div>
 </div>
+
 </body>
 </html>
