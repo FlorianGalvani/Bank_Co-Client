@@ -39,7 +39,6 @@ public class NewCustomerRequestServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         IdCardUploadPath = getServletContext().getRealPath( DOCUMENTS_FOLDER ) + "/id_card";
-//        System.out.println("idcard upload path " + IdCardUploadPath);
         File uploadDir = new File(IdCardUploadPath);
         if ( !uploadDir.exists() ) uploadDir.mkdir();
     }
@@ -60,7 +59,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
          *  verification et ajout des different(e)s informations
          *  et documents
          *  TODO verification si la demande n'est pas déja presente
-         *   + limitation a une inscription par adresse email
+         *   + limitation a une demande par adresse email
          */
 
         NewCustomerRequest newCustomerRequest = new NewCustomerRequest();
@@ -112,7 +111,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
          */
 
         Part idCardPart = request.getPart("idCard");
-        System.out.println( "idCardPart " + idCardPart.getSize());
+
         String idCardFileName = "idCard_" + lastname + "_" + firstname + ".png";
         String idCardFullPath = IdCardUploadPath + File.separator + idCardFileName;
         if (idCardPart.getSize() == 0) {
@@ -129,15 +128,12 @@ public class NewCustomerRequestServlet extends HttpServlet {
             newCustomerRequest.setCity(city);
             newCustomerRequest.setPostal(postal);
             newCustomerRequest.setCountry(country);
-
-            idCardPart.write( idCardFullPath );
-            newCustomerRequest.setIdCard(idCardFileName);
-
-            System.out.println("Nouvelle demande d'ouverture de compte de la part de " + request.getParameter("firstname") + " " + request.getParameter("lastname"));
+//            idCardPart.write( idCardFullPath );
+//            newCustomerRequest.setIdCard(idCardFileName);
             DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
-//            EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email);
-        } else {
+            EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email);
 
+        } else {
             /*
              * TODO Faire en sorte que les (certaines ?) données persistent apres l'envoi du formulaire si il est invalide
              */
