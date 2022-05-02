@@ -16,12 +16,14 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 //TODO Gerer envoie du mail de confirmation de reception de demande d'ouverture de compte
+// Trucs utiles : public static Map<String,String> getenv()
 public class EmailUtility {
     private static final String HOST = "smtp.gmail.com";
     private static final String TLS_PORT = "587";
     private static final String SSL_PORT = "465";
     private static final String USERNAME = "bankco.noreply@gmail.com";
     private static final String PASSWORD = "P@s$w0rd76";
+
     public static void createNewCustomerRequestPendingConfirmationEmail(String toAddress) {
          String subject = "Confirmation de reception de votre demande";
          String message = "BLABLA ";
@@ -57,12 +59,10 @@ public class EmailUtility {
         msg.setSentDate(new Date());
         msg.setText(message);
 
-        SMTPTransport t = (SMTPTransport)session.getTransport("smtps");
+        SMTPTransport t = (SMTPTransport)session.getTransport("smtp");
 
         t.connect("smtp.gmail.com", USERNAME, PASSWORD);
         t.sendMessage(msg, msg.getAllRecipients());
         t.close();
-//        Transport.send(msg);
-
     }
 }
