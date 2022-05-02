@@ -41,7 +41,6 @@ public class AuthenticationUtility {
                     .withIssuer("auth0")
                     .build(); //Reusable verifier instance
             DecodedJWT jwt = verifier.verify(token);
-            System.out.println(jwt.getToken());
             return true;
         } catch (JWTVerificationException e) {
             System.out.println(e);

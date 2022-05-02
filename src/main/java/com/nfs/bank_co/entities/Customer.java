@@ -140,5 +140,15 @@ public class Customer {
     //    public Collection<CustomerAccounts> getAccounts() {
 //        return accounts;
 //    }
+    public CustomerAccounts getAccountById(int id) {
+        CustomerAccounts account = null;
+        for (CustomerAccounts acc:
+        accounts) {
+            if (acc.getId() == id) {
+                account = acc;
+            }
+        }
 
+        return account;
+    }
 }

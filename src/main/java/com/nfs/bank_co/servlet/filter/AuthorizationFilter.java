@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/dashboard/index.jsp"})
+@WebFilter(urlPatterns = {"/dashboard/index.jsp", "/dashboard/*"})
 public class AuthorizationFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
@@ -32,31 +32,14 @@ public class AuthorizationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
         String path = req.getRequestURI().substring(req.getContextPath().length());
-        System.out.println(req.getPathInfo());
         if(session != null) {
-            chain.doFilter(request, response);
+            if (session.getAttribute("customer") != null) {
+                chain.doFilter(request, response);
+            } else {
+                res.sendRedirect(req.getContextPath() + "/login.jsp");
+            }
         } else {
-
             res.sendRedirect(req.getContextPath() + "/login.jsp");
         }
-//        String token = AuthenticationUtility.getCookieByName(req.getCookies(), "token");
-//        String id = AuthenticationUtility.getCookieByName(req.getCookies(), "id");
-//        if (token != null) {
-//            boolean isTokenValid = AuthenticationUtility.checkTokenValidity(token);
-//            if (isTokenValid) {
-//                Customer customer = DaoFactory.getCustomerDao().getOneById(Integer.parseInt(id));
-//                System.out.println("Token Valide");
-//                chain.doFilter(request, response);
-//            } else {
-//                // TODO Redirection vers page de connexion ou landing page
-//                System.out.println("Token Invalide");
-//                session.invalidate();
-//                res.sendRedirect(req.getContextPath() + "/login");
-//            }
-//        } else {
-//            System.out.println("Token Introuvable");
-//            session.invalidate();
-//            res.sendRedirect(req.getContextPath() + "/login");
-//        }
     }
 }
