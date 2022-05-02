@@ -19,19 +19,6 @@
         bottom: -25px;
         left: 0;
       }
-      .noAccount {
-        display: flex;
-        gap: 5px;
-        p {
-          color: #fff;
-          font-size: 12px;
-          font-weight: normal;
-        }
-        a {
-          color: #fff;
-          font-size: 12px;
-        }
-      }
       input[type=text] {
         margin-top: 16px;
       }
@@ -75,7 +62,6 @@
   .cardIMG {
     position: absolute;
     top: 35%;
-    width: 100%;
     animation: card 3s infinite alternate;
   }
 

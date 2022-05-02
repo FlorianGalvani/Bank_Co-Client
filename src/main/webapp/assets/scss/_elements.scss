@@ -1,7 +1,112 @@
 /*
-  Form
+  Header
  */
+.header {
+  padding-top: 25px;
+  margin-bottom: 100px;
+  .navbar  {
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      font-size: 36px;
+      text-decoration: none;
+      background-color: #fff;
+      border-radius: 10%;
+      width: 5%;
+      display: flex;
+      padding: 2px;
+      img {
+        width: 100%;
+      }
+    }
+    ul {
+      margin-right: 100px;
+      display: flex;
+      justify-content: space-between;
+      width: 30%;
+      li {
+        display: flex;
+        align-items: center;
+        a {
+          color: #fff;
+          font-size: 14px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+/*
+ Pages
+ */
+.basicPage {
+  .left {
+    h1 {
+      position: relative;
+      font-size: 48px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 45px;
+      line-height: 60px;
+    }
+    h1::after {
+      content: "";
+      width: 74px;
+      height: 8px;
+      background: #00FFDD;
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+    }
+    p {
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 30px;
+      width: 45%;
+      line-height: 17.64px;
+    }
+    a {
+      width: 130px;
+      text-decoration: none;
+    }
+  }
+  .right {
+    background: var(--secondary-bg-color);
+    width: 55%;
+    transform: rotate(-45deg) scale(1.5);
+    /* position: relative; */
+    position: absolute;
+    right: -25%;
+    top: 75%;
+    height: 100vh;
+    img {
+      position: absolute;
+      transform: rotate(45deg) scale(0.75);
+      left: 35%;
+      top: -25%;
+    }
+  }
+}
 
+.formPage {
+  display: flex;
+  .left {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    background: var(--primary-bg-color) url("../img/bg-left.png");
+
+  }
+  .right{
+    display: flex;
+    width: 45%;
+    background-color: var(--secondary-bg-color);
+    img {
+      margin: auto;
+    }
+  }
+
+}
 /*
  Input
  */
@@ -57,4 +162,21 @@
   color: #000 !important;
   gap: 8px;
   text-decoration: none;
+}
+
+/*
+  A categorisés
+ */
+.noAccount {
+  display: flex;
+  gap: 5px;
+  p {
+    color: #fff;
+    font-size: 12px;
+    font-weight: normal;
+  }
+  a {
+    color: #fff;
+    font-size: 12px;
+  }
 }
