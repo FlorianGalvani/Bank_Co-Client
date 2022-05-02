@@ -11,17 +11,20 @@
 <html>
 <head>
     <title>Dashboard</title>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.min.css">
 
 </head>
-<body class="Dashboard">
-<h1>Dashboard</h1>
+<body class="Dashboard basicPage">
+<div class="toaster">
 
+</div>
+<a class="button" href="sendmoney.jsp">Envoyer de l'argent</a>
 <%--
 Recuperation et affichage des infos du compte client
 --%>
-<p>${customer.getFirstname()} ${customer.getLastname()}</p>
+<a href="profile.jsp">${customer.getFirstname()} ${customer.getLastname()}</a>
 
 <%--
 Recuperation et affichage des comptes banquaire du client
@@ -33,11 +36,12 @@ Recuperation et affichage des comptes banquaire du client
                 ${account.getAccountNumber()}
                 ${account.getBalance()}
                 ${account.getAuthorizedDebt()}
-
+                <br>
+            <h1>Dernière transaction</h1>
                 <%--
                 Recuperation et affichage des crédits
                 --%>
-            <h1>Crédits</h1>
+            <h2>Crédits</h2>
             <div class="credits">
                 <c:choose>
                     <c:when test="${account.getCredits().size() > 0}">
@@ -71,9 +75,10 @@ Recuperation et affichage des comptes banquaire du client
                     </c:otherwise>
                 </c:choose>
             </div>
-
+                    <a class="button" href="accountdetail.jsp?id=${account.getId()}">Gerer</a>
         </div>
     </c:forEach>
+
 </div>
 
 
@@ -81,8 +86,23 @@ Recuperation et affichage des comptes banquaire du client
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="assets/js/utils.js"></script>
-<script src="assets/js/dashboard.js">
-
-</script>
+<script src="assets/js/dashboard.js"></script>
+<script>
+    const toastText = ${success != null ? success : "null"};
+    $(document).ready(function() {
+        if (toastText != null) {
+            const toast = document.createElement("div");
+            toast.classList.add("toast");
+            toast.textContent = toastText;
+            $(".toaster").append(toast);
+            setTimeout(() => {
+                $(".toast").first().fadeOut("slow", () => {
+                    $(".toaster").empty();
+                })
+            },5000)
+        } else {
+            alert("azetry")
+        }
+    });
 </script>
 </html>
