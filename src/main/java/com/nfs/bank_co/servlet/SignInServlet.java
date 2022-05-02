@@ -45,10 +45,8 @@ public class SignInServlet extends HttpServlet {
 
         if (errors.size() == 0) {
             try {
-                System.out.println("recup customer");
 
                 Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
-                System.out.println(customer.getAccounts().toString());
                 String token = AuthenticationUtility.createToken();
                 if (token != null) {
                     Cookie tokenCookie = new Cookie("token", token);
@@ -58,7 +56,7 @@ public class SignInServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/dashboard/");
                 }
             } catch (NoResultException e) {
-                System.out.println(e);
+
                 errors.put("account","Identifiant ou mot de passe incorrect");
                 request.getSession().setAttribute("errors", errors);
                 response.sendRedirect(request.getContextPath() + "/login.jsp");

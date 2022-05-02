@@ -19,7 +19,6 @@ public class TokenServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Token Servlet");
         HttpSession session = ((HttpServletRequest) request).getSession(false);
 
         Cookie[] cookies = ((HttpServletRequest) request).getCookies();
@@ -30,7 +29,7 @@ public class TokenServlet extends HttpServlet {
                     token = cookie.getValue();
             }
             if (token != null){
-                System.out.println("token : " + token);
+
                 try {
                     Algorithm algorithm = Algorithm.HMAC256("secret"); // TODO Modifier le secret
                     JWTVerifier verifier = JWT.require(algorithm)
@@ -40,11 +39,11 @@ public class TokenServlet extends HttpServlet {
                     PrintWriter out = response.getWriter();
                     response.setContentType("application/json");
                     response.setCharacterEncoding("UTF-8");
-                    System.out.println(this.gson.toJson(new Object()));
+
                     out.print("true");
                     out.flush();
                 } catch (JWTVerificationException e) {
-                    System.out.println(e);
+
                     response.addCookie(new Cookie("token", null));
                     response.addCookie(new Cookie("id", null));
                     PrintWriter out = response.getWriter();
