@@ -88,7 +88,7 @@ Recuperation et affichage des comptes banquaire du client
 <script src="assets/js/utils.js"></script>
 <script src="assets/js/dashboard.js"></script>
 <script>
-    const toastText = ${success != null ? success : "null"};
+    const toastText = ${success != null ? success : "null" };
     $(document).ready(function() {
         if (toastText != null) {
             const toast = document.createElement("div");
@@ -101,7 +101,7 @@ Recuperation et affichage des comptes banquaire du client
                 })
             },5000)
         } else {
-            alert("azetry")
+
         }
     });
 </script>

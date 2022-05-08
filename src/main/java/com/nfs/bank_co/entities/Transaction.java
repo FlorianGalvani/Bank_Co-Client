@@ -12,13 +12,15 @@ public class Transaction {
     private int id;
     private Date date;
     private int amount;
-    private String description;
+    private String reason ;
 
-//    @ManyToOne
-//    @JoinColumn(name = "from_account")
-//    private CustomerAccounts fromAccount;
-//
-//    private CustomerAccounts toAccount;
+    @ManyToOne
+    @JoinColumn(name = "from_account")
+    private Account fromAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "to_account")
+    private Account toAccount;
 
 
     public int getId() {
@@ -45,11 +47,27 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getDescription() {
-        return description;
+    public String getReason () {
+        return reason;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setReason (String reason) {
+        this.reason  = reason;
+    }
+
+    public Account getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(Account fromAccount) {
+        this.fromAccount = fromAccount;
+    }
+
+    public Account getToAccount() {
+        return toAccount;
+    }
+
+    public void setToAccount(Account toAccount) {
+        this.toAccount = toAccount;
     }
 }

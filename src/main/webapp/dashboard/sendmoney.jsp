@@ -17,8 +17,13 @@
 <body>
     <form method="POST" action="sendmoney">
 
+        <c:if test="${error.length() > 0}">
+            <div class="error">
+                ${error}
+            </div>
+        </c:if>
 
-        <select name="debitedAccountNumber" id="debitedAccountNumber">
+        <select name="debitedAccountId" id="debitedAccountId">
             <option value="">
                 Compte à debité
             </option>
@@ -30,7 +35,7 @@
         </select>
 
 
-        <select name="creditedAccountNumber" id="creditedAccountNumber">
+        <select name="creditedAccountId" id="creditedAccountId">
             <option value="">
                 Compte à credité
             </option>
@@ -40,6 +45,8 @@
                 </option>
             </c:forEach>
         </select>
+        <input type="number" name="amount">
+        <input type="text" name="reason">
         <input type="submit" class="button">
     </form>
 </body>

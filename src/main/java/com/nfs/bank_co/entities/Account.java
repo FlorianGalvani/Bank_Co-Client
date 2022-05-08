@@ -1,11 +1,10 @@
 package com.nfs.bank_co.entities;
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "accounts")
-public class CustomerAccounts {
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_customer_account")
@@ -64,4 +63,7 @@ public class CustomerAccounts {
         this.debts = debts;
     }
 
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 }

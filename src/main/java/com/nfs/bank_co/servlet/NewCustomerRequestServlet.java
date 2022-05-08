@@ -48,6 +48,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
         /*
          * Redirige les requetes de /newcustomer vers /newcustomer.jsp (Formulaire de demande d'ouverture d'un compte client).
          */
+        System.out.println(request.getPathInfo());
         response.sendRedirect(request.getContextPath() + "/newcustomer.jsp");
     }
 
@@ -119,19 +120,27 @@ public class NewCustomerRequestServlet extends HttpServlet {
         }
 
         if (errors.size() == 0) {
-            newCustomerRequest.setTitle(title);
-            newCustomerRequest.setFirstname(firstname);
-            newCustomerRequest.setLastname(lastname);
-            newCustomerRequest.setPhone(phone);
-            newCustomerRequest.setEmail(email);
-            newCustomerRequest.setAddress(address);
-            newCustomerRequest.setCity(city);
-            newCustomerRequest.setPostal(postal);
-            newCustomerRequest.setCountry(country);
-//            idCardPart.write( idCardFullPath );
-//            newCustomerRequest.setIdCard(idCardFileName);
-            DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
-            EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email);
+            //Verifie si l'adresse email est deja utilisé (Dans les demande d'ouverture de compte et les comptes déja existant)
+            if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
+                newCustomerRequest.setTitle(title);
+                newCustomerRequest.setFirstname(firstname);
+                newCustomerRequest.setLastname(lastname);
+                newCustomerRequest.setPhone(phone);
+                newCustomerRequest.setEmail(email);
+                newCustomerRequest.setAddress(address);
+                newCustomerRequest.setCity(city);
+                newCustomerRequest.setPostal(postal);
+                newCustomerRequest.setCountry(country);
+            idCardPart.write( idCardFullPath );
+            newCustomerRequest.setIdCard(idCardFileName);
+                DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
+                EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email);
+            } else {
+                errors.put("email","Cette email est déja utilisée");
+                request.getSession().setAttribute("errors",errors);
+                response.sendRedirect(request.getContextPath() + "/newcustomer.jsp");
+            }
+
 
         } else {
             /*

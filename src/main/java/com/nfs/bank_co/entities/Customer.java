@@ -1,7 +1,6 @@
 package com.nfs.bank_co.entities;
 import javax.persistence.*;
 
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -24,10 +23,11 @@ public class Customer {
     private String country;
     private String customerNumber;
     private String password;
+    private Boolean isNewCustomer;
 
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "customer_id")
-    private List<CustomerAccounts> accounts;
+    private List<Account> accounts;
 
     public int getId() {
         return id;
@@ -129,20 +129,20 @@ public class Customer {
         this.password = password;
     }
 
-    public List<CustomerAccounts> getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<CustomerAccounts> accounts) {
+    public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
 
-    //    public Collection<CustomerAccounts> getAccounts() {
+    //    public Collection<Account> getAccounts() {
 //        return accounts;
 //    }
-    public CustomerAccounts getAccountById(int id) {
-        CustomerAccounts account = null;
-        for (CustomerAccounts acc:
+    public Account getAccountById(int id) {
+        Account account = null;
+        for (Account acc:
         accounts) {
             if (acc.getId() == id) {
                 account = acc;
@@ -151,4 +151,14 @@ public class Customer {
 
         return account;
     }
+
+    public Boolean getNewCustomer() {
+        return isNewCustomer;
+    }
+
+    public void setNewCustomer(Boolean newCustomer) {
+        isNewCustomer = newCustomer;
+    }
+
+
 }

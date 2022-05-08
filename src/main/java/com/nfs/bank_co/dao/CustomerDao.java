@@ -34,4 +34,15 @@ public class CustomerDao {
         query.setParameter("customerNumber", customerNumber);
         return (Customer) query.getSingleResult();
     }
+
+    public boolean isEmailAlreadyInUse(String email){
+        Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.email = :email");
+        query.setParameter("email", email);
+        Customer customer = (Customer) query.getSingleResult();
+        if (query != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

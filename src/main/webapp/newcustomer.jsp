@@ -9,6 +9,8 @@
 <%--
     TODO Finir le style du formulaire de cette page ((wtf) step form ?)
 --%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -31,42 +33,64 @@
                 <option value="mr">Monsieur</option>
                 <option value="ms">Madame</option>
             </select>
-            <div class="error">${errors.get("title")}</div>
+            <c:if test="${errors.get('title').length() > 0 }">
+                <div class="error">${errors.get("title")}</div>
+            </c:if>
 
             <input class="input" type="text" placeholder="Prenom" name="firstname" id="firstname" value="${formData.get("firstname") ? formData.get("firstname") : ""}">
-            <div class="error">${errors.get("firstname")}</div>
-
+            <c:if test="${errors.get('firstname').length() > 0 }">
+                <div class="error">${errors.get("firstname")}</div>
+            </c:if>
             <input class="input" type="text" placeholder="Nom" name="lastname" id="lastname">
-            <div class="error">${errors.get("lastname")}</div>
+            <c:if test="${errors.get('lastname').length() > 0 }">
+                <div class="error">${errors.get("lastname")}</div>
+            </c:if>
 
             <input class="input" type="tel" placeholder="Telephone" name="phone" id="phone">
-            <div class="error">${errors.get("phone")}</div>
+            <c:if test="${errors.get('phone').length() > 0 }">
+                <div class="error">${errors.get("phone")}</div>
+            </c:if>
 
             <input class="input" type="email" placeholder="Email" name="email" id="email">
-            <div class="error">${errors.get("email")}</div>
+            <c:if test="${errors.get('email').length() > 0 }">
+                <div class="error">${errors.get("email")}</div>
+            </c:if>
 
             <input class="input" type="date" placeholder="Date de naissance" name="birthdate" id="birthdate">
-            <div class="error">${errors.get("birthdate")}</div>
+            <c:if test="${errors.get('birthdate').length() > 0 }">
+                <div class="error">${errors.get("birthdate")}</div>
+            </c:if>
 
             <input class="input" type="text" placeholder="Addresse de résidence" name="address" id="address">
-            <div class="error">${errors.get("address")}</div>
+            <c:if test="${errors.get('address').length() > 0 }">
+                <div class="error">${errors.get("address")}</div>
+            </c:if>
 
             <input class="input" type="text" placeholder="Ville" name="city" id="city">
-            <div class="error">${errors.get("city")}</div>
+            <c:if test="${errors.get('city').length() > 0 }">
+                <div class="error">${errors.get("city")}</div>
+            </c:if>
 
             <input class="input" type="text" placeholder="Code postal" name="postal" id="postal">
-            <div class="error">${errors.get("postal")}</div>
+            <c:if test="${errors.get('postal').length() > 0 }">
+                <div class="error">${errors.get("postal")}</div>
+            </c:if>
 
             <select name="country" id="country">
                 <option value="">Choix</option>
                 <option value="fr">France</option>
                 <option value="us">United State</option>
             </select>
-            <div class="error">${errors.get("country")}</div>
+            <c:if test="${errors.get('country').length() > 0 }">
+                <div class="error">${errors.get("country")}</div>
+            </c:if>
+
 
             <%-- TODO limité la taille max d'un fichier et son limité les types de formats --%>
             <input class="input" type="file" placeholder="Carte d'identité"  name="idCard" id="idCard">
-            <div class="error">${errors.get("idCard")}</div>
+            <c:if test="${errors.get('idCard').length() > 0 }">
+                <div class="error">${errors.get("idCard")}</div>
+            </c:if>
             <input type="submit" value="Envoyer">
 
         </form>

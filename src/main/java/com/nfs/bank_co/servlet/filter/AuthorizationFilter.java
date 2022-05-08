@@ -27,19 +27,33 @@ public class AuthorizationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        System.out.println("Filtre authorization");
+        String report = "--- AuthorizationFilter ---\n";
+//        System.out.println("--- AuthorizationFilter ---");
+//        System.out.print("status : ");
+        report += "status : ";
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
-        String path = req.getRequestURI().substring(req.getContextPath().length());
         if(session != null) {
             if (session.getAttribute("customer") != null) {
+//                System.out.print("Ok");
+                report += "Ok\n" ;
+                // MISE A JOUR DU CLIENT si il est connecté
+                Customer customer = (Customer) session.getAttribute("customer");
+                req.getSession().setAttribute("customer", DaoFactory.getCustomerDao().getOneById(customer.getId()));
                 chain.doFilter(request, response);
             } else {
+//                System.out.print("Error, redirecting to login page...");
+                report += "Error, redirecting to login page...\n";
                 res.sendRedirect(req.getContextPath() + "/login.jsp");
             }
         } else {
+//            System.out.print("Error, redirecting to login page...");
+            report += "Error, redirecting to login page...\n";
             res.sendRedirect(req.getContextPath() + "/login.jsp");
         }
+//        System.out.println("---------------------------");
+        report += "---------------------------";
+        System.out.println(report);
     }
 }

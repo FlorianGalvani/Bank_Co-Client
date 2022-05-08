@@ -1,79 +1,85 @@
 .Login {
-    form {
-      margin: auto;
-      width: 45%;
-      h1 {
-        color: #fff;
-        font-size: 48px;
-        font-weight: bold;
-        margin-top: 20px;
-        margin-bottom: 56px;
-        position: relative;
-      }
-      h1::after {
-        content: "";
-        width: 74px;
-        height: 8px;
-        background: #00FFDD;
-        position: absolute;
-        bottom: -25px;
-        left: 0;
-      }
-      input[type=text] {
-        margin-top: 16px;
-      }
-      input[type=password] {
-        margin-top: 32px;
-      }
-      .error {
-        background: darkred;
-        margin-top: 6px;
-        padding: 4px;
-        border-radius: 4px;
+  form {
+    margin: auto;
+    width: 45%;
+    transform: scale(1.2);
+    h1 {
+      color: #fff;
+      font-size: 48px;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 56px;
+      position: relative;
+    }
+
+    h1::after {
+      content: "";
+      width: 74px;
+      height: 8px;
+      background: #00FFDD;
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+    }
+
+    input[type=text] {
+      margin-top: 16px;
+    }
+
+    input[type=password] {
+      margin-top: 32px;
+    }
+
+    .error {
+      background: darkred;
+      margin-top: 6px;
+      padding: 4px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .passReset {
+      margin-top: 16px;
+
+      a {
         color: #fff;
         font-size: 12px;
       }
-      .passReset {
-        margin-top: 16px;
-        a {
-          color: #fff;
-          font-size: 12px;
-        }
-      }
-      .submit {
-        margin-top: 32px;
-      }
+    }
+
+    .submit {
+      margin-top: 32px;
+    }
 
 
-  }
-  .cardContainer {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 45%;
   }
 
   .card {
     width: 70%;
     margin: 0 auto;
     position: relative;
-
+    transform: scale(1.2);
   }
 
   .cardIMG {
     position: absolute;
-    top: 35%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: card 3s infinite alternate;
   }
 
   .cardShadow {
     position: absolute;
-    width: 100%;
-    top: 40%;
-    transform: scale(0.9);
-
-    animation: cardShadow 3s infinite alternate;
+    /* width: 100%; */
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    /* animation: cardShadow 3s infinite alternate;*/
   }
 }
+
 @media screen and (max-width: 1440px) {
   .Login {
     .formContainer {
@@ -95,10 +101,10 @@
 
 @keyframes card {
   0% {
-    transform: translateY(0px)
+    top: 50%
   }
   100% {
-    transform: translateY(-15px)
+    top: 48%
   }
 }
 

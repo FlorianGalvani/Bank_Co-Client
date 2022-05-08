@@ -3,15 +3,14 @@
 @import "variables";
 @import "elements";
 @import "reset";
-body {
-  font-family: 'Sora', sans-serif;
-}
 @import "home";
 @import "about";
 @import "contact";
 @import "newcustomer";
 @import "login";
 @import "dashboard";
-//import error pages modules
 @import "404";
 
+body {
+  font-family: 'Sora', sans-serif;
+}

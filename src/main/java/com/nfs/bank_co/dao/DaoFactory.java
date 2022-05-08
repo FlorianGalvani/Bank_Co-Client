@@ -4,6 +4,7 @@ public class DaoFactory {
    private static TransactionsDao transactionDao;
     private static NewCustomerRequestDao newCustomerRequestDao;
     private static CustomerDao customerDao;
+    private static AccountDao accountDao;
 
     private DaoFactory(){}
 
@@ -25,5 +26,12 @@ public class DaoFactory {
             customerDao  = new CustomerDao();
         }
         return customerDao;
+    }
+
+    public static AccountDao getAccountDao() {
+        if (accountDao == null) {
+            accountDao = new AccountDao();
+        }
+        return accountDao;
     }
 }

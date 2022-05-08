@@ -14,6 +14,6 @@
     <link rel="stylesheet" href="../assets/css/style.min.css">
 </head>
 <body class="">
-
+    ${customer.getFirstname()}
 </body>
 </html>
