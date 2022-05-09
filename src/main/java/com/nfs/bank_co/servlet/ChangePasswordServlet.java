@@ -7,7 +7,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-//TODO MODIFIER NOM DE LA SERVLET EN ChangePasswordServlet
+
 @WebServlet(name = "ChangePasswordServlet", value = "/dashboard/changePassword")
 public class ChangePasswordServlet extends HttpServlet {
     @Override
@@ -21,7 +21,7 @@ public class ChangePasswordServlet extends HttpServlet {
         System.out.println("POSTTTT");
         Customer customer = (Customer) request.getSession().getAttribute("customer");
         if (customer.getNewCustomer()) {
-            DaoFactory.getCustomerDao().updateNewCustomerState(customer);
+//            DaoFactory.getCustomerDao().updateNewCustomerState(customer);
         }
         response.sendRedirect(request.getContextPath() + "/dashboard/index.jsp");
     }

@@ -38,9 +38,9 @@ public class NewCustomerRequestServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        IdCardUploadPath = getServletContext().getRealPath( DOCUMENTS_FOLDER ) + "/id_card";
+        IdCardUploadPath = getServletContext().getRealPath(DOCUMENTS_FOLDER) + "/id_card";
         File uploadDir = new File(IdCardUploadPath);
-        if ( !uploadDir.exists() ) uploadDir.mkdir();
+        if (!uploadDir.exists()) uploadDir.mkdir();
     }
 
     @Override
@@ -59,26 +59,24 @@ public class NewCustomerRequestServlet extends HttpServlet {
          *  Creation d'une nouvelle demande d'ouverture de compte et
          *  verification et ajout des different(e)s informations
          *  et documents
-         *  TODO verification si la demande n'est pas déja presente
-         *   + limitation a une demande par adresse email
          */
 
         NewCustomerRequest newCustomerRequest = new NewCustomerRequest();
 
         String title = request.getParameter("title").trim();
-        FormToolBox.checkStringValidity(errors,"title",title,0,20);
+        FormToolBox.checkStringValidity(errors, "title", title, 0, 20);
 
         String firstname = request.getParameter("firstname").trim();
-        FormToolBox.checkStringValidity(errors,"firstname",firstname,3,20);
+        FormToolBox.checkStringValidity(errors, "firstname", firstname, 3, 20);
 
         String lastname = request.getParameter("lastname").trim();
-        FormToolBox.checkStringValidity(errors,"lastname",lastname,3,20);
+        FormToolBox.checkStringValidity(errors, "lastname", lastname, 3, 20);
 
         String phone = request.getParameter("phone").trim();
-        FormToolBox.checkStringValidity(errors,"phone",phone,9,20);
+        FormToolBox.checkStringValidity(errors, "phone", phone, 9, 20);
 
         String email = request.getParameter("email").trim();
-        FormToolBox.checkStringValidity(errors,"email",email,10,50);
+        FormToolBox.checkStringValidity(errors, "email", email, 10, 50);
 
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
@@ -86,23 +84,23 @@ public class NewCustomerRequestServlet extends HttpServlet {
             if (!request.getParameter("birthdate").isEmpty()) {
                 newCustomerRequest.setBirthdate(format.parse(request.getParameter("birthdate").trim()));
             } else {
-                errors.put("birthdate","Veuillez renseigner ce champ");
+                errors.put("birthdate", "Veuillez renseigner ce champ");
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         String address = request.getParameter("address").trim();
-        FormToolBox.checkStringValidity(errors,"address",address,10,200);
+        FormToolBox.checkStringValidity(errors, "address", address, 10, 200);
 
         String city = request.getParameter("city").trim();
-        FormToolBox.checkStringValidity(errors,"city",city,2,50);
+        FormToolBox.checkStringValidity(errors, "city", city, 2, 50);
 
         String postal = request.getParameter("postal").trim();
-        FormToolBox.checkStringValidity(errors,"postal",postal,4,50);
+        FormToolBox.checkStringValidity(errors, "postal", postal, 4, 50);
 
         String country = request.getParameter("country").trim();
-        FormToolBox.checkStringValidity(errors,"country",country,1,50);
+        FormToolBox.checkStringValidity(errors, "country", country, 1, 50);
 
         /*
          * Ajout des documents
@@ -116,11 +114,13 @@ public class NewCustomerRequestServlet extends HttpServlet {
         String idCardFileName = "idCard_" + lastname + "_" + firstname + ".png";
         String idCardFullPath = IdCardUploadPath + File.separator + idCardFileName;
         if (idCardPart.getSize() == 0) {
-            errors.put("idCard","Veuillez ajouter un document");
+            errors.put("idCard", "Veuillez ajouter un document");
         }
 
         if (errors.size() == 0) {
             //Verifie si l'adresse email est deja utilisé (Dans les demande d'ouverture de compte et les comptes déja existant)
+            System.out.println("Email new customer already in use ? : " + DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email));
+            System.out.println("Email customer already in use ? : " + DaoFactory.getCustomerDao().isEmailAlreadyInUse(email));
             if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
                 newCustomerRequest.setTitle(title);
                 newCustomerRequest.setFirstname(firstname);
@@ -131,13 +131,17 @@ public class NewCustomerRequestServlet extends HttpServlet {
                 newCustomerRequest.setCity(city);
                 newCustomerRequest.setPostal(postal);
                 newCustomerRequest.setCountry(country);
-            idCardPart.write( idCardFullPath );
-            newCustomerRequest.setIdCard(idCardFileName);
+                idCardPart.write(idCardFullPath);
+                newCustomerRequest.setIdCard(idCardFileName);
                 DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
-                EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email);
+                if (EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email)) {
+                    response.sendRedirect(request.getContextPath() + "/success.jsp");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/newcustomer.jsp");
+                }
             } else {
-                errors.put("email","Cette email est déja utilisée");
-                request.getSession().setAttribute("errors",errors);
+                errors.put("email", "Cette email est déja utilisée");
+                request.getSession().setAttribute("errors", errors);
                 response.sendRedirect(request.getContextPath() + "/newcustomer.jsp");
             }
 
@@ -146,7 +150,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
             /*
              * TODO Faire en sorte que les (certaines ?) données persistent apres l'envoi du formulaire si il est invalide
              */
-            request.getSession().setAttribute("errors",errors);
+            request.getSession().setAttribute("errors", errors);
             response.sendRedirect(request.getContextPath() + "/newcustomer.jsp");
         }
     }

@@ -1,9 +1,5 @@
 package com.nfs.bank_co.servlet;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTCreationException;
-import com.google.gson.Gson;
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.Customer;
 import com.nfs.bank_co.entities.NewCustomerRequest;
@@ -26,7 +22,6 @@ import java.util.Scanner;
 @WebServlet(name = "SignInServlet", urlPatterns = {"/login"})
 public class SignInServlet extends HttpServlet {
 
-    private Gson gson = new Gson();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

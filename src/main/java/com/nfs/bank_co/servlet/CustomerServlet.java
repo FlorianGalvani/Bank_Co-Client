@@ -1,6 +1,5 @@
 package com.nfs.bank_co.servlet;
 
-import com.google.gson.Gson;
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.Customer;
 
@@ -12,8 +11,6 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = {"/customer"})
 public class CustomerServlet extends HttpServlet {
-
-    private Gson gson = new Gson();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

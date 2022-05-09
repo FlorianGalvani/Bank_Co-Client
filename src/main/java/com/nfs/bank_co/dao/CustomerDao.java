@@ -24,13 +24,19 @@ public class CustomerDao {
     }
 
     public boolean isEmailAlreadyInUse(String email){
-        Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.email = :email");
-        query.setParameter("email", email);
-        Customer customer = (Customer) query.getSingleResult();
-        if (query != null) {
+        try {
+            Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.email = :email");
+            query.setParameter("email", email);
+            Customer customer = (Customer) query.getSingleResult();
+            if (customer != null) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
             return true;
-        } else {
-            return false;
         }
     }
 

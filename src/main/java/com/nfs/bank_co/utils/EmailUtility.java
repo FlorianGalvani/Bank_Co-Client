@@ -18,26 +18,29 @@ import javax.mail.internet.MimeMessage;
 //TODO Gerer envoie du mail de confirmation de reception de demande d'ouverture de compte
 // Trucs utiles : public static Map<String,String> getenv()
 public class EmailUtility {
-    private static final String HOST = "smtp.gmail.com";
-    private static final String TLS_PORT = "587";
-    private static final String SSL_PORT = "465";
-    private static final String USERNAME = "bankco.noreply@gmail.com";
-    private static final String PASSWORD = "P@s$w0rd76";
+      static final String HOST = "smtp.gmail.com";
+      static final String TLS_PORT = "587";
 
-    public static void createNewCustomerRequestPendingConfirmationEmail(String toAddress) {
+      final String SSL_PORT = "465";
+      static final String USERNAME = "bankco.noreply@gmail.com";
+      static final String PASSWORD = "P@s$w0rd76";
+
+    public static boolean createNewCustomerRequestPendingConfirmationEmail(String toAddress) {
          String subject = "Confirmation de reception de votre demande";
-         String message = "BLABLA ";
+         String message = "BLABLA";
         try {
             sendEmail(toAddress,subject,message);
+            return true;
         } catch (MessagingException e) {
             e.printStackTrace();
             System.out.println(e);
+            return false;
         }
     }
     public static void sendEmail(String toAddress, String subject, String message) throws AddressException, MessagingException {
         Properties properties = new Properties();
         properties.put("mail.smtp.host", HOST);
-        properties.put("mail.smtp.port", SSL_PORT);
+        properties.put("mail.smtp.port", TLS_PORT);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.ssl.trust","smtp.gmail.com");

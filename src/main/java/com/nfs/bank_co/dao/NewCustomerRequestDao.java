@@ -24,12 +24,19 @@ public class NewCustomerRequestDao {
         return c;
     }
     public boolean isEmailAlreadyInUse(String email) {
-        Query query = em.createQuery("SELECT c FROM NewCustomerRequest AS c WHERE c.email = :email");
-        query.setParameter("email", email);
-        if (query != null) {
+        try {
+            Query query = em.createQuery("SELECT c FROM NewCustomerRequest AS c WHERE c.email = :email");
+            query.setParameter("email", email);
+            NewCustomerRequest newCustomerRequest = (NewCustomerRequest) query.getSingleResult();
+            if (newCustomerRequest != null) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
             return true;
-        } else {
-            return false;
         }
     }
 }
