@@ -49,6 +49,7 @@ public class SignInServlet extends HttpServlet {
                 Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
                 request.getSession().setAttribute("customer", customer);
                 response.sendRedirect(request.getContextPath() + "/dashboard/");
+
             } catch (NoResultException e) {
 
                 errors.put("account", "Identifiant ou mot de passe incorrect");

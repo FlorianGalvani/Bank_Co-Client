@@ -40,8 +40,10 @@
  Pages
  */
 .basicPage {
+  overflow: hidden;
   .left {
-    transform: scale(1.1) ;
+    transform: scale(1.1);
+
     h1 {
       position: relative;
       font-size: 48px;
@@ -91,6 +93,7 @@
 
 .formPage {
   display: flex;
+  overflow: hidden;
   .left {
     display: flex;
     flex-direction: column;

@@ -34,7 +34,6 @@ public class SendMoneyServlet extends HttpServlet {
                 Account debitedAccount = customer.getAccountById(Integer.parseInt(debitedAccountId));
                 Account creditedAccount = customer.getAccountById(Integer.parseInt(creditedAccountId));
                 if (debitedAccount.getBalance() > debitedAccount.getAuthorizedDebt() && (debitedAccount.getBalance() - amount) > debitedAccount.getAuthorizedDebt()) {
-                    //TODO Terminer logique envoi  d'argent (verifier si le compte debiteur est en capacité d"etre debité du montant indiqué par l'utilisateur)
                     response.sendRedirect(request.getContextPath() + "/dashboard/");
                     Transaction transaction = new Transaction();
                     transaction.setFromAccount(debitedAccount);

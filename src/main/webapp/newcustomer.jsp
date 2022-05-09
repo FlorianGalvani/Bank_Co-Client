@@ -7,7 +7,7 @@
 --%>
 
 <%--
-    TODO Finir le style du formulaire de cette page ((wtf) step form ?)
+    TODO Finir le style du formulaire de cette page (Formulaire a étapes ?)
 --%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 

@@ -85,8 +85,6 @@ Recuperation et affichage des comptes banquaire du client
 <a href="../logout" class="button">Deconnexion</a>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="assets/js/utils.js"></script>
-<script src="assets/js/dashboard.js"></script>
 <script>
     const toastText = ${success != null ? success : "null" };
     $(document).ready(function() {

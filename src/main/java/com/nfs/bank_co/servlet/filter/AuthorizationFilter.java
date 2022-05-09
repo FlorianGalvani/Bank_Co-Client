@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/dashboard/index.jsp", "/dashboard/*"})
+@WebFilter(urlPatterns = {"/dashboard/*"})
 public class AuthorizationFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
@@ -40,7 +40,21 @@ public class AuthorizationFilter implements Filter {
                 report += "Ok\n" ;
                 // MISE A JOUR DU CLIENT si il est connecté
                 Customer customer = (Customer) session.getAttribute("customer");
-                req.getSession().setAttribute("customer", DaoFactory.getCustomerDao().getOneById(customer.getId()));
+                req.getSession().setAttribute("customer", null);
+                req.getSession().setAttribute("customer", DaoFactory.getCustomerDao().findOneById(customer.getId()));
+                String path = req.getRequestURI().substring(req.getContextPath().length());
+                System.out.println("Path : " + path);
+                System.out.println("Path 1 : " + path.equals("/dashboard/index.jsp"));
+                System.out.println("Path 2 : " + path.equals("/dashboard/"));
+
+                // Supprime les attributs inutiles (success et errors des formulaires, etc..)
+                if (path.equals("/dashboard/index.jsp") || path.equals("/dashboard/")) {
+                    System.out.println("pas path dashboard");
+                } else {
+                    System.out.println("pas path dashboard");
+                    req.getSession().setAttribute("success", null);
+                }
+
                 chain.doFilter(request, response);
             } else {
 //                System.out.print("Error, redirecting to login page...");

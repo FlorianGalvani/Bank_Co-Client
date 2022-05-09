@@ -17,14 +17,14 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Customer customer = DaoFactory.getCustomerDao().getOneById(1);
-        customer.setPassword(null);
-        String employeeJsonString = this.gson.toJson(customer);
+//        Customer customer = DaoFactory.getCustomerDao().getOneById(1);
+//        customer.setPassword(null);
+//        String employeeJsonString = this.gson.toJson(customer);
 
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        out.print(employeeJsonString);
+//        out.print(employeeJsonString);
         out.flush();
     }
 
