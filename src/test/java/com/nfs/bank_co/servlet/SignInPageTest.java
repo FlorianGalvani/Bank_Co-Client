@@ -1,5 +1,6 @@
 package com.nfs.bank_co.servlet;
 
+import com.nfs.bank_co.pom.SigninPageTestPom;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,11 +13,11 @@ import java.util.List;
 // page_url = http://localhost:8080/Bank_Co_war_exploded/login.jsp
 public class SignInPageTest {
 
-    private static SignInPageTest page;
+    private static SigninPageTestPom page;
 
     @BeforeAll
     public static void init() {
-        page = new SignInPageTest();
+        page = new SigninPageTestPom();
     }
 
     //Methode xpath

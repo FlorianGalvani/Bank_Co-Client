@@ -1,16 +1,16 @@
 package com.nfs.bank_co.dao;
 
 public class DaoFactory {
-   private static TransactionsDao transactionDao;
+   private static TransactionDao transactionDao;
     private static NewCustomerRequestDao newCustomerRequestDao;
     private static CustomerDao customerDao;
     private static AccountDao accountDao;
 
     private DaoFactory(){}
 
-    public static TransactionsDao getTransactionDao() {
+    public static TransactionDao getTransactionDao() {
         if (transactionDao == null) {
-            transactionDao  = new TransactionsDao();
+            transactionDao  = new TransactionDao();
         }
         return transactionDao;
     }

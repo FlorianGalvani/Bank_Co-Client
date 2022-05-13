@@ -24,19 +24,18 @@ public class NewCustomerRequestDao {
         return c;
     }
     public boolean isEmailAlreadyInUse(String email) {
-        try {
-            Query query = em.createQuery("SELECT c FROM NewCustomerRequest AS c WHERE c.email = :email");
-            query.setParameter("email", email);
-            NewCustomerRequest newCustomerRequest = (NewCustomerRequest) query.getSingleResult();
-            if (newCustomerRequest != null) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-            return true;
-        }
+        boolean result;
+        return false;
+        //FIXME Verifier si l'addrese email n'est pas déja utilisé par une autre demande d'ouverture de compte.
+//        Query query = em.createQuery("SELECT c FROM NewCustomerRequest AS c WHERE c.email = :email", NewCustomerRequest.class);
+//        query.setParameter("email", email);
+//        NewCustomerRequest newCustomerRequest = (NewCustomerRequest) query.getSingleResult();
+//        if (newCustomerRequest != null) {
+//            return true;
+//
+//        } else {
+//            return false;
+//        }
+
     }
 }

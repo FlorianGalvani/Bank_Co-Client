@@ -4,10 +4,10 @@ import com.nfs.bank_co.entities.Transaction;
 
 import javax.persistence.*;
 
-public class TransactionsDao {
+public class TransactionDao {
     private EntityManager em;
 
-    public TransactionsDao() {
+    public TransactionDao() {
         em = PersistenceManager.getEmf().createEntityManager();
     }
 

@@ -2,7 +2,7 @@ package com.nfs.bank_co.utils;
 
 import java.util.Map;
 
-public class FormToolBox {
+public class FormUtility {
 
     /*
      *  Verification de la validité des informations fournient par l'utilisateur

@@ -16,12 +16,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 //TODO Gerer envoie du mail de confirmation de reception de demande d'ouverture de compte
-// Trucs utiles : public static Map<String,String> getenv()
+// Truc utile : public static Map<String,String> getenv()
 public class EmailUtility {
       static final String HOST = "smtp.gmail.com";
       static final String TLS_PORT = "587";
 
-      final String SSL_PORT = "465";
+      static final String SSL_PORT = "465";
       static final String USERNAME = "bankco.noreply@gmail.com";
       static final String PASSWORD = "P@s$w0rd76";
 
@@ -40,10 +40,10 @@ public class EmailUtility {
     public static void sendEmail(String toAddress, String subject, String message) throws AddressException, MessagingException {
         Properties properties = new Properties();
         properties.put("mail.smtp.host", HOST);
-        properties.put("mail.smtp.port", TLS_PORT);
+        properties.put("mail.smtp.port", SSL_PORT);
         properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.ssl.trust","smtp.gmail.com");
+//        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.ssl.trust","*");
 
         Authenticator auth = new Authenticator() {
             public PasswordAuthentication getPasswordAuthentication() {

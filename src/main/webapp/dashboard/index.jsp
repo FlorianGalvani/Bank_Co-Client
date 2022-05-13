@@ -24,60 +24,65 @@
 <%--
 Recuperation et affichage des infos du compte client
 --%>
-<a href="profile.jsp">${customer.getFirstname()} ${customer.getLastname()}</a>
-
+<%--<a href="profile.jsp">${customer.getC_firstname()} ${customer.setC_firstname()}</a>--%>
 <%--
 Recuperation et affichage des comptes banquaire du client
 --%>
 
 <div class="accounts">
-    <c:forEach var="account" items="${customer.getAccounts()}">
+    <c:forEach var="view" items="${dashboardView}">
         <div class="account">
-                ${account.getAccountNumber()}
-                ${account.getBalance()}
-                ${account.getAuthorizedDebt()}
-                <br>
-            <h1>Dernière transaction</h1>
-                <%--
-                Recuperation et affichage des crédits
-                --%>
-            <h2>Crédits</h2>
-            <div class="credits">
-                <c:choose>
-                    <c:when test="${account.getCredits().size() > 0}">
-                        <c:forEach var="credit" items="${account.getCredits()}">
-                            <div class="credit">
-                                <p style="color: green">${credit.getAmount()}</p>
-                            </div>
-                        </c:forEach>
-                    </c:when>
-                    <c:otherwise>
-                        <p>Il n'y a pas de credits</p>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-                <%--
-                Recuperation et affichage des debits
-                --%>
-            <h1>Debits</h1>
-            <div class="debts">
-
-                <c:choose>
-                    <c:when test="${account.getDebts().size() > 0}">
-                        <c:forEach var="debt" items="${account.getDebts()}">
-                            <div class="debt">
-                                <p style="color: red">${debt.getAmount()}</p>
-                            </div>
-                        </c:forEach>
-                    </c:when>
-                    <c:otherwise>
-                        <p>Il n'y a pas de debits</p>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-                    <a class="button" href="accountdetail.jsp?id=${account.getId()}">Gerer</a>
+            ${view}
+            ${view.balance}
         </div>
     </c:forEach>
+<%--    <c:forEach var="account" items="${customer.getAccounts()}">--%>
+<%--        <div class="account">--%>
+<%--                ${account.getAccountNumber()}--%>
+<%--                ${account.getBalance()}--%>
+<%--                ${account.getAuthorizedDebt()}--%>
+<%--                <br>--%>
+<%--            <h1>Dernière transaction</h1>--%>
+<%--                &lt;%&ndash;--%>
+<%--                Recuperation et affichage des crédits--%>
+<%--                &ndash;%&gt;--%>
+<%--            <h2>Crédits</h2>--%>
+<%--            <div class="credits">--%>
+<%--                <c:choose>--%>
+<%--                    <c:when test="${account.getCredits().size() > 0}">--%>
+<%--                        <c:forEach var="credit" items="${account.getCredits()}">--%>
+<%--                            <div class="credit">--%>
+<%--                                <p style="color: green">${credit.getAmount()}</p>--%>
+<%--                            </div>--%>
+<%--                        </c:forEach>--%>
+<%--                    </c:when>--%>
+<%--                    <c:otherwise>--%>
+<%--                        <p>Il n'y a pas de credits</p>--%>
+<%--                    </c:otherwise>--%>
+<%--                </c:choose>--%>
+<%--            </div>--%>
+<%--                &lt;%&ndash;--%>
+<%--                Recuperation et affichage des debits--%>
+<%--                &ndash;%&gt;--%>
+<%--            <h1>Debits</h1>--%>
+<%--            <div class="debts">--%>
+
+<%--                <c:choose>--%>
+<%--                    <c:when test="${account.getDebts().size() > 0}">--%>
+<%--                        <c:forEach var="debt" items="${account.getDebts()}">--%>
+<%--                            <div class="debt">--%>
+<%--                                <p style="color: red">${debt.getAmount()}</p>--%>
+<%--                            </div>--%>
+<%--                        </c:forEach>--%>
+<%--                    </c:when>--%>
+<%--                    <c:otherwise>--%>
+<%--                        <p>Il n'y a pas de debits</p>--%>
+<%--                    </c:otherwise>--%>
+<%--                </c:choose>--%>
+<%--            </div>--%>
+<%--                    <a class="button" href="accountdetail.jsp?id=${account.getId()}">Gerer</a>--%>
+<%--        </div>--%>
+<%--    </c:forEach>--%>
 
 </div>
 

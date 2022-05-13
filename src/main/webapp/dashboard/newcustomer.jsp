@@ -15,9 +15,11 @@
 </head>
 <body class="NewCustomer formPage">
   <h1>Bienvenue</h1>
+
 <!--
     TODO Ajouter un tutorial/une explication rapide du service + la modification du mot de passe temporaire
 -->
+
     <form method="post" action="changePassword">
         <input type="password" name="currentPassword">
         <input type="password" name="newPassword">

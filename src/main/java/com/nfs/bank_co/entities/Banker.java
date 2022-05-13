@@ -16,6 +16,10 @@ public class Banker {
     private String phone;
     private String role;
 
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "banker_id")
+    private List<Customer> customers;
+
     public int getId() {
         return id;
     }
