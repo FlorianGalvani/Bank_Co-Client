@@ -30,7 +30,6 @@ Recuperation et affichage des comptes banquaire du client
 --%>
 
 <div class="accounts">
-<%--    <jsp:useBean id="dashboardView" scope="request" type="com.nfs.bank_co.entities.DashboardView"/>--%>
     <c:forEach var="view" items="${dashboardView}">
         <div class="account">
             ${view}
