@@ -30,13 +30,15 @@ public class AuthorizationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
         if(session != null) {
-            if (session.getAttribute("customer") != null) {
+            if (session.getAttribute("isLogedIn") != null) {
 //                System.out.print("Ok");
                 report += "Ok\n" ;
                 // MISE A JOUR DU CLIENT si il est connecté
-                Customer customer = (Customer) session.getAttribute("customer");
-                req.getSession().setAttribute("customer", null);
-                req.getSession().setAttribute("customer", DaoFactory.getCustomerDao().findOneById(customer.getId()));
+//                Customer customer = (Customer) session.getAttribute("customer");
+//                boolean isLogedIn = session.getAttribute("isLogedIn");
+
+//                req.getSession().setAttribute("customer", null);
+//                req.getSession().setAttribute("customer", DaoFactory.getCustomerDao().findOneById(customer.getId()));
                 String path = req.getRequestURI().substring(req.getContextPath().length());
                 System.out.println("Path : " + path);
                 System.out.println("Path 1 : " + path.equals("/dashboard/index.jsp"));

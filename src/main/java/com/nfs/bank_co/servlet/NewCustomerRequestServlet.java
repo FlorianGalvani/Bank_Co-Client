@@ -2,7 +2,7 @@ package com.nfs.bank_co.servlet;
 
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.NewCustomerRequest;
-import com.nfs.bank_co.utils.FormToolBox;
+import com.nfs.bank_co.utils.FormUtility;
 import com.nfs.bank_co.utils.EmailUtility;
 
 import javax.servlet.*;
@@ -64,19 +64,19 @@ public class NewCustomerRequestServlet extends HttpServlet {
         NewCustomerRequest newCustomerRequest = new NewCustomerRequest();
 
         String title = request.getParameter("title").trim();
-        FormToolBox.checkStringValidity(errors, "title", title, 0, 20);
+        FormUtility.checkStringValidity(errors, "title", title, 0, 20);
 
         String firstname = request.getParameter("firstname").trim();
-        FormToolBox.checkStringValidity(errors, "firstname", firstname, 3, 20);
+        FormUtility.checkStringValidity(errors, "firstname", firstname, 3, 20);
 
         String lastname = request.getParameter("lastname").trim();
-        FormToolBox.checkStringValidity(errors, "lastname", lastname, 3, 20);
+        FormUtility.checkStringValidity(errors, "lastname", lastname, 3, 20);
 
         String phone = request.getParameter("phone").trim();
-        FormToolBox.checkStringValidity(errors, "phone", phone, 9, 20);
+        FormUtility.checkStringValidity(errors, "phone", phone, 9, 20);
 
         String email = request.getParameter("email").trim();
-        FormToolBox.checkStringValidity(errors, "email", email, 10, 50);
+        FormUtility.checkStringValidity(errors, "email", email, 10, 50);
 
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-MM");
@@ -91,16 +91,16 @@ public class NewCustomerRequestServlet extends HttpServlet {
         }
 
         String address = request.getParameter("address").trim();
-        FormToolBox.checkStringValidity(errors, "address", address, 10, 200);
+        FormUtility.checkStringValidity(errors, "address", address, 10, 200);
 
         String city = request.getParameter("city").trim();
-        FormToolBox.checkStringValidity(errors, "city", city, 2, 50);
+        FormUtility.checkStringValidity(errors, "city", city, 2, 50);
 
         String postal = request.getParameter("postal").trim();
-        FormToolBox.checkStringValidity(errors, "postal", postal, 4, 50);
+        FormUtility.checkStringValidity(errors, "postal", postal, 4, 50);
 
         String country = request.getParameter("country").trim();
-        FormToolBox.checkStringValidity(errors, "country", country, 1, 50);
+        FormUtility.checkStringValidity(errors, "country", country, 1, 50);
 
         /*
          * Ajout des documents
@@ -118,7 +118,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
         }
 
         if (errors.size() == 0) {
-            //Verifie si l'adresse email est deja utilisé (Dans les demande d'ouverture de compte et les comptes déja existant)
+            //Vérifie si l'adresse email est deja utilisée (Dans les demandes d'ouverture de compte et les comptes déja existant)
             System.out.println("Email new customer already in use ? : " + DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email));
             System.out.println("Email customer already in use ? : " + DaoFactory.getCustomerDao().isEmailAlreadyInUse(email));
             if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
@@ -131,8 +131,8 @@ public class NewCustomerRequestServlet extends HttpServlet {
                 newCustomerRequest.setCity(city);
                 newCustomerRequest.setPostal(postal);
                 newCustomerRequest.setCountry(country);
-                idCardPart.write(idCardFullPath);
-                newCustomerRequest.setIdCard(idCardFileName);
+//                idCardPart.write(idCardFullPath);
+//                newCustomerRequest.setIdCard(idCardFileName);
                 DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
                 if (EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email)) {
                     response.sendRedirect(request.getContextPath() + "/success.jsp");

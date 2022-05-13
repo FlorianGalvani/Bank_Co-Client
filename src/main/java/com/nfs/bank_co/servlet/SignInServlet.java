@@ -1,22 +1,17 @@
 package com.nfs.bank_co.servlet;
 
 import com.nfs.bank_co.dao.DaoFactory;
-import com.nfs.bank_co.entities.Customer;
-import com.nfs.bank_co.entities.NewCustomerRequest;
-import com.nfs.bank_co.utils.AuthenticationUtility;
-import com.nfs.bank_co.utils.FormToolBox;
+import com.nfs.bank_co.entities.DashboardView;
+import com.nfs.bank_co.utils.FormUtility;
 
 import javax.persistence.NoResultException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 
 @WebServlet(name = "SignInServlet", urlPatterns = {"/login"})
@@ -33,18 +28,19 @@ public class SignInServlet extends HttpServlet {
         Map<String, String> errors = new HashMap<String, String>();
 
         String customerNumber = request.getParameter("customerNumber").trim();
-        FormToolBox.checkStringValidity(errors, "customerNumber", customerNumber, 24, 26);
+        FormUtility.checkStringValidity(errors, "customerNumber", customerNumber, 24, 26);
 
         // TODO Ajouter verification mot de passe
         String password = request.getParameter("password").trim();
 
         if (errors.size() == 0) {
             try {
+//               Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
+                List dashboardView = DaoFactory.getCustomerDao().getViewsByCustomerNumber(customerNumber);
 
-                Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
-                request.getSession().setAttribute("customer", customer);
+                request.getSession().setAttribute("dashboardView", dashboardView);
+                request.getSession().setAttribute("isLogedIn", true);
                 response.sendRedirect(request.getContextPath() + "/dashboard/");
-
             } catch (NoResultException e) {
 
                 errors.put("account", "Identifiant ou mot de passe incorrect");

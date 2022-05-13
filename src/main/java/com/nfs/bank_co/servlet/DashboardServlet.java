@@ -12,12 +12,13 @@ import java.io.IOException;
 public class DashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Customer customer = (Customer) request.getSession().getAttribute("customer");
-        if (customer.getNewCustomer()) {
-            response.sendRedirect(request.getContextPath() + "/dashboard/newcustomer.jsp");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/dashboard/index.jsp");
-        }
+//        Customer customer = (Customer) request.getSession().getAttribute("customer");
+//        if (customer.getNewCustomer()) {
+//            response.sendRedirect(request.getContextPath() + "/dashboard/newcustomer.jsp");
+//        } else {
+//            response.sendRedirect(request.getContextPath() + "/dashboard/index.jsp");
+//        }
+        response.sendRedirect(request.getContextPath() + "/dashboard/index.jsp");
     }
 
     @Override
