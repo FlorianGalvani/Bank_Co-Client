@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../assets/css/style.min.css">
 </head>
 <body class="">
-    ${customer.getFirstname()}
+    <a href="./">Retour</a>
+    <p type="text" >${dashboardView.get(0).getC_firstname()}</p>
+    <p type="text" >${dashboardView.get(0).getC_lastname()}</p>
 </body>
 </html>

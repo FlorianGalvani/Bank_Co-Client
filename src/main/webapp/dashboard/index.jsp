@@ -13,77 +13,30 @@
     <title>Dashboard</title>
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.min.css">
-
 </head>
 <body class="Dashboard basicPage">
-<div class="toaster">
+<%--<div class="toaster">--%>
 
-</div>
-<a class="button" href="sendmoney.jsp">Envoyer de l'argent</a>
+<%--</div>--%>
+<a href="sendmoney.jsp">Envoyer de l'argent</a>
 <%--
 Recuperation et affichage des infos du compte client
 --%>
-<%--<a href="profile.jsp">${customer.getC_firstname()} ${customer.setC_firstname()}</a>--%>
+<a href="profile.jsp">${dashboardView.get(0).getC_firstname()} ${dashboardView.get(0).getC_lastname()}</a>
+<a href="contact">Contacter votre banquier</a>
 <%--
 Recuperation et affichage des comptes banquaire du client
 --%>
-
 <div class="accounts">
     <c:forEach var="view" items="${dashboardView}">
-        <div class="account">
-            ${view}
-            ${view.balance}
+        <div style="border: #000 1px solid">
+            <a href="account?id=${view.id_customer_account}">
+                <p>N° de compte : ${view.account_number}</p>
+                <p>Solde : ${view.balance} €</p>
+                <p>Decouvert authorisé : ${view.authorized_debt} €</p>
+            </a>
         </div>
     </c:forEach>
-<%--    <c:forEach var="account" items="${customer.getAccounts()}">--%>
-<%--        <div class="account">--%>
-<%--                ${account.getAccountNumber()}--%>
-<%--                ${account.getBalance()}--%>
-<%--                ${account.getAuthorizedDebt()}--%>
-<%--                <br>--%>
-<%--            <h1>Dernière transaction</h1>--%>
-<%--                &lt;%&ndash;--%>
-<%--                Recuperation et affichage des crédits--%>
-<%--                &ndash;%&gt;--%>
-<%--            <h2>Crédits</h2>--%>
-<%--            <div class="credits">--%>
-<%--                <c:choose>--%>
-<%--                    <c:when test="${account.getCredits().size() > 0}">--%>
-<%--                        <c:forEach var="credit" items="${account.getCredits()}">--%>
-<%--                            <div class="credit">--%>
-<%--                                <p style="color: green">${credit.getAmount()}</p>--%>
-<%--                            </div>--%>
-<%--                        </c:forEach>--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <p>Il n'y a pas de credits</p>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-<%--            </div>--%>
-<%--                &lt;%&ndash;--%>
-<%--                Recuperation et affichage des debits--%>
-<%--                &ndash;%&gt;--%>
-<%--            <h1>Debits</h1>--%>
-<%--            <div class="debts">--%>
-
-<%--                <c:choose>--%>
-<%--                    <c:when test="${account.getDebts().size() > 0}">--%>
-<%--                        <c:forEach var="debt" items="${account.getDebts()}">--%>
-<%--                            <div class="debt">--%>
-<%--                                <p style="color: red">${debt.getAmount()}</p>--%>
-<%--                            </div>--%>
-<%--                        </c:forEach>--%>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
-<%--                        <p>Il n'y a pas de debits</p>--%>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
-<%--            </div>--%>
-<%--                    <a class="button" href="accountdetail.jsp?id=${account.getId()}">Gerer</a>--%>
-<%--        </div>--%>
-<%--    </c:forEach>--%>
-
 </div>
 
 
@@ -92,7 +45,7 @@ Recuperation et affichage des comptes banquaire du client
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     const toastText = ${success != null ? success : "null" };
-    $(document).ready(function() {
+    $(document).ready(function () {
         if (toastText != null) {
             const toast = document.createElement("div");
             toast.classList.add("toast");
@@ -102,9 +55,7 @@ Recuperation et affichage des comptes banquaire du client
                 $(".toast").first().fadeOut("slow", () => {
                     $(".toaster").empty();
                 })
-            },5000)
-        } else {
-
+            }, 5000)
         }
     });
 </script>

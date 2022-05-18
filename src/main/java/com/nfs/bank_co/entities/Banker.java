@@ -11,10 +11,13 @@ public class Banker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_banker")
     private int id;
+    @Column(name = "B_firstname")
     private String firstname;
+    @Column(name =  "B_lastname")
     private String lastname;
     private String phone;
     private String role;
+    private String email;
 
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "banker_id")
@@ -36,4 +39,15 @@ public class Banker {
         return phone;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
 }
+
+// Mardi 24 11h30
+// Lundi 23 15h

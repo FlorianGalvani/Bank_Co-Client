@@ -1,6 +1,7 @@
 package com.nfs.bank_co.dao;
 
 import com.nfs.bank_co.entities.Customer;
+import com.nfs.bank_co.entities.DashboardView;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,27 +31,30 @@ public class CustomerDao {
         query.setParameter("customerNumber", customerNumber);
         return query.getResultList();
     }
+    public List getViewsByCustomerNumber(List<DashboardView> dashboardView) {
+        for (DashboardView view : dashboardView) {
+            em.refresh(view);
+        }
+        Query query = em.createQuery("SELECT c FROM DashboardView AS c WHERE c.customerNumber = :customerNumber");
+        query.setParameter("customerNumber",  dashboardView.get(0).getCustomerNumber());
+        return query.getResultList();
+    }
 
     public boolean isEmailAlreadyInUse(String email){
         //FIXME Verifier si l'addresse email n'est pas déja utilisée par un Client déja inscrit
+        boolean result = true;
         Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.email = :email");
         query.setParameter("email", email);
-        Customer customer = (Customer) query.getSingleResult();
-        return false;
-        //        try {
-//            Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.email = :email");
-//            query.setParameter("email", email);
-//            Customer customer = (Customer) query.getSingleResult();
-//            if (customer != null) {
-//                return true;
-//            } else {
-//                return false;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            em.getTransaction().rollback();
-//            return true;
-//        }
+        Customer customer;
+        try {
+            customer = (Customer) query.getSingleResult();
+            if (customer != null) {
+                result = true;
+            }
+        } catch (NoResultException e) {
+            result = false;
+        }
+        return result;
     }
 
     public boolean updateIsNewCustomerState(Customer customer) {

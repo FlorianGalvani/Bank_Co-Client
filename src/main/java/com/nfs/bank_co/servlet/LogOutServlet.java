@@ -9,8 +9,7 @@ import java.io.IOException;
 public class LogOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.addCookie(new Cookie("token",null));
-        response.addCookie(new Cookie("id",null));
+        request.getSession().invalidate();
         response.sendRedirect(request.getContextPath() + "/");
     }
 

@@ -22,7 +22,6 @@ public class Transaction {
     @JoinColumn(name = "to_account")
     private Account toAccount;
 
-
     public int getId() {
         return id;
     }

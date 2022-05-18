@@ -17,15 +17,15 @@ public class Account {
     @Column(name = "authorized_debt")
     private int authorizedDebt;
 
-    // CREDITS
+    // Debits
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "from_account")
-    private List<Transaction> credits;
+    private List<Transaction> debts;
 
-    // DEBITS
+    // Credits
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "to_account")
-    private List<Transaction> debts;
+    private List<Transaction> credits;
 
     public int getId() {
         return id;
@@ -66,4 +66,6 @@ public class Account {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
+
 }

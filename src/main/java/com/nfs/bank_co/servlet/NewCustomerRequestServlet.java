@@ -119,8 +119,8 @@ public class NewCustomerRequestServlet extends HttpServlet {
 
         if (errors.size() == 0) {
             //Vérifie si l'adresse email est deja utilisée (Dans les demandes d'ouverture de compte et les comptes déja existant)
-            System.out.println("Email new customer already in use ? : " + DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email));
-            System.out.println("Email customer already in use ? : " + DaoFactory.getCustomerDao().isEmailAlreadyInUse(email));
+//            System.out.println("Email new customer already in use ? : " + DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email));
+//            System.out.println("Email customer already in use ? : " + DaoFactory.getCustomerDao().isEmailAlreadyInUse(email));
             if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
                 newCustomerRequest.setTitle(title);
                 newCustomerRequest.setFirstname(firstname);
@@ -131,8 +131,8 @@ public class NewCustomerRequestServlet extends HttpServlet {
                 newCustomerRequest.setCity(city);
                 newCustomerRequest.setPostal(postal);
                 newCustomerRequest.setCountry(country);
-//                idCardPart.write(idCardFullPath);
-//                newCustomerRequest.setIdCard(idCardFileName);
+                idCardPart.write(idCardFullPath);
+                newCustomerRequest.setIdCard(idCardFileName);
                 DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
                 if (EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email)) {
                     response.sendRedirect(request.getContextPath() + "/success.jsp");

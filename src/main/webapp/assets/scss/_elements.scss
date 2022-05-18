@@ -254,12 +254,11 @@
     }
     .right {
       background: var(--secondary-bg-color);
-      width: 850px;
+      width: 50%;
       transform: rotate(-45deg) scale(1.5);
-      /* position: relative; */
       position: absolute;
-      right: -25%;
-      top: 75%;
+      right: -30%;
+      top: 70%;
       height: 100vh;
       img {
         position: absolute;

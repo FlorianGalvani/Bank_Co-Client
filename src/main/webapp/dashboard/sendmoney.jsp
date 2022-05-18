@@ -27,9 +27,9 @@
             <option value="">
                 Compte à debité
             </option>
-            <c:forEach var="account" items="${customer.getAccounts()}">
-                <option value="${account.getId()}">
-                        ${account.getAccountNumber()}
+            <c:forEach var="account" items="${dashboardView}">
+                <option value="${account.id_customer_account}">
+                        ${account.account_number}
                 </option>
             </c:forEach>
         </select>
@@ -39,9 +39,9 @@
             <option value="">
                 Compte à credité
             </option>
-            <c:forEach var="account" items="${customer.getAccounts()}">
-                <option value="${account.getId()}">
-                        ${account.getAccountNumber()}
+            <c:forEach var="account" items="${dashboardView}">
+                <option value="${account.id_customer_account}">
+                        ${account.account_number}
                 </option>
             </c:forEach>
         </select>

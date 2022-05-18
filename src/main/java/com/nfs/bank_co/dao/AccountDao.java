@@ -1,6 +1,7 @@
 package com.nfs.bank_co.dao;
 
 import com.nfs.bank_co.entities.Account;
+import com.nfs.bank_co.entities.Customer;
 
 import javax.persistence.*;
 import java.sql.SQLException;
@@ -11,11 +12,19 @@ public class AccountDao {
     public AccountDao() {
         em = PersistenceManager.getEmf().createEntityManager();
     }
+    public Account getOneById(int id) {
+        try {
+                Query query = em.createQuery("SELECT c FROM Account AS c WHERE c.id = :id");
+                query.setParameter("id", id);
+                return (Account) query.getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-    public void updateBalance(Account account, int amount) throws SQLException {
-            System.out.println("Amount before : " + account.getBalance());
+    public void updateBalance(Account account, int amount) {
             account.setBalance(account.getBalance() + amount);
-            System.out.println("Amount after : " + account.getBalance());
         try {
             em.getTransaction().begin();
             em.merge(account);
@@ -24,5 +33,6 @@ public class AccountDao {
             e.printStackTrace();
             em.getTransaction().rollback();
         }
+        em.refresh(account);
     }
 }

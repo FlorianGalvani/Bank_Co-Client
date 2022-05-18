@@ -1,6 +1,7 @@
 package com.nfs.bank_co.servlet;
 
 import com.nfs.bank_co.dao.DaoFactory;
+import com.nfs.bank_co.entities.Customer;
 import com.nfs.bank_co.entities.DashboardView;
 import com.nfs.bank_co.utils.FormUtility;
 
@@ -35,7 +36,7 @@ public class SignInServlet extends HttpServlet {
 
         if (errors.size() == 0) {
             try {
-//               Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
+                Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
                 List dashboardView = DaoFactory.getCustomerDao().getViewsByCustomerNumber(customerNumber);
 
                 request.getSession().setAttribute("dashboardView", dashboardView);
