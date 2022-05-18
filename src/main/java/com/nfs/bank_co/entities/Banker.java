@@ -23,6 +23,10 @@ public class Banker {
     @JoinColumn(name = "banker_id")
     private List<Customer> customers;
 
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "banker_id")
+    private List<Customer> customers;
+
     public int getId() {
         return id;
     }
