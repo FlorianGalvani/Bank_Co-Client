@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
-<body class="">
+<body >
     <a href="./">Retour</a>
     <p type="text" >${dashboardView.get(0).customerFirstname}</p>
     <p type="text" >${dashboardView.get(0).customerLastname}</p>

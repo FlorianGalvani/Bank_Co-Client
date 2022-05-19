@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
-<body class="Dashboard basicPage">
+<body>
 <%--<div class="toaster">--%>
 
 <%--</div>--%>
@@ -24,6 +24,7 @@ Recuperation et affichage des infos du compte client
 --%>
 <a href="profile.jsp">${dashboardView.get(0).customerFirstname} ${dashboardView.get(0).customerLastname}</a>
 <a href="contact">Contacter votre banquier</a>
+
 <%--
 Recuperation et affichage des comptes banquaire du client
 --%>

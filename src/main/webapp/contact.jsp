@@ -13,13 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
-<body class="Contact formPage">
-<div class="left">
-<%--TODO ajouter texte--%>
-</div>
-<div class="right">
-<%--TODO ajouter image--%>
-    <img src="assets/img/messages.png">
-</div>
+<body >
+    <a class="goHome" href="./"><i class="ri-arrow-left-line"></i></a>
+
 </body>
 </html>

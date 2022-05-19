@@ -16,7 +16,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 //TODO Modifier style du mail
-// Truc utile : public static Map<String,String> getenv()
+//Truc utile : public static Map<String,String> getenv()
 public class EmailUtility {
       static final String HOST = "smtp.gmail.com";
       static final String TLS_PORT = "587";
@@ -60,10 +60,7 @@ public class EmailUtility {
             }
 
         });
-
-        // Used to debug SMTP issues
 //        session.setDebug(true);
-
         try {
             // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);

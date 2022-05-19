@@ -14,9 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
-<body class="Login formPage">
-
-<div class="left">
+<body >
 
     <form method="post" action="login" id="loginForm">
         <a class="goHome" href="./"><i class="ri-arrow-left-line"></i></a>
@@ -38,20 +36,18 @@
             <div class="error">${errors.get("password")}</div>
         </c:if>
         <div class="passReset">
-            <a href="login">Mot de passe oublié ?</a>
+            <a href="resetpassword">Mot de passe oublié ?</a>
         </div>
 
 
         <button class="submit button" type="submit" id="submit" value="">Se connecter <i class="ri-arrow-right-line"></i></button>
     </form>
-</div>
 
-<div class="right">
     <div class="card">
         <img class="cardIMG" id="cardIMG" src="assets/img/bg-right__Card.png">
         <img class="cardShadow" src="assets/img/Card%20shadow.png">
     </div>
-</div>
+
 
 </body>
 </html>

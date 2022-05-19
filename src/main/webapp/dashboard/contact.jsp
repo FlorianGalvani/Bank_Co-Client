@@ -11,7 +11,7 @@
     <title>Contacter votre Banquier</title>
 </head>
 <body>
-<a href="./">Retour</a>
+    <a href="./">Retour</a>
 
 
     <p>${dashboardView.get(0).bankerFirstname}</p>
