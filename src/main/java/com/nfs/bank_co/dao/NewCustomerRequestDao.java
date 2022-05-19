@@ -24,7 +24,6 @@ public class NewCustomerRequestDao {
         return c;
     }
     public boolean isEmailAlreadyInUse(String email){
-        //FIXME Verifier si l'addresse email n'est pas déja utilisée par un Client déja inscrit
         boolean result = true;
         Query query = em.createQuery("SELECT c FROM NewCustomerRequest AS c WHERE c.email = :email");
         query.setParameter("email", email);

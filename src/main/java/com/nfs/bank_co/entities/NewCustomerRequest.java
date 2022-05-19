@@ -20,7 +20,10 @@ public class NewCustomerRequest {
     private String city;
     private String postal;
     private String country;
+    @Column(name = "id_card")
     private String idCard;
+    @Column(name = "created_at")
+    private Date createdAt;
 
     public long getId() {
         return id;
@@ -84,5 +87,9 @@ public class NewCustomerRequest {
 
     public void setIdCard(String idCard) {
         this.idCard = idCard;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

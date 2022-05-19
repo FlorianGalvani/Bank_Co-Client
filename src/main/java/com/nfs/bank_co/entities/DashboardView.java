@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Immutable
-@Table(name="customer_dashboard")
+@Table(name="customer_dashboardd")
 public class DashboardView implements java.io.Serializable {
     private String C_firstname; //Ok
     private String C_lastname; //Ok
@@ -22,6 +22,7 @@ public class DashboardView implements java.io.Serializable {
     @Id
     private String account_number; //Ok
     private int id_banker; //Ok
+    private boolean is_new_customer;
 
     public String getC_firstname() {
         return C_firstname;
@@ -117,6 +118,14 @@ public class DashboardView implements java.io.Serializable {
 
     public void setId_banker(int id_banker) {
         this.id_banker = id_banker;
+    }
+
+    public boolean isIs_new_customer() {
+        return is_new_customer;
+    }
+
+    public void setIs_new_customer(boolean is_new_customer) {
+        this.is_new_customer = is_new_customer;
     }
 }
 

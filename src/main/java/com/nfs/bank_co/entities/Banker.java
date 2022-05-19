@@ -23,10 +23,6 @@ public class Banker {
     @JoinColumn(name = "banker_id")
     private List<Customer> customers;
 
-    @OneToMany(orphanRemoval = true)
-    @JoinColumn(name = "banker_id")
-    private List<Customer> customers;
-
     public int getId() {
         return id;
     }
@@ -52,6 +48,3 @@ public class Banker {
     }
 
 }
-
-// Mardi 24 11h30
-// Lundi 23 15h

@@ -12,15 +12,16 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 
 @WebServlet(name = "NewCustomerRequestServlet", urlPatterns = {"/newcustomer"})
 @MultipartConfig(
-        fileSizeThreshold = 1024 * 1024,
-        maxFileSize = 1024 * 1024 * 5,
-        maxRequestSize = 1024 * 1024 * 5 * 5)
+        fileSizeThreshold = 1024 * 1024 * 1, //1MB
+        maxFileSize = 1024 * 1024 * 10,      // 10 MB
+        maxRequestSize = 1024 * 1024 * 100)  // 100MB
 public class NewCustomerRequestServlet extends HttpServlet {
 
     /*
@@ -40,7 +41,10 @@ public class NewCustomerRequestServlet extends HttpServlet {
     public void init() throws ServletException {
         IdCardUploadPath = getServletContext().getRealPath(DOCUMENTS_FOLDER) + "/id_card";
         File uploadDir = new File(IdCardUploadPath);
-        if (!uploadDir.exists()) uploadDir.mkdir();
+        if (!uploadDir.exists()) {
+            System.out.println("CREATE DOCUMENT UPLOAD DIRECTORY");
+            uploadDir.mkdir();
+        };
     }
 
     @Override
@@ -55,6 +59,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String> errors = new HashMap<String, String>();
+
         /*
          *  Creation d'une nouvelle demande d'ouverture de compte et
          *  verification et ajout des different(e)s informations
@@ -110,17 +115,14 @@ public class NewCustomerRequestServlet extends HttpServlet {
          */
 
         Part idCardPart = request.getPart("idCard");
-
         String idCardFileName = "idCard_" + lastname + "_" + firstname + ".png";
         String idCardFullPath = IdCardUploadPath + File.separator + idCardFileName;
         if (idCardPart.getSize() == 0) {
             errors.put("idCard", "Veuillez ajouter un document");
         }
 
+        //FIXME errors.size() == 0
         if (errors.size() == 0) {
-            //Vérifie si l'adresse email est deja utilisée (Dans les demandes d'ouverture de compte et les comptes déja existant)
-//            System.out.println("Email new customer already in use ? : " + DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email));
-//            System.out.println("Email customer already in use ? : " + DaoFactory.getCustomerDao().isEmailAlreadyInUse(email));
             if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
                 newCustomerRequest.setTitle(title);
                 newCustomerRequest.setFirstname(firstname);
@@ -133,9 +135,10 @@ public class NewCustomerRequestServlet extends HttpServlet {
                 newCustomerRequest.setCountry(country);
                 idCardPart.write(idCardFullPath);
                 newCustomerRequest.setIdCard(idCardFileName);
-                DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
-                if (EmailUtility.createNewCustomerRequestPendingConfirmationEmail(email)) {
+                newCustomerRequest.setCreatedAt(new Date(System.currentTimeMillis()));
+                if (EmailUtility.createNewCustomerRequestPendingConfirmationEmail("florian.galvani@gmail.com")) {
                     response.sendRedirect(request.getContextPath() + "/success.jsp");
+                    DaoFactory.getNewCustomerRequestDao().create(newCustomerRequest);
                 } else {
                     response.sendRedirect(request.getContextPath() + "/newcustomer.jsp");
                 }

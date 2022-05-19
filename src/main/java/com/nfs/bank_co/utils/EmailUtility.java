@@ -29,7 +29,13 @@ public class EmailUtility {
          String subject = "Confirmation de reception de votre demande";
          String message = "BLABLA";
         try {
+            //Envoi du mail client
+            // DEMANDE PRISE EN COMPTE
             sendEmail(toAddress,subject,message);
+            //Envoi du mail Banquier
+            //NOUVELLE DEMANDE EN ATTENTE DE VALIDATION
+            sendEmail(toAddress,subject,message);
+
             return true;
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -37,35 +43,50 @@ public class EmailUtility {
             return false;
         }
     }
-    public static void sendEmail(String toAddress, String subject, String message) throws AddressException, MessagingException {
-        Properties properties = new Properties();
+    public static void sendEmail(String toAddress, String subject ,String messageBody) throws AddressException, MessagingException {
+        Properties properties = System.getProperties();
         properties.put("mail.smtp.host", HOST);
         properties.put("mail.smtp.port", SSL_PORT);
-        properties.put("mail.smtp.auth", "true");
-//        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.ssl.trust","*");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.starttls.required", "true");
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 
-        Authenticator auth = new Authenticator() {
-            public PasswordAuthentication getPasswordAuthentication() {
+            protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(USERNAME, PASSWORD);
             }
-        };
 
-        Session session = Session.getInstance(properties, auth);
+        });
 
-        Message msg = new MimeMessage(session);
+        // Used to debug SMTP issues
+//        session.setDebug(true);
 
-        msg.setFrom(new InternetAddress(USERNAME));
-        InternetAddress[] toAddresses = {new InternetAddress(toAddress)};
-        msg.setRecipients(Message.RecipientType.TO, toAddresses);
-        msg.setSubject(subject);
-        msg.setSentDate(new Date());
-        msg.setText(message);
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
 
-        SMTPTransport t = (SMTPTransport)session.getTransport("smtp");
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(USERNAME));
 
-        t.connect("smtp.gmail.com", USERNAME, PASSWORD);
-        t.sendMessage(msg, msg.getAllRecipients());
-        t.close();
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toAddress));
+
+            // Set Subject: header field
+            message.setSubject(subject);
+
+            // Now set the actual message
+//            message.setText(messageBody);
+            String someHtmlMessage = "<div style='background-color: #f00, width: 100%'><p style='color:blue;'>Test</p></div>";
+            message.setContent(someHtmlMessage, "text/html; charset=utf-8");
+            System.out.println("sending...");
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
     }
 }

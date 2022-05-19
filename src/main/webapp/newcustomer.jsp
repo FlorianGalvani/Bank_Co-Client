@@ -6,9 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%--
-    TODO Finir le style du formulaire de cette page (Formulaire a étapes ?)
---%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -87,10 +84,11 @@
 
 
             <%-- TODO limité la taille max d'un fichier et son limité les types de formats --%>
-            <input class="input" type="file" placeholder="Carte d'identité"  name="idCard" id="idCard">
+            <input type="file" placeholder="Carte d'identité" name="idCard">
             <c:if test="${errors.get('idCard').length() > 0 }">
                 <div class="error">${errors.get("idCard")}</div>
             </c:if>
+
             <input type="submit" value="Envoyer">
 
         </form>
