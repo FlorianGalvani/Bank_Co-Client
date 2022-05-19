@@ -111,8 +111,9 @@ public class NewCustomerRequestServlet extends HttpServlet {
          * Ajout des documents
          *  TODO modifier l'emplacement d'enregistrement des documents
          *  TODO VERIFICATION/VALIDATION du/des documents (taille,dimensions,format...)
-         *  type de fichier possible pdf, docx, doc, jpg, png, txt, rtf, jpeg, jpe, jif, jfif, gif, tif, tiff
-         */
+         *  type de fichier possible : pdf, docx, doc, jpg, png, txt, rtf, jpeg, jpe, jif, jfif, gif, tif, tiff
+         *  TODO type de fichier accepté : pdf ?
+         * */
 
         Part idCardPart = request.getPart("idCard");
         String idCardFileName = "idCard_" + lastname + "_" + firstname + ".png";

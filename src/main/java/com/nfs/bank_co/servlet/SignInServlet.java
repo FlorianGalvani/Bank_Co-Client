@@ -24,12 +24,7 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            System.out.println(PasswordUtility.getHash("azertyui"));
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            throw new RuntimeException(e);
-        }
-
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
     }
 
     @Override
@@ -57,14 +52,14 @@ public class SignInServlet extends HttpServlet {
                     }
                 }
             } catch (NoResultException e) {
-
                 errors.put("account", "Identifiant ou mot de passe incorrect");
                 request.getSession().setAttribute("errors", errors);
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
             } catch (NoSuchAlgorithmException e) {
-                throw new RuntimeException(e);
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
             } catch (InvalidKeySpecException e) {
-                throw new RuntimeException(e);
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
+
             }
         } else {
             request.getSession().setAttribute("errors", errors);

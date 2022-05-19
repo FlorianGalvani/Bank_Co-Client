@@ -19,21 +19,10 @@ public class CustomerDao {
         return (Customer) query.getSingleResult();
     }
 
-    public Customer getOneByCustomerNumber(String customerNumber) {
+    public Customer getOneByCustomerNumber(String customerNumber) throws NoResultException {
         Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.customerNumber = :customerNumber");
         query.setParameter("customerNumber", customerNumber);
-        Customer customer;
-        try {
-            customer = (Customer) query.getSingleResult();
-            if (customer != null) {
-
-            }
-        } catch (NoResultException e) {
-            e.printStackTrace();
-            customer = null;
-        }
-
-        return customer;
+        return (Customer) query.getSingleResult();
     }
 
     public List getViewsByCustomerNumber(String customerNumber) {
@@ -91,6 +80,18 @@ public class CustomerDao {
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
+        }
+        return success;
+    }
+
+    public boolean isExist(String email,String customerNumber) throws NoResultException {
+        //TODO VERIFIER SI L'UTILISATEUR EXISTE POUR ENVOYER UN MAIL DE REINITILISATION DU MOT DE PASSE
+        boolean success = false;
+        Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.email = :email AND c.customerNumber = :customerNumber");
+        query.setParameter("email", email);
+        query.setParameter("customerNumber", customerNumber);
+        if (query.getSingleResult() != null) {
+            success = true;
         }
         return success;
     }
