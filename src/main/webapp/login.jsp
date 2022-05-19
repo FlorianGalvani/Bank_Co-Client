@@ -10,7 +10,6 @@
 <html>
 <head>
     <title>Connexion</title>
-    <link rel="stylesheet" href="assets/css/style.min.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 

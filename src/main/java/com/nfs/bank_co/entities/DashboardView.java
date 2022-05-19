@@ -8,125 +8,139 @@ import javax.persistence.*;
 @Immutable
 @Table(name="customer_dashboardd")
 public class DashboardView implements java.io.Serializable {
-    private String C_firstname; //Ok
-    private String C_lastname; //Ok
     @Id
-    private int id_customer; //Ok
-    private float balance; //Ok
-    private int authorized_debt; //Ok
-    private String account_type; //Ok
-    private int id_customer_account; //Ok
-    private String B_firstname; //Ok
-    private String B_lastname; //Ok
+    @Column(name = "id_customer")
+    private int customerId; //Ok
+    @Column(name = "C_firstname")
+    private String customerFirstname; //Ok
+    @Column(name = "C_lastname")
+    private String customerLastname; //Ok
+    @Column(name = "customer_number")
     private String customerNumber; //Ok
+    @Column(name = "is_new_customer")
+    private boolean isNewCustomer;
+    @Column(name = "id_customer_account")
+    private int accountId; //Ok
     @Id
-    private String account_number; //Ok
-    private int id_banker; //Ok
-    private boolean is_new_customer;
+    @Column(name = "account_number")
+    private String accountNumber; //Ok
+    private float balance; //Ok
+    @Column(name = "authorized_debt")
+    private int authorizedDebt; //Ok
+    @Column(name = "account_type")
+    private String accountType; //Ok
+    @Column(name = "id_banker")
+    private int bankerId; //Ok
+    @Column(name = "B_firstname")
+    private String bankerFirstname; //Ok
+    @Column(name = "B_lastname")
+    private String bankerLastname; //Ok
 
-    public String getC_firstname() {
-        return C_firstname;
+    @Column(name = "B_phone")
+    private String bankerPhone; //Ok
+
+    @Column(name = "B_email")
+    private String bankerEmail; //Ok
+
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setC_firstname(String c_firstname) {
-        C_firstname = c_firstname;
+    public String getCustomerFirstname() {
+        return customerFirstname;
     }
 
-    public String getC_lastname() {
-        return C_lastname;
-    }
-
-    public void setC_lastname(String c_lastname) {
-        C_lastname = c_lastname;
-    }
-
-    public int getId_customer() {
-        return id_customer;
-    }
-
-    public void setId_customer(int id_customer) {
-        this.id_customer = id_customer;
-    }
-
-    public float getBalance() {
-        return balance;
-    }
-
-    public void setBalance(float balance) {
-        this.balance = balance;
-    }
-
-    public int getAuthorized_debt() {
-        return authorized_debt;
-    }
-
-    public void setAuthorized_debt(int authorized_debt) {
-        this.authorized_debt = authorized_debt;
-    }
-
-    public String getAccount_type() {
-        return account_type;
-    }
-
-    public void setAccount_type(String account_type) {
-        this.account_type = account_type;
-    }
-
-    public int getId_customer_account() {
-        return id_customer_account;
-    }
-
-    public void setId_customer_account(int id_customer_account) {
-        this.id_customer_account = id_customer_account;
-    }
-
-    public String getB_firstname() {
-        return B_firstname;
-    }
-
-    public void setB_firstname(String b_firstname) {
-        B_firstname = b_firstname;
-    }
-
-    public String getB_lastname() {
-        return B_lastname;
-    }
-
-    public void setB_lastname(String b_lastname) {
-        B_lastname = b_lastname;
+    public String getCustomerLastname() {
+        return customerLastname;
     }
 
     public String getCustomerNumber() {
         return customerNumber;
     }
 
-    public void setCustomerNumber(String customerNumber) {
-        this.customerNumber = customerNumber;
+    public boolean getIsNewCustomer() {
+        return isNewCustomer;
     }
 
-    public String getAccount_number() {
-        return account_number;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setAccount_number(String account_number) {
-        this.account_number = account_number;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public int getId_banker() {
-        return id_banker;
+    public float getBalance() {
+        return balance;
     }
 
-    public void setId_banker(int id_banker) {
-        this.id_banker = id_banker;
+    public int getAuthorizedDebt() {
+        return authorizedDebt;
     }
 
-    public boolean isIs_new_customer() {
-        return is_new_customer;
+    public String getAccountType() {
+        return accountType;
     }
 
-    public void setIs_new_customer(boolean is_new_customer) {
-        this.is_new_customer = is_new_customer;
+    public int getBankerId() {
+        return bankerId;
+    }
+
+    public String getBankerFirstname() {
+        return bankerFirstname;
+    }
+
+    public String getBankerLastname() {
+        return bankerLastname;
+    }
+
+    public String getBankerPhone() {
+        return bankerPhone;
+    }
+
+    public void setBankerPhone(String bankerPhone) {
+        this.bankerPhone = bankerPhone;
+    }
+
+    public String getBankerEmail() {
+        return bankerEmail;
+    }
+
+    public void setBankerEmail(String bankerEmail) {
+        this.bankerEmail = bankerEmail;
     }
 }
 
+/*
+SELECT
+    `bankco`.`customers`.`id_customer` AS `id_customer`,
+    `bankco`.`customers`.`firstname` AS `C_firstname`,
+    `bankco`.`customers`.`lastname` AS `C_lastname`,
+    `bankco`.`customers`.`customer_number` AS `customer_number`,
+    `bankco`.`customers`.`is_new_customer` AS `is_new_customer`,
+    `bankco`.`accounts`.`id_customer_account` AS `id_customer_account`,
+    `bankco`.`accounts`.`account_number` AS `account_number`,
+    `bankco`.`accounts`.`account_type` AS `account_type`,
+    `bankco`.`accounts`.`authorized_debt` AS `authorized_debt`,
+    `bankco`.`accounts`.`balance` AS `balance`,
+    `bankco`.`bankers`.`id_banker` AS `id_banker`,
+    `bankco`.`bankers`.`firstname` AS `B_firstname`,
+    `bankco`.`bankers`.`lastname` AS `B_lastname`
+FROM
+    (
+        (
+            `bankco`.`customers`
+        JOIN `bankco`.`accounts`
+        )
+    JOIN `bankco`.`bankers`
+    )
+WHERE
+    (
+        (
+            `bankco`.`accounts`.`customer_id` = `bankco`.`customers`.`id_customer`
+        ) AND(
+            `bankco`.`customers`.`banker_id` = `bankco`.`bankers`.`id_banker`
+        )
+    )
+ */
 

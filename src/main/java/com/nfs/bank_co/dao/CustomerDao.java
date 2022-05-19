@@ -22,7 +22,18 @@ public class CustomerDao {
     public Customer getOneByCustomerNumber(String customerNumber) {
         Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.customerNumber = :customerNumber");
         query.setParameter("customerNumber", customerNumber);
-        return (Customer) query.getSingleResult();
+        Customer customer;
+        try {
+            customer = (Customer) query.getSingleResult();
+            if (customer != null) {
+
+            }
+        } catch (NoResultException e) {
+            e.printStackTrace();
+            customer = null;
+        }
+
+        return customer;
     }
 
     public List getViewsByCustomerNumber(String customerNumber) {
@@ -59,7 +70,6 @@ public class CustomerDao {
     public boolean updateIsNewCustomerState(Customer customer) {
         boolean success = false;
         customer.setNewCustomer(false);
-
         try {
             em.getTransaction().begin();
             em.merge(customer);

@@ -22,7 +22,7 @@
 <%--
 Recuperation et affichage des infos du compte client
 --%>
-<a href="profile.jsp">${dashboardView.get(0).getC_firstname()} ${dashboardView.get(0).getC_lastname()}</a>
+<a href="profile.jsp">${dashboardView.get(0).customerFirstname} ${dashboardView.get(0).customerLastname}</a>
 <a href="contact">Contacter votre banquier</a>
 <%--
 Recuperation et affichage des comptes banquaire du client
@@ -30,10 +30,10 @@ Recuperation et affichage des comptes banquaire du client
 <div class="accounts">
     <c:forEach var="view" items="${dashboardView}">
         <div style="border: #000 1px solid">
-            <a href="account?id=${view.id_customer_account}">
-                <p>N° de compte : ${view.account_number}</p>
+            <a href="account?id=${view.accountId}">
+                <p>N° de compte : ${view.accountNumber}</p>
                 <p>Solde : ${view.balance} €</p>
-                <p>Decouvert authorisé : ${view.authorized_debt} €</p>
+                <p>Decouvert authorisé : ${view.authorizedDebt} €</p>
             </a>
         </div>
     </c:forEach>

@@ -11,8 +11,6 @@
 <head>
     <title>Envoyer de l'argent</title>
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.min.css">
 </head>
 <body>
     <form method="POST" action="sendmoney">
@@ -28,8 +26,8 @@
                 Compte à debité
             </option>
             <c:forEach var="account" items="${dashboardView}">
-                <option value="${account.id_customer_account}">
-                        ${account.account_number}
+                <option value="${account.accountId}">
+                        ${account.accountNumber}
                 </option>
             </c:forEach>
         </select>
@@ -40,8 +38,8 @@
                 Compte à credité
             </option>
             <c:forEach var="account" items="${dashboardView}">
-                <option value="${account.id_customer_account}">
-                        ${account.account_number}
+                <option value="${account.accountId}">
+                        ${account.accountNumber}
                 </option>
             </c:forEach>
         </select>

@@ -12,7 +12,6 @@
     <title>Detail du compte</title>
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.min.css">
 </head>
 <body>
 <c:choose>

@@ -9,9 +9,10 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_customer")
-
     private int id;
+    @Column(name = "firstname")
     private String firstname;
+    @Column(name = "lastname")
     private String lastname;
     private String title;
     private String phone;
@@ -21,8 +22,10 @@ public class Customer {
     private String postal;
     private String city;
     private String country;
+    @Column(name = "customer_number")
     private String customerNumber;
     private String password;
+    @Column(name = "is_new_customer")
     private Boolean isNewCustomer;
 
     @OneToMany(orphanRemoval = true)

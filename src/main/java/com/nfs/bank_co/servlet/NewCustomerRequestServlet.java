@@ -121,7 +121,6 @@ public class NewCustomerRequestServlet extends HttpServlet {
             errors.put("idCard", "Veuillez ajouter un document");
         }
 
-        //FIXME errors.size() == 0
         if (errors.size() == 0) {
             if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
                 newCustomerRequest.setTitle(title);

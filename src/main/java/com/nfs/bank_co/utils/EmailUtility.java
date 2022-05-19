@@ -15,7 +15,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-//TODO Gerer envoie du mail de confirmation de reception de demande d'ouverture de compte
+//TODO Modifier style du mail
 // Truc utile : public static Map<String,String> getenv()
 public class EmailUtility {
       static final String HOST = "smtp.gmail.com";
