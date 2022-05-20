@@ -49,7 +49,7 @@ public class ChangePasswordServlet extends HttpServlet {
                         if (customer.getNewCustomer()) {
                             DaoFactory.getCustomerDao().updateIsNewCustomerState(customer);
                         }
-                        System.out.println("MD5 Hash = " + hash);
+
                         DaoFactory.getCustomerDao().updatePassword(customer, hash);
                         request.getSession().removeAttribute("errors");
                         response.sendRedirect(request.getContextPath() + "/dashboard/index.jsp");

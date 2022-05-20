@@ -15,7 +15,6 @@ public class PasswordUtility {
     {
         String generatedSecuredPasswordHash
                 = generateStrongPasswordHash(originalPassword);
-        System.out.println(generatedSecuredPasswordHash);
         return generatedSecuredPasswordHash;
     }
     private static String generateStrongPasswordHash(String password)

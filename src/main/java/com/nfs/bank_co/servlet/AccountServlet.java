@@ -18,7 +18,7 @@ public class AccountServlet extends HttpServlet {
         if (id != null) {
             Account account = DaoFactory.getAccountDao().getOneById(Integer.parseInt(id));
             if (account != null) {
-                System.out.println(id);
+
 
                 List<Transaction> debts = new ArrayList<>(account.getDebts());
                 debts.sort(Comparator.comparing(Transaction::getDate));
@@ -40,7 +40,7 @@ public class AccountServlet extends HttpServlet {
 
                 response.sendRedirect(request.getContextPath() + "/dashboard/account.jsp");
             } else {
-                System.out.println(id);
+
                 response.sendRedirect(request.getContextPath() + "/dashboard/");
             }
         } else {

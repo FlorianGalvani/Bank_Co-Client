@@ -40,15 +40,12 @@ public class AuthorizationFilter implements Filter {
 //                req.getSession().setAttribute("customer", null);
 //                req.getSession().setAttribute("customer", DaoFactory.getCustomerDao().findOneById(customer.getId()));
                 String path = req.getRequestURI().substring(req.getContextPath().length());
-                System.out.println("Path : " + path);
-                System.out.println("Path 1 : " + path.equals("/dashboard/index.jsp"));
-                System.out.println("Path 2 : " + path.equals("/dashboard/"));
 
                 // Supprime les attributs inutiles (success et errors des formulaires, etc..)
                 if (path.equals("/dashboard/index.jsp") || path.equals("/dashboard/")) {
-                    System.out.println("pas path dashboard");
+
                 } else {
-                    System.out.println("pas path dashboard");
+
                     req.getSession().setAttribute("success", null);
                 }
 
@@ -65,6 +62,6 @@ public class AuthorizationFilter implements Filter {
         }
 //        System.out.println("---------------------------");
         report += "---------------------------";
-        System.out.println(report);
+//        System.out.println(report);
     }
 }

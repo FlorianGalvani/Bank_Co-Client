@@ -16,8 +16,6 @@ public class DashboardServlet extends HttpServlet {
         List<DashboardView> dashboardView = (List<DashboardView>) request.getSession().getAttribute("dashboardView");
         request.getSession().removeAttribute("dashboardView");
         List<DashboardView> updatedDashboardView = DaoFactory.getCustomerDao().getViewsByCustomerNumber(dashboardView);
-        System.out.println("UPDATE DASHBOARD VIEW : " +updatedDashboardView.get(0).getBalance());
-
         request.getSession().setAttribute("dashboardView", updatedDashboardView);
         if (updatedDashboardView.get(0).getIsNewCustomer()) {
             response.sendRedirect(request.getContextPath() + "/dashboard/newcustomer.jsp");

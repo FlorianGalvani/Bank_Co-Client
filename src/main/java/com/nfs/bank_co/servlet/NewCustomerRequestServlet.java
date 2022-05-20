@@ -42,7 +42,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
         IdCardUploadPath = getServletContext().getRealPath(DOCUMENTS_FOLDER) + "/id_card";
         File uploadDir = new File(IdCardUploadPath);
         if (!uploadDir.exists()) {
-            System.out.println("CREATE DOCUMENT UPLOAD DIRECTORY");
+
             uploadDir.mkdir();
         };
     }
@@ -52,7 +52,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
         /*
          * Redirige les requetes de /newcustomer vers /newcustomer.jsp (Formulaire de demande d'ouverture d'un compte client).
          */
-        System.out.println(request.getPathInfo());
+
         response.sendRedirect(request.getContextPath() + "/newcustomer.jsp");
     }
 

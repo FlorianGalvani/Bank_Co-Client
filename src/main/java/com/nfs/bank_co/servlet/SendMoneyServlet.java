@@ -27,9 +27,6 @@ public class SendMoneyServlet extends HttpServlet {
         String creditedAccountId = request.getParameter("creditedAccountId");
         int amount = Integer.parseInt(request.getParameter("amount"));
         String reason = request.getParameter("reason");
-
-        System.out.println(debitedAccountId + " -> " + creditedAccountId);
-
         if (!debitedAccountId.isEmpty() && !creditedAccountId.isEmpty()) {
             if (!debitedAccountId.equals(creditedAccountId)) {
                 List<DashboardView> dashboardView = (List<DashboardView>)request.getSession().getAttribute("dashboardView");

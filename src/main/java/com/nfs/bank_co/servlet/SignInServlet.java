@@ -40,7 +40,7 @@ public class SignInServlet extends HttpServlet {
                 Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
                 List dashboardView = DaoFactory.getCustomerDao().getViewsByCustomerNumber(customerNumber);
                 if (customer != null) {
-                    System.out.println(customer.getPassword());
+
                     if (PasswordUtility.validatePassword(password,customer.getPassword())) {
                         request.getSession().setAttribute("dashboardView", dashboardView);
                         request.getSession().setAttribute("isLogedIn", true);
