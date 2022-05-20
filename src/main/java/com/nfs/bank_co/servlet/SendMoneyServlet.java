@@ -20,7 +20,6 @@ public class SendMoneyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect(request.getContextPath() + "/dashboard/sendmoney.jsp");
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String debitedAccountId = request.getParameter("debitedAccountId");

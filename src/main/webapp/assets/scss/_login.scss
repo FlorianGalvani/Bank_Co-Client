@@ -1,0 +1,89 @@
+.Login {
+  display: flex;
+  color: var(--c-text);
+  a {
+    color: var(--c-text);
+  }
+  .left {
+    width: 60%;
+    background-color: var(--c-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form {
+      transform: scale(1.2);
+      width: 45%;
+      a.goHome {
+        .fa-arrow-left {
+          border: 1px solid #fff;
+          border-radius: 30px;
+          padding: 5px;
+        }
+      }
+      h1 {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 15px 0;
+        position: relative;
+
+        &::after {
+          content: "";
+          width: 100px;
+          height: 15px;
+          background-color: var(--c-primary);
+          position: absolute;
+          left: 0;
+          bottom: -30px;
+        }
+      }
+      .noAccount {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+        margin-top: 55px;
+      }
+
+      input {
+        margin-bottom: 25px;
+        &[type=text], &[type=password]{
+          background-color: transparent;
+          border: none;
+          border-bottom: #818181 2px solid;
+          width: 100%;
+
+
+        }
+        &:focus {
+          border: none;
+          border-bottom: #fff 2px solid;
+        }
+        &::placeholder {
+          color: #818181;
+        }
+      }
+      .passReset {
+        margin-bottom: 25px;
+      }
+    }
+  }
+  .right {
+    width: 40%;
+    background-color: var(--c-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card {
+      display: flex;
+      flex-direction: column;
+      /* gap: 0px; */
+      justify-content: center;
+      align-items: center;
+      .cardIMG {
+
+      }
+      .cardShadow {
+
+      }
+    }
+  }
+}
