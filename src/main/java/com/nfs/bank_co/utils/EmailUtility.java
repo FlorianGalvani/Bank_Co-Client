@@ -18,12 +18,14 @@ import javax.mail.internet.MimeMessage;
 //TODO Modifier style du mail
 //Truc utile : public static Map<String,String> getenv()
 public class EmailUtility {
-      static final String HOST = "smtp.gmail.com";
+//      static final String HOST = "smtp.gmail.com";
+      static final String HOST = "mail.yahoo.com";
       static final String TLS_PORT = "587";
 
       static final String SSL_PORT = "465";
-      static final String USERNAME = "bankco.noreply@gmail.com";
-      static final String PASSWORD = "P@s$w0rd76";
+//      static final String USERNAME = "bankco.noreply@gmail.com";
+      static final String USERNAME = "bank_co@yahoo.com";
+      static final String PASSWORD = "pqattifqxirubyvy";
 
     public static boolean createNewCustomerRequestPendingConfirmationEmail(String toAddress) {
          String subject = "Confirmation de reception de votre demande";
@@ -34,7 +36,8 @@ public class EmailUtility {
             sendEmail(toAddress,subject,message);
             //Envoi du mail Banquier
             //NOUVELLE DEMANDE EN ATTENTE DE VALIDATION
-            sendEmail(toAddress,subject,message);
+            //FIXME envoyer ce mail a tout les banquiers (adresse gmail bancko pour le dev) plutot qu'au client
+//            sendEmail(toAddress,subject,message);
 
             return true;
         } catch (MessagingException e) {
@@ -51,8 +54,9 @@ public class EmailUtility {
         properties.put("mail.smtp.auth","true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.starttls.required", "true");
-        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+//        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+//        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -60,21 +64,17 @@ public class EmailUtility {
             }
 
         });
-//        session.setDebug(true);
+        session.setDebug(true);
         try {
             // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
 
-            // Set From: header field of the header.
             message.setFrom(new InternetAddress(USERNAME));
 
-            // Set To: header field of the header.
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(toAddress));
 
-            // Set Subject: header field
             message.setSubject(subject);
 
-            // Now set the actual message
 //            message.setText(messageBody);
             String someHtmlMessage = "<div style='background-color: #f00, width: 100%'><p style='color:blue;'>Test</p></div>";
             message.setContent(someHtmlMessage, "text/html; charset=utf-8");

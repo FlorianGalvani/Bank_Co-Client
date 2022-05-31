@@ -1,9 +1,5 @@
 package com.nfs.bank_co.servlet.filter;
 
-import com.nfs.bank_co.dao.DaoFactory;
-import com.nfs.bank_co.entities.Customer;
-import com.nfs.bank_co.utils.AuthenticationUtility;
-
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;

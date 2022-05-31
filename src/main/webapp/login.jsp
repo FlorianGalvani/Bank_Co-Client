@@ -7,11 +7,18 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="login" />
+
+<html lang="${sessionScope.lang}">
 <head>
     <title>Connexion</title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
 <body class="Login">
@@ -21,8 +28,9 @@
         <a class="goHome" href="./">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
-
-        <h1>Accéder à <br> mon espace</h1>
+        <p>LANG : ${sessionScope.lang}</p>
+<%--        <h1>Accéder à <br> mon espace</h1>--%>
+        <h1><fmt:message key="label.title" /></h1>
 
         <div class="noAccount">
             <p>Pas de compte ? </p>
