@@ -2,9 +2,8 @@ package com.nfs.bank_co.servlet;
 
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.Customer;
-import com.nfs.bank_co.entities.DashboardView;
-import com.nfs.bank_co.utils.FormUtility;
-import com.nfs.bank_co.utils.PasswordUtility;
+import com.nfs.bank_co.utils.form.FormUtility;
+import com.nfs.bank_co.utils.form.PasswordUtility;
 
 import javax.persistence.NoResultException;
 import javax.servlet.*;

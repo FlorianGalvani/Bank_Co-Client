@@ -2,8 +2,8 @@ package com.nfs.bank_co.servlet;
 
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.NewCustomerRequest;
-import com.nfs.bank_co.utils.FormUtility;
-import com.nfs.bank_co.utils.EmailUtility;
+import com.nfs.bank_co.utils.form.FormUtility;
+import com.nfs.bank_co.utils.email.EmailUtility;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -123,7 +123,9 @@ public class NewCustomerRequestServlet extends HttpServlet {
         }
 
         if (errors.size() == 0) {
-            if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
+            //FIXME Reactiver verification utilisateur ou demande deja existant(e)
+//            if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
+            if (true) {
                 newCustomerRequest.setTitle(title);
                 newCustomerRequest.setFirstname(firstname);
                 newCustomerRequest.setLastname(lastname);

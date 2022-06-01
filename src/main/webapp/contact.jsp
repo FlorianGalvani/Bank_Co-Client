@@ -14,7 +14,7 @@
 
 </head>
 <body >
-    <a class="goHome" href="./"><i class="ri-arrow-left-line"></i></a>
+    <a class="goHome" href=""><i class="ri-arrow-left-line"></i></a>
 
 </body>
 </html>

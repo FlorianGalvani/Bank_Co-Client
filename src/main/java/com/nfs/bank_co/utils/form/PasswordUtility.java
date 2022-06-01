@@ -1,4 +1,4 @@
-package com.nfs.bank_co.utils;
+package com.nfs.bank_co.utils.form;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

@@ -3,15 +3,14 @@ package com.nfs.bank_co.servlet;
 import com.nfs.bank_co.dao.DaoFactory;
 import com.nfs.bank_co.entities.Customer;
 import com.nfs.bank_co.entities.DashboardView;
-import com.nfs.bank_co.utils.FormUtility;
-import com.nfs.bank_co.utils.PasswordUtility;
+import com.nfs.bank_co.utils.form.FormUtility;
+import com.nfs.bank_co.utils.form.PasswordUtility;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.HashMap;
 import java.util.List;

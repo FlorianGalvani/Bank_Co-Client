@@ -1,11 +1,9 @@
-package com.nfs.bank_co.utils;
+package com.nfs.bank_co.utils.email;
 
-import com.sun.mail.smtp.SMTPTransport;
-
-import java.util.Date;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -18,14 +16,15 @@ import javax.mail.internet.MimeMessage;
 //TODO Modifier style du mail
 //Truc utile : public static Map<String,String> getenv()
 public class EmailUtility {
-//      static final String HOST = "smtp.gmail.com";
-      static final String HOST = "mail.yahoo.com";
+      static final String HOST = "node18-eu.n0c.com";
       static final String TLS_PORT = "587";
 
       static final String SSL_PORT = "465";
-//      static final String USERNAME = "bankco.noreply@gmail.com";
-      static final String USERNAME = "bank_co@yahoo.com";
-      static final String PASSWORD = "pqattifqxirubyvy";
+      static final String USERNAME = "bankco.noreply@legilmalas.fr";
+      static final String PASSWORD = "bv/K&eK1?be:v&5://";
+
+    StringBuilder contentBuilder = new StringBuilder();
+
 
     public static boolean createNewCustomerRequestPendingConfirmationEmail(String toAddress) {
          String subject = "Confirmation de reception de votre demande";
@@ -46,6 +45,8 @@ public class EmailUtility {
             return false;
         }
     }
+
+
     public static void sendEmail(String toAddress, String subject ,String messageBody) throws AddressException, MessagingException {
         Properties properties = System.getProperties();
         properties.put("mail.smtp.host", HOST);
@@ -54,8 +55,8 @@ public class EmailUtility {
         properties.put("mail.smtp.auth","true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.starttls.required", "true");
-//        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-//        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
 
@@ -66,7 +67,6 @@ public class EmailUtility {
         });
         session.setDebug(true);
         try {
-            // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
 
             message.setFrom(new InternetAddress(USERNAME));
@@ -75,13 +75,22 @@ public class EmailUtility {
 
             message.setSubject(subject);
 
-//            message.setText(messageBody);
-            String someHtmlMessage = "<div style='background-color: #f00, width: 100%'><p style='color:blue;'>Test</p></div>";
-            message.setContent(someHtmlMessage, "text/html; charset=utf-8");
-            System.out.println("sending...");
-            // Send message
-            Transport.send(message);
-            System.out.println("Sent message successfully....");
+            //TODO CENTRALISER LES DIFFERENTS FORMATS DE MAIL
+                InputStream in = EmailUtility.class.getClassLoader().getResourceAsStream("email_templates/template1.html");
+//                InputStream in = EmailUtility.class.getClassLoader().getResourceAsStream("email_templates/templateTEST.html");
+                InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
+                BufferedReader br = new BufferedReader(isr);
+                StringBuilder someHtmlMessage = new StringBuilder();
+
+                br.lines().forEach(line -> someHtmlMessage.append(line));
+
+
+                message.setContent(someHtmlMessage.toString(), "text/html; charset=utf-8");
+                System.out.println("sending...");
+                // Send message
+                Transport.send(message);
+                System.out.println("Sent message successfully....");
+
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
