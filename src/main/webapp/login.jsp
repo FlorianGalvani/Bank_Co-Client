@@ -56,7 +56,7 @@
             <a href="resetpassword"><fmt:message key="label.passwordForgoten"/></a>
         </div>
         <button class="submit button" type="submit" id="submit" value="">
-            <fmt:message key="label.connect"/> <i class="fa-solid fa-arrow-right"></i></i>
+            <fmt:message key="label.connect"/> <i class="fa-solid fa-arrow-right"></i>
         </button>
     </form>
 </div>
