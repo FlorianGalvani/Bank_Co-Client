@@ -21,7 +21,7 @@
     <div class="left">
 
         <form method="post" action="newcustomer" enctype="multipart/form-data" class="newCustomerForm">
-            <a class="goHome" href="index.html"><i class="ri-arrow-left-line"></i></a>
+            <a class="goHome" href="index.jsp"><i class="ri-arrow-left-line"></i></a>
             <h1>Faire une demande d'ouverture de compte</h1>
             <div class="noAccount"><p>Déja un compte ? </p> <a href="login.jsp">Connectez vous</a></div>
             <select name="title" id="title">

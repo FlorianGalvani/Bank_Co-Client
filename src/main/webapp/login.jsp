@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: legilmalas
-  Date: 4/22/22
-  Time: 10:04 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -13,8 +6,9 @@
 <fmt:setLocale value="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}"/>
 <fmt:setBundle basename="login" />
 
-<html lang="${cookie.lang.value}">
+<html lang="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}">
 <head>
+    <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
@@ -25,7 +19,7 @@
 <div class="left">
     <form method="post" action="login" id="loginForm">
 
-        <a class="goHome" href="index.html">
+        <a class="goHome" href="index.jsp">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
 
