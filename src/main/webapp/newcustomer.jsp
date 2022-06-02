@@ -82,7 +82,6 @@
             <div class="error">${errors.get("country")}</div>
         </c:if>
 
-        <%-- TODO limité la taille max d'un fichier et son limité les types de formats --%>
         <input type="file" placeholder="Carte d'identité" name="idCard">
         <c:if test="${errors.get('idCard').length() > 0 }">
             <div class="error">${errors.get("idCard")}</div>

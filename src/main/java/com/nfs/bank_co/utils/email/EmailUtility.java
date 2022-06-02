@@ -13,31 +13,19 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-//TODO Modifier style du mail
-//Truc utile : public static Map<String,String> getenv()
 public class EmailUtility {
-      static final String HOST = "node18-eu.n0c.com";
-      static final String TLS_PORT = "587";
+    static final String HOST = "node18-eu.n0c.com";
+    static final String TLS_PORT = "587";
 
-      static final String SSL_PORT = "465";
-      static final String USERNAME = "bankco.noreply@legilmalas.fr";
-      static final String PASSWORD = "bv/K&eK1?be:v&5://";
-
-    StringBuilder contentBuilder = new StringBuilder();
-
+    static final String SSL_PORT = "465";
+    static final String USERNAME = "bankco.noreply@legilmalas.fr";
+    static final String PASSWORD = "bv/K&eK1?be:v&5://";
 
     public static boolean createNewCustomerRequestPendingConfirmationEmail(String toAddress) {
-         String subject = "Confirmation de reception de votre demande";
-         String message = "BLABLA";
+        String subject = "Confirmation de reception de votre demande";
+        String message = "BLABLA";
         try {
-            //Envoi du mail client
-            // DEMANDE PRISE EN COMPTE
-            sendEmail(toAddress,subject,message);
-            //Envoi du mail Banquier
-            //NOUVELLE DEMANDE EN ATTENTE DE VALIDATION
-            //FIXME envoyer ce mail a tout les banquiers (adresse gmail bancko pour le dev) plutot qu'au client
-//            sendEmail(toAddress,subject,message);
-
+            sendEmail(toAddress, subject, message);
             return true;
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -47,12 +35,12 @@ public class EmailUtility {
     }
 
 
-    public static void sendEmail(String toAddress, String subject ,String messageBody) throws AddressException, MessagingException {
+    public static void sendEmail(String toAddress, String subject, String messageBody) throws AddressException, MessagingException {
         Properties properties = System.getProperties();
         properties.put("mail.smtp.host", HOST);
         properties.put("mail.smtp.port", SSL_PORT);
         properties.put("mail.smtp.ssl.enable", "true");
-        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.starttls.required", "true");
         properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
@@ -65,7 +53,9 @@ public class EmailUtility {
             }
 
         });
+
         session.setDebug(true);
+
         try {
             MimeMessage message = new MimeMessage(session);
 
@@ -74,23 +64,15 @@ public class EmailUtility {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(toAddress));
 
             message.setSubject(subject);
+            InputStream in = EmailUtility.class.getClassLoader().getResourceAsStream("email_templates/template1.html");
+            InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder someHtmlMessage = new StringBuilder();
 
-            //TODO CENTRALISER LES DIFFERENTS FORMATS DE MAIL
-                InputStream in = EmailUtility.class.getClassLoader().getResourceAsStream("email_templates/template1.html");
-//                InputStream in = EmailUtility.class.getClassLoader().getResourceAsStream("email_templates/templateTEST.html");
-                InputStreamReader isr = new InputStreamReader(in, StandardCharsets.UTF_8);
-                BufferedReader br = new BufferedReader(isr);
-                StringBuilder someHtmlMessage = new StringBuilder();
+            br.lines().forEach(line -> someHtmlMessage.append(line));
 
-                br.lines().forEach(line -> someHtmlMessage.append(line));
-
-
-                message.setContent(someHtmlMessage.toString(), "text/html; charset=utf-8");
-                System.out.println("sending...");
-                // Send message
-                Transport.send(message);
-                System.out.println("Sent message successfully....");
-
+            message.setContent(someHtmlMessage.toString(), "text/html; charset=utf-8");
+            Transport.send(message);
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }

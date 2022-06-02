@@ -87,8 +87,6 @@ public class CustomerDao {
     }
 
     public boolean isExist(String email, String customerNumber) throws NoResultException {
-        //TODO VERIFIER SI L'UTILISATEUR EXISTE POUR ENVOYER UN MAIL DE REINITILISATION DU MOT DE PASSE
-
         boolean success = false;
         Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.email = :email AND c.customerNumber = :customerNumber");
         query.setParameter("email", email);

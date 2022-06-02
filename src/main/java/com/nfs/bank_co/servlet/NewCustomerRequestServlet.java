@@ -108,14 +108,6 @@ public class NewCustomerRequestServlet extends HttpServlet {
         String country = request.getParameter("country").trim();
         FormUtility.checkStringValidity(errors, "country", country, 1, 50);
 
-        /*
-         * Ajout des documents
-         *  TODO modifier l'emplacement d'enregistrement des documents
-         *  TODO VERIFICATION/VALIDATION du/des documents (taille,dimensions,format...)
-         *  type de fichier possible : pdf, docx, doc, jpg, png, txt, rtf, jpeg, jpe, jif, jfif, gif, tif, tiff
-         *  TODO type de fichier accepté : pdf ?
-         * */
-
         Part idCardPart = request.getPart("idCard");
         String idCardFileName = "idCard_" + lastname + "_" + firstname + ".png";
         String idCardFullPath = IdCardUploadPath + File.separator + idCardFileName;
@@ -124,9 +116,7 @@ public class NewCustomerRequestServlet extends HttpServlet {
         }
 
         if (errors.size() == 0) {
-            //FIXME Reactiver verification utilisateur ou demande deja existant(e)
-//            if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
-            if (true) {
+            if (!DaoFactory.getNewCustomerRequestDao().isEmailAlreadyInUse(email) && !DaoFactory.getCustomerDao().isEmailAlreadyInUse(email)) {
                 newCustomerRequest.setTitle(title);
                 newCustomerRequest.setFirstname(firstname);
                 newCustomerRequest.setLastname(lastname);
@@ -153,9 +143,6 @@ public class NewCustomerRequestServlet extends HttpServlet {
 
 
         } else {
-            /*
-             * TODO Faire en sorte que les (certaines ?) données persistent apres l'envoi du formulaire si il est invalide
-             */
             request.getSession().setAttribute("errors", errors);
             response.sendRedirect(request.getContextPath() + "/newcustomer.jsp");
         }

@@ -15,10 +15,6 @@
 <body>
 <h1>Bienvenue</h1>
 
-<!--
-    TODO Ajouter un tutorial/une explication rapide du service + la modification du mot de passe temporaire
--->
-
 <form method="post" action="changePassword">
     <h1>Modification du mot de passe temporaire</h1>
     <input type="password" name="currentPassword">
