@@ -2,11 +2,12 @@ package com.nfs.bank_co.entities;
 
 
 import org.hibernate.annotations.Immutable;
+
 import javax.persistence.*;
 
 @Entity
 @Immutable
-@Table(name="customer_dashboardd")
+@Table(name = "customer_dashboardd")
 public class DashboardView implements java.io.Serializable {
     @Id
     @Column(name = "id_customer")

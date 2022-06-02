@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Enumeration;
 import java.util.Locale;
 
-
-
 public class LocalsUtility {
     static String supportedLanguages = "en,fr";
 

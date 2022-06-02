@@ -11,10 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-    <form method="post" action="./resetpassword">
-        <input type="text" name="clientNumber" placeholder="N°client">
-        <input type="text" name="email" placeholder="Adresse email">
-        <input type="submit" value="Envoyer">
-    </form>
+<form method="post" action="./resetpassword">
+    <input type="text" name="clientNumber" placeholder="N°client">
+    <input type="text" name="email" placeholder="Adresse email">
+    <input type="submit" value="Envoyer">
+</form>
 </body>
 </html>

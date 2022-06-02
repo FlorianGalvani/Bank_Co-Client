@@ -23,7 +23,8 @@ public class NewCustomerRequestDao {
         }
         return c;
     }
-    public boolean isEmailAlreadyInUse(String email){
+
+    public boolean isEmailAlreadyInUse(String email) {
         boolean result = true;
         Query query = em.createQuery("SELECT c FROM NewCustomerRequest AS c WHERE c.email = :email");
         query.setParameter("email", email);

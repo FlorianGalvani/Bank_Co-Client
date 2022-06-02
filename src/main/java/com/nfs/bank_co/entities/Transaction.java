@@ -12,7 +12,7 @@ public class Transaction {
     private int id;
     private Date date;
     private int amount;
-    private String reason ;
+    private String reason;
 
     @ManyToOne
     @JoinColumn(name = "from_account")
@@ -46,12 +46,12 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public String getReason () {
+    public String getReason() {
         return reason;
     }
 
-    public void setReason (String reason) {
-        this.reason  = reason;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public Account getFromAccount() {

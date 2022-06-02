@@ -1,4 +1,5 @@
 package com.nfs.bank_co.entities;
+
 import javax.persistence.*;
 
 import java.util.Collection;

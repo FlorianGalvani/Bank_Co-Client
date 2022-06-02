@@ -12,20 +12,22 @@ public class AccountDao {
     public AccountDao() {
         em = PersistenceManager.getEmf().createEntityManager();
     }
+
     public Account getOneById(int id) {
         try {
-                Query query = em.createQuery("SELECT c FROM Account AS c WHERE c.id = :id");
-                query.setParameter("id", id);
-                Account account = (Account)  query.getSingleResult();
-                em.refresh(account);
-                return account;
+            Query query = em.createQuery("SELECT c FROM Account AS c WHERE c.id = :id");
+            query.setParameter("id", id);
+            Account account = (Account) query.getSingleResult();
+            em.refresh(account);
+            return account;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     public void updateBalance(Account account, int amount) {
-            account.setBalance(account.getBalance() + amount);
+        account.setBalance(account.getBalance() + amount);
         try {
             em.getTransaction().begin();
             em.merge(account);

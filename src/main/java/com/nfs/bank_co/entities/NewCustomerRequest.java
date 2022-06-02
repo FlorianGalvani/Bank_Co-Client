@@ -53,33 +53,61 @@ public class NewCustomerRequest {
         this.lastname = lastname;
     }
 
-    public String getPhone() { return phone; }
+    public String getPhone() {
+        return phone;
+    }
 
-    public void setPhone(String phone) { this.phone = phone; }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-    public String getEmail() {return email;}
+    public String getEmail() {
+        return email;
+    }
 
-    public void setEmail(String email) {this.email = email;}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public Date getBirthdate() { return birthdate; }
+    public Date getBirthdate() {
+        return birthdate;
+    }
 
-    public void setBirthdate(Date birthdate) { this.birthdate = birthdate; }
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address;
+    }
 
-    public void setAddress(String address) { this.address = address; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public String getCity() { return city; }
+    public String getCity() {
+        return city;
+    }
 
-    public void setCity(String city) { this.city = city; }
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-    public String getPostal() { return postal; }
+    public String getPostal() {
+        return postal;
+    }
 
-    public void setPostal(String postal) { this.postal = postal;}
+    public void setPostal(String postal) {
+        this.postal = postal;
+    }
 
-    public String getCountry() { return country;}
+    public String getCountry() {
+        return country;
+    }
 
-    public void setCountry(String country) { this.country = country;}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
     public String getIdCard() {
         return idCard;

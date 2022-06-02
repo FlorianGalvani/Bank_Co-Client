@@ -4,7 +4,7 @@
 <%@ page isELIgnored="false" %>
 
 <fmt:setLocale value="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}"/>
-<fmt:setBundle basename="login" />
+<fmt:setBundle basename="login"/>
 
 <html lang="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}">
 <head>
@@ -23,7 +23,7 @@
             <i class="fa-solid fa-arrow-left"></i>
         </a>
 
-        <h1><fmt:message key="label.title" /></h1>
+        <h1><fmt:message key="label.title"/></h1>
 
         <div class="noAccount">
             <p><fmt:message key="label.noAccount"/></p>
@@ -34,13 +34,15 @@
             <div class="error">${errors.get("account")}</div>
         </c:if>
 
-        <input class="input" type="text" name="customerNumber" id="customerNumber" placeholder="<fmt:message key="label.clientNumber"/>"><br>
+        <input class="input" type="text" name="customerNumber" id="customerNumber"
+               placeholder="<fmt:message key="label.clientNumber"/>"><br>
 
         <c:if test="${errors.get('customerNumber').length() > 0 }">
             <div class="error">${errors.get("customerNumber")}</div>
         </c:if>
 
-        <input class="input" type="password" name="password" id="password" placeholder="<fmt:message key="label.password"/>" pla>
+        <input class="input" type="password" name="password" id="password"
+               placeholder="<fmt:message key="label.password"/>" pla>
 
         <c:if test="${errors.get('password').length() > 0 }">
             <div class="error">${errors.get("password")}</div>
@@ -60,6 +62,6 @@
         <img class="cardIMG" id="cardIMG" src="assets/img/bg-right__Card.png">
     </div>
 </div>
-<%@include file="components/banners/cookies/index.html"%>
+<%@include file="components/banners/cookies/index.html" %>
 </body>
 </html>

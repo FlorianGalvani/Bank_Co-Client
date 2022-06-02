@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebFilter(filterName = "SessionLocaleFilter", urlPatterns = {"/nothing"})
 public class SessionLocaleFilter implements Filter {
     String supportedLanguages = "en,fr";
+
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
@@ -47,9 +48,11 @@ public class SessionLocaleFilter implements Filter {
 
     }
 
-    public void destroy() {}
+    public void destroy() {
+    }
 
-    public void init(FilterConfig arg0) throws ServletException {}
+    public void init(FilterConfig arg0) throws ServletException {
+    }
 
 }
 

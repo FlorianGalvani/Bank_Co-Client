@@ -1,4 +1,5 @@
 package com.nfs.bank_co.entities;
+
 import javax.persistence.*;
 
 import java.util.List;
@@ -145,8 +146,8 @@ public class Customer {
 //    }
     public Account getAccountById(int id) {
         Account account = null;
-        for (Account acc:
-        accounts) {
+        for (Account acc :
+                accounts) {
             if (acc.getId() == id) {
                 account = acc;
             }

@@ -1,4 +1,5 @@
 package com.nfs.bank_co.entities;
+
 import javax.persistence.*;
 
 import java.util.Collection;
@@ -13,7 +14,7 @@ public class Banker {
     private int id;
     @Column(name = "B_firstname")
     private String firstname;
-    @Column(name =  "B_lastname")
+    @Column(name = "B_lastname")
     private String lastname;
     private String phone;
     private String role;
