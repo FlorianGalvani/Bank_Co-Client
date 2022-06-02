@@ -31,16 +31,17 @@ public class CustomerDao {
         query.setParameter("customerNumber", customerNumber);
         return query.getResultList();
     }
+
     public List getViewsByCustomerNumber(List<DashboardView> dashboardView) {
         for (DashboardView view : dashboardView) {
             em.refresh(view);
         }
         Query query = em.createQuery("SELECT c FROM DashboardView AS c WHERE c.customerNumber = :customerNumber");
-        query.setParameter("customerNumber",  dashboardView.get(0).getCustomerNumber());
+        query.setParameter("customerNumber", dashboardView.get(0).getCustomerNumber());
         return query.getResultList();
     }
 
-    public boolean isEmailAlreadyInUse(String email){
+    public boolean isEmailAlreadyInUse(String email) {
         boolean result = true;
         Query query = em.createQuery("SELECT c FROM Customer AS c WHERE c.email = :email");
         query.setParameter("email", email);
@@ -70,7 +71,8 @@ public class CustomerDao {
         }
         return success;
     }
-    public boolean updatePassword(Customer customer,String hash) {
+
+    public boolean updatePassword(Customer customer, String hash) {
         boolean success = false;
         customer.setPassword(hash);
         try {
@@ -84,7 +86,7 @@ public class CustomerDao {
         return success;
     }
 
-    public boolean isExist(String email,String customerNumber) throws NoResultException {
+    public boolean isExist(String email, String customerNumber) throws NoResultException {
         //TODO VERIFIER SI L'UTILISATEUR EXISTE POUR ENVOYER UN MAIL DE REINITILISATION DU MOT DE PASSE
 
         boolean success = false;

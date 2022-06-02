@@ -18,7 +18,7 @@ public class PasswordResetServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String clientNumber = request.getParameter("clientNumber");
         String email = request.getParameter("email");
-        boolean isExist = DaoFactory.getCustomerDao().isExist(email,clientNumber);
+        boolean isExist = DaoFactory.getCustomerDao().isExist(email, clientNumber);
         if (isExist) {
             //Ajouter logique envoie email reset mdp
             response.sendRedirect(request.getContextPath() + "/success.jsp");

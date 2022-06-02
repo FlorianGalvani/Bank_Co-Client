@@ -44,7 +44,6 @@ Recuperation et affichage des comptes banquaire du client
 <a href="../logout" class="button">Deconnexion</a>
 
 
-
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>

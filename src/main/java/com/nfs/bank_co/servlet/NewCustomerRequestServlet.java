@@ -44,7 +44,8 @@ public class NewCustomerRequestServlet extends HttpServlet {
         if (!uploadDir.exists()) {
 
             uploadDir.mkdir();
-        };
+        }
+        ;
     }
 
     @Override

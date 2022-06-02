@@ -12,6 +12,7 @@ public class BankerDao {
     public BankerDao() {
         em = PersistenceManager.getEmf().createEntityManager();
     }
+
     public Banker getOneById(int id) {
         try {
             Query query = em.createQuery("SELECT c FROM Banker AS c WHERE c.id = :id");

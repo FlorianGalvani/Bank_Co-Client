@@ -1,6 +1,7 @@
-.e404{
+.e404 {
   display: flex;
   height: 100vh;
+
   .left {
     display: flex;
     flex-direction: column;
@@ -9,6 +10,7 @@
     align-items: center;
     width: 60%;
     background: var(--c-secondary) url("../img/bg-left.png");
+
     h1 {
       color: #fff;
       font-size: 48px;
@@ -19,6 +21,7 @@
     }
 
   }
+
   .right {
     display: flex;
     justify-content: center;

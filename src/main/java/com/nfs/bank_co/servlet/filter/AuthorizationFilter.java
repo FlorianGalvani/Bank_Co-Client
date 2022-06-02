@@ -25,9 +25,9 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
-        if(session != null) {
+        if (session != null) {
             if (session.getAttribute("isLogedIn") != null) {
-                report += "Ok\n" ;
+                report += "Ok\n";
                 String path = req.getRequestURI().substring(req.getContextPath().length());
                 chain.doFilter(request, response);
             } else {

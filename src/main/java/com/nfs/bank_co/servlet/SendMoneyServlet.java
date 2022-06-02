@@ -20,6 +20,7 @@ public class SendMoneyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect(request.getContextPath() + "/dashboard/sendmoney.jsp");
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String debitedAccountId = request.getParameter("debitedAccountId");
@@ -28,7 +29,7 @@ public class SendMoneyServlet extends HttpServlet {
         String reason = request.getParameter("reason");
         if (!debitedAccountId.isEmpty() && !creditedAccountId.isEmpty()) {
             if (!debitedAccountId.equals(creditedAccountId)) {
-                List<DashboardView> dashboardView = (List<DashboardView>)request.getSession().getAttribute("dashboardView");
+                List<DashboardView> dashboardView = (List<DashboardView>) request.getSession().getAttribute("dashboardView");
                 Account debitedAccount = DaoFactory.getAccountDao().getOneById(Integer.parseInt(debitedAccountId));
                 Account creditedAccount = DaoFactory.getAccountDao().getOneById(Integer.parseInt(creditedAccountId));
                 if (debitedAccount.getBalance() > debitedAccount.getAuthorizedDebt() && (debitedAccount.getBalance() - amount) > debitedAccount.getAuthorizedDebt()) {
@@ -39,12 +40,12 @@ public class SendMoneyServlet extends HttpServlet {
                     transaction.setAmount(amount);
                     transaction.setReason(reason);
                     transaction.setDate(new Date(System.currentTimeMillis()));
-                        //Mise a jour du solde du compte debiteur -
-                        DaoFactory.getAccountDao().updateBalance(debitedAccount,-amount);
-                        //Mise a jour du solde du compte crediteur +
-                        DaoFactory.getAccountDao().updateBalance(creditedAccount, amount);
-                        DaoFactory.getTransactionDao().create(transaction);
-                        request.getSession().setAttribute("success", "'Transfert effectué'");
+                    //Mise a jour du solde du compte debiteur -
+                    DaoFactory.getAccountDao().updateBalance(debitedAccount, -amount);
+                    //Mise a jour du solde du compte crediteur +
+                    DaoFactory.getAccountDao().updateBalance(creditedAccount, amount);
+                    DaoFactory.getTransactionDao().create(transaction);
+                    request.getSession().setAttribute("success", "'Transfert effectué'");
                 } else {
                     request.getSession().setAttribute("error", "Fond insufisants");
                     response.sendRedirect(request.getContextPath() + "/dashboard/sendmoney.jsp");

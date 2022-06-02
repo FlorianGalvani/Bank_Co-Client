@@ -34,7 +34,7 @@ public class AccountServlet extends HttpServlet {
                 transactions.addAll(account.getCredits());
                 transactions.sort(Comparator.comparing(Transaction::getDate));
                 Collections.reverse(transactions);
-                request.getSession().setAttribute("transactions",transactions);
+                request.getSession().setAttribute("transactions", transactions);
 
                 request.getSession().setAttribute("account", account);
 

@@ -46,7 +46,7 @@ public class CookieLocaleFilter implements Filter {
             cookieCreationRequired = true;
         }
         if (cookieCreationRequired) {
-            Locale browserLocale = LocalsUtility.getBrowserLanguage(req,res);
+            Locale browserLocale = LocalsUtility.getBrowserLanguage(req, res);
             Cookie newCookie = new Cookie("lang", browserLocale != null ? browserLocale.toString() : "fr");
             res.addCookie(newCookie);
         }

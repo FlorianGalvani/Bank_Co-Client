@@ -13,8 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
-<body >
-    <a class="goHome" href="index.jsp"><i class="ri-arrow-left-line"></i></a>
+<body>
+<a class="goHome" href="index.jsp"><i class="ri-arrow-left-line"></i></a>
 
 </body>
 </html>

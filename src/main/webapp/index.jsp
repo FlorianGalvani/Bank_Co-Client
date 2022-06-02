@@ -4,7 +4,7 @@
 <%@ page isELIgnored="false" %>
 
 <fmt:setLocale value="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}"/>
-<fmt:setBundle basename="home" />
+<fmt:setBundle basename="home"/>
 
 <html lang="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}">
 <head>
@@ -23,22 +23,23 @@
             <a class="logo" href="index.jsp"><img src="assets/img/logo.png"></a>
             <ul>
                 <li>
-                    <a href="about.html"><fmt:message key="navbar.link.about" /></a>
+                    <a href="about.html"><fmt:message key="navbar.link.about"/></a>
                 </li>
                 <li>
-                    <a href="contact.jsp"><fmt:message key="navbar.link.contact" /></a>
+                    <a href="contact.jsp"><fmt:message key="navbar.link.contact"/></a>
                 </li>
                 <li>
-                    <a class="button" href="login.jsp"><fmt:message key="navbar.link.signin" /> </a>
+                    <a class="button" href="login.jsp"><fmt:message key="navbar.link.signin"/> </a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div class="left">
-        <h1><fmt:message key="left.h1" /></h1>
-        <p><fmt:message key="left.p" /></p>
-        <a class="button" href="newcustomer"><fmt:message key="left.button" /> <i class="fa-solid fa-arrow-right"></i></a>
+        <h1><fmt:message key="left.h1"/></h1>
+        <p><fmt:message key="left.p"/></p>
+        <a class="button" href="newcustomer"><fmt:message key="left.button"/> <i
+                class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <div class="right">
@@ -50,7 +51,6 @@
     </div>
 
 </div>
-
 
 
 </body>

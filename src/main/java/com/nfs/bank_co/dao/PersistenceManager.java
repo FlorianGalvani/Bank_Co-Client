@@ -6,10 +6,11 @@ import javax.persistence.Persistence;
 public class PersistenceManager {
     private static EntityManagerFactory emf;
 
-    private PersistenceManager(){};
+    private PersistenceManager() {
+    };
 
     public static EntityManagerFactory getEmf() {
-        if(emf == null)
+        if (emf == null)
             emf = Persistence.createEntityManagerFactory("bank_coPU");
         return emf;
     }
