@@ -11,28 +11,44 @@
     <title>New Customer</title>
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
 </head>
 <body>
-<h1>Bienvenue</h1>
 
-<form method="post" action="changePassword">
-    <h1>Modification du mot de passe temporaire</h1>
-    <input type="password" name="currentPassword">
-    <c:if test="${errors.get('currentPassword').length() > 0 }">
-        <div class="error">${errors.get("currentPassword")}</div>
-    </c:if>
+<div class="pagesSlider">
+    <div class="page">
+        <h1>Bienvenue</h1>
+    </div>
+    <div class="page">
+        <h1>TUTO</h1>
+    </div>
+    <div class="page">
+        <h1>TUTO</h1>
+    </div>
+    <div class="page">
+        <h1>TUTO</h1>
+    </div>
+    <div class="page">
+        <form method="post" action="changePassword">
+            <h1>Modification du mot de passe temporaire</h1>
+            <input type="password" name="currentPassword">
+            <c:if test="${errors.get('currentPassword').length() > 0 }">
+                <div class="error">${errors.get("currentPassword")}</div>
+            </c:if>
 
-    <input type="password" name="newPassword">
-    <c:if test="${errors.get('newPassword').length() > 0 }">
-        <div class="error">${errors.get("newPassword")}</div>
-    </c:if>
+            <input type="password" name="newPassword">
+            <c:if test="${errors.get('newPassword').length() > 0 }">
+                <div class="error">${errors.get("newPassword")}</div>
+            </c:if>
 
-    <input type="password" name="newPasswordConfirmation">
-    <c:if test="${errors.get('newPasswordConfirmation').length() > 0 }">
-        <div class="error">${errors.get("newPasswordConfirmation")}</div>
-    </c:if>
+            <input type="password" name="newPasswordConfirmation">
+            <c:if test="${errors.get('newPasswordConfirmation').length() > 0 }">
+                <div class="error">${errors.get("newPasswordConfirmation")}</div>
+            </c:if>
 
-    <input type="submit" value="Modifier votre mot de passe">
-</form>
+            <input type="submit" value="Modifier votre mot de passe">
+        </form>
+    </div>
+</div>
 </body>
 </html>
