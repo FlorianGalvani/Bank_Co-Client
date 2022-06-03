@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
-<body class="Login">
+<body class="Login FormPage">
 <div class="left">
     <form method="post" action="login" id="loginForm">
 

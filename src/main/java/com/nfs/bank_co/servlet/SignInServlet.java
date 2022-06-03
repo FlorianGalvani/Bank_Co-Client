@@ -28,12 +28,14 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Map<String, String> errors = new HashMap<String, String>();
 
         String customerNumber = request.getParameter("customerNumber").trim();
         FormUtility.checkStringValidity(errors, "customerNumber", customerNumber, 24, 26);
 
         String password = request.getParameter("password").trim();
+
         if (errors.size() == 0) {
             try {
                 Customer customer = DaoFactory.getCustomerDao().getOneByCustomerNumber(customerNumber);
@@ -43,6 +45,7 @@ public class SignInServlet extends HttpServlet {
                     if (PasswordUtility.validatePassword(password, customer.getPassword())) {
                         request.getSession().setAttribute("dashboardView", dashboardView);
                         request.getSession().setAttribute("isLogedIn", true);
+                        request.getSession().removeAttribute("errors");
                         response.sendRedirect(request.getContextPath() + "/dashboard/");
                     } else {
                         errors.put("account", "Identifiant ou mot de passe incorrect");
@@ -58,7 +61,6 @@ public class SignInServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
             } catch (InvalidKeySpecException e) {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
-
             }
         } else {
             request.getSession().setAttribute("errors", errors);

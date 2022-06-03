@@ -1,0 +1,17 @@
+.FormPage {
+  .left {
+    width: 60%;
+    background-color: var(--c-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+    width: 40%;
+    background-color: var(--c-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
