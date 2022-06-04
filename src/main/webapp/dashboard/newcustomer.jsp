@@ -12,36 +12,53 @@
 <body class="newCustomerTutorial" id="newCustomerTutorial">
 
 <div class="pagesSlider" id="pagesSlider">
-    <div class="page">
-        <h1>Bienvenue</h1>
-        <h2>Merci de compter parmis nos nouveaux clients</h2>
-        <button class="button" onclick="nextPage()">Next</button>
-        <button class="button" onclick="skip()">Skip</button>
 
+    <div class="page splitted-page">
+        <div class="left">
+            <h1 class="decorated-big-title">Bienvenue</h1>
+            <p>Merci de compter parmis nos nouveaux clients</p>
+            <button class="button" onclick="nextPage()">Next</button>
+            <button class="button" onclick="skip()">Skip</button>
+        </div>
+        <div class="right"></div>
     </div>
-    <div class="page">
-        <h1>Comment utilisé le service</h1>
-        <button class="button" onclick="previousPage()">Previous</button>
-        <button class="button" onclick="nextPage()">Next</button>
-        <button class="button" onclick="skip()">Skip</button>
+
+    <div class="page splitted-page--reversed">
+        <div class="left">
+            <h1 class="decorated-big-title">Comment utiliser le service 1/3</h1>
+            <button class="button" onclick="previousPage()">Previous</button>
+            <button class="button" onclick="nextPage()">Next</button>
+            <button class="button" onclick="skip()">Skip</button>
+        </div>
+        <div class="right"></div>
     </div>
-    <div class="page">
-        <h1>TUTO 2</h1>
-        <button class="button" onclick="previousPage()">Previous</button>
-        <button class="button" onclick="nextPage()">Next</button>
-        <button class="button" onclick="skip()">Skip</button>
+
+    <div class="page splitted-page">
+        <div class="left">
+            <h1 class="decorated-big-title">Comment utiliser le service 2/3</h1>
+            <button class="button" onclick="previousPage()">Previous</button>
+            <button class="button" onclick="nextPage()">Next</button>
+            <button class="button" onclick="skip()">Skip</button>
+        </div>
+
+        <div class="right"></div>
     </div>
-    <div class="page">
-        <h1>TUTO 3</h1>
-        <button class="button" onclick="previousPage()">Previous</button>
-        <button class="button" onclick="nextPage()">Next</button>
-        <button class="button" onclick="skip()">Skip</button>
+    <div class="page splitted-page--reversed">
+        <div class="left">
+            <h1 class="decorated-big-title">Comment utiliser le service 3/3</h1>
+            <button class="button" onclick="previousPage()">Previous</button>
+            <button class="button" onclick="nextPage()">Next</button>
+            <button class="button" onclick="skip()">Skip</button>
+
+        </div>
+        <div class="right"></div>
     </div>
-    <div class="page passwordChange FormPage">
+
+    <div class="page passwordChange splitted-page">
         <button class="button previous" onclick="previousPage()">Previous</button>
         <div class="left">
             <form method="post" action="changePassword">
-                <h1>Modification du mot de passe temporaire</h1>
+                <h1 class="decorated-big-title">Modification du mot de passe temporaire</h1>
                 <input style="margin-bottom: ${errors.get('newPassword').length() > 0 ? "0" : "25" }px" type="password" name="currentPassword" placeholder="Mot de passe actuel">
                 <c:if test="${errors.get('currentPassword').length() > 0 }">
                     <div class="error">${errors.get("currentPassword")}</div>
@@ -63,6 +80,7 @@
                 </button>
             </form>
         </div>
+
         <div class="right">
 
         </div>

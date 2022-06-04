@@ -9,9 +9,11 @@
     .page {
       width: 100vw;
       height: 100vh;
-      padding: 5px;
       background-color: var(--c-background);
       color: var(--c-text);
+      p {
+        margin-top: 52px;
+      }
     }
 
     .passwordChange {

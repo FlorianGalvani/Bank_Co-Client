@@ -1,6 +1,6 @@
 .Login {
-  display: flex;
   color: var(--c-text);
+
   a {
     color: var(--c-text);
   }
@@ -14,22 +14,6 @@
         }
       }
 
-      h1 {
-        font-size: 48px;
-        font-weight: bold;
-        margin: 15px 0;
-        position: relative;
-
-        &::after {
-          content: "";
-          width: 100px;
-          height: 15px;
-          background-color: var(--c-primary);
-          position: absolute;
-          left: 0;
-          bottom: -30px;
-        }
-      }
 
       .noAccount {
         display: flex;
