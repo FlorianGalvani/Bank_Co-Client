@@ -4,10 +4,12 @@
 @import "elements";
 @import "reset";
 
-@import "home";
-@import "login";
-@import "404";
+//Layout
+@import "layouts";
+// PAGES
+@import "pages";
 
 body {
   font-family: 'Sora', sans-serif;
+  background-color: var(--c-background);
 }

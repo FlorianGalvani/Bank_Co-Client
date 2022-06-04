@@ -1,0 +1,33 @@
+input {
+  margin-bottom: 25px;
+  color: #fff;
+
+  &[type=text], &[type=password] {
+    background-color: transparent;
+    border: none;
+    border-bottom: #818181 2px solid;
+    width: 100%;
+  }
+
+  &:focus {
+    border: none;
+    border-bottom: #fff 2px solid;
+  }
+
+  &::placeholder {
+    color: #818181;
+  }
+
+}
+
+.splitted-page form {
+  transform: scale(1.3);
+  width: 45%;
+}
+
+.error {
+  background: #cc0000;
+  padding: 2px 4px;
+  margin-bottom: 25px;
+  color: var(--c-text);
+}

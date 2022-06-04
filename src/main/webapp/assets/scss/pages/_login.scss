@@ -1,0 +1,38 @@
+.Login {
+  color: var(--c-text);
+
+  a {
+    color: var(--c-text);
+  }
+  .left {
+    form {
+      a.goHome {
+        .fa-arrow-left {
+          border: 1px solid #fff;
+          border-radius: 30px;
+          padding: 5px;
+        }
+      }
+
+
+      .noAccount {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+        margin-top: 55px;
+      }
+      .passReset {
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  .right {
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

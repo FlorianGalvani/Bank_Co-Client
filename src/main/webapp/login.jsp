@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="assets/css/style.min.css">
 </head>
-<body class="Login">
+<body class="Login splitted-page">
 <div class="left">
     <form method="post" action="login" id="loginForm">
 
@@ -23,7 +23,7 @@
             <i class="fa-solid fa-arrow-left"></i>
         </a>
 
-        <h1><fmt:message key="label.title"/></h1>
+        <h1 class="decorated-big-title"><fmt:message key="label.title"/></h1>
 
         <div class="noAccount">
             <p><fmt:message key="label.noAccount"/></p>

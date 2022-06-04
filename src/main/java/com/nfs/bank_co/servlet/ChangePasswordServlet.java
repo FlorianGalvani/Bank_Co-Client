@@ -55,20 +55,20 @@ public class ChangePasswordServlet extends HttpServlet {
                     } else {
                         errors.put("account", "Mot de passe actuel incorrect");
                         request.getSession().setAttribute("errors", errors);
-                        response.sendRedirect(request.getContextPath() + "/login.jsp");
+                        response.sendRedirect(request.getContextPath() + "/dashboard/newcustomer.jsp?end=true");
                     }
                 } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
                     throw new RuntimeException(e);
                 }
             } else {
                 request.getSession().setAttribute("errors", errors);
-                response.sendRedirect(request.getContextPath() + "/dashboard/newcustomer.jsp");
+                response.sendRedirect(request.getContextPath() + "/dashboard/newcustomer.jsp?end=true");
             }
         } else {
             errors.put("newPassword", "Ces champs doivent etres identiques");
             errors.put("newPasswordConfirmation", "Ces champs doivent etres identiques");
             request.getSession().setAttribute("errors", errors);
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            response.sendRedirect(request.getContextPath() + "/dashboard/newcustomer.jsp?end=true");
         }
 
     }

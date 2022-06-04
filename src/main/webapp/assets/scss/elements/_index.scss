@@ -1,3 +1,22 @@
 @import "banners/cookies";
 @import "buttons";
 @import "wrappers";
+@import "form";
+
+//Title with bottom decoration
+.decorated-big-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 15px 0;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 100px;
+    height: 15px;
+    background-color: var(--c-primary);
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+  }
+}
