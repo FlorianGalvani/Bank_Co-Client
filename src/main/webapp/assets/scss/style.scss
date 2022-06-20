@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap');
-
+@import "include-media";
 @import "variables";
 @import "elements";
 @import "reset";
-
+@import "breakpoints";
+@import "mixing";
 //Layout
 @import "layouts";
 // PAGES
 @import "pages";
 
+
+
 body {
   font-family: 'Sora', sans-serif;
-  background-color: var(--c-background);
+  overflow: hidden;
+
 }

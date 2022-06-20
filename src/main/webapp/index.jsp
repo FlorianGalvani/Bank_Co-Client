@@ -9,11 +9,11 @@
 <html lang="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BankCo</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.min.css">
     <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
-
 </head>
 <body class="Home basicPage">
 

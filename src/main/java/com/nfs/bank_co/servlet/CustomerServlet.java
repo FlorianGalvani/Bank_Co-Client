@@ -21,7 +21,6 @@ public class CustomerServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-//        out.print(employeeJsonString);
         out.flush();
     }
 
