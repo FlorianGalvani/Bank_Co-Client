@@ -23,13 +23,13 @@
                     <a class="logo" href="index.jsp"><img src="assets/img/logo.png"></a>
                     <ul>
                         <li>
-                            <a href="about.jsp"><fmt:message key="navbar.link.about"/></a>
+                            <a href="about.jsp">A propos</a>
                         </li>
                         <li>
-                            <a href="contact.jsp"><fmt:message key="navbar.link.contact"/></a>
+                            <a href="contact.jsp">Nous contacter</a>
                         </li>
                         <li>
-                            <a class="button" href="login.jsp"><fmt:message key="navbar.link.signin"/> </a>
+                            <a class="button" href="login.jsp">Connexion</a>
                         </li>
                     </ul>
                 </nav>
@@ -37,6 +37,5 @@
         </div>
     </div>
 
-    <%@include file="components/banners/cookies/index.html" %>
 </body>
 </html>

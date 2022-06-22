@@ -62,6 +62,6 @@
         <img class="cardIMG" id="cardIMG" src="assets/img/bg-right__Card.png">
     </div>
 </div>
-<%@include file="components/banners/cookies/index.html" %>
+<%--<%@include file="components/banners/cookies/index.html" %> --%>
 </body>
 </html>
