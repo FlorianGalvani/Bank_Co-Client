@@ -4,10 +4,14 @@
 @import "elements";
 @import "reset";
 
-//Layout
+// Layout
 @import "layouts";
-// PAGES
+
+// Pages
 @import "pages";
+
+// Components
+@import "components/form/field";
 
 body {
   font-family: 'Sora', sans-serif;

@@ -1,29 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: legilmalas
-  Date: 4/19/22
-  Time: 6:23 PM
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Demande</title>
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
 
+<fmt:setLocale value="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}"/>
+<fmt:setBundle basename="newcustomer"/>
+
+<html lang="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouveau Client</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
 
 </head>
 <body class="NewCustomer formPage">
 <div class="left">
 
-    <form method="post" action="newcustomer" enctype="multipart/form-data" class="newCustomerForm">
-        <a class="goHome" href="index.jsp"><i class="ri-arrow-left-line"></i></a>
-        <h1>Faire une demande d'ouverture de compte</h1>
-        <div class="noAccount"><p>Déja un compte ? </p> <a href="login.jsp">Connectez vous</a></div>
+    <h1>Faire une demande d'ouverture de compte</h1>
+    <div class="noAccount"><p>Déja un compte ? </p> <a href="login.jsp">Connectez vous</a></div>
+    <a class="goHome" href="index.jsp"><i class="ri-arrow-left-line"></i></a>
+
+    <form method="post" action="newcustomer" enctype="multipart/form-data">
+
         <select name="title" id="title">
             <option value="">Choix</option>
             <option value="mr">Monsieur</option>
@@ -33,8 +33,10 @@
             <div class="error">${errors.get("title")}</div>
         </c:if>
 
-        <input class="input" type="text" placeholder="Prenom" name="firstname" id="firstname"
-               value="${formData.get("firstname") ? formData.get("firstname") : ""}">
+        <div class="field">
+            <input type="text" value="${formData.get("firstname") ? formData.get("firstname") : ""}" placeholder="Prénom" name="firstname" id="firstname">
+            <div class="line"></div>
+        </div>
         <c:if test="${errors.get('firstname').length() > 0 }">
             <div class="error">${errors.get("firstname")}</div>
         </c:if>
