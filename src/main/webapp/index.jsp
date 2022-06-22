@@ -23,7 +23,7 @@
             <a class="logo" href="index.jsp"><img src="assets/img/logo.png"></a>
             <ul>
                 <li>
-                    <a href="about.html"><fmt:message key="navbar.link.about"/></a>
+                    <a href="about.jsp"><fmt:message key="navbar.link.about"/></a>
                 </li>
                 <li>
                     <a href="contact.jsp"><fmt:message key="navbar.link.contact"/></a>
