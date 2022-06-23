@@ -1,4 +1,4 @@
-.login-page {
+.newcustomer-page {
   width: 100%;
   height: 100%;
   display: flex;
@@ -12,17 +12,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    .btn-header {
-      a {
-        font-size: 25px;
-      }
-    }
   }
-  .login-block {
+  .nc-block {
     height: 100%;
   }
-  .login-left {
+  .nc-left {
     padding: 0 222px;
     flex: 1;
     background-repeat: no-repeat;
@@ -31,26 +25,15 @@
 
     h1 {
       font-size: 48px !important;
-      max-width: 368px;
+      max-width: 650px;
     }
-    #login-form {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-
-      .forgot-password {
-        color: var(--c-tertiary);
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+    p {
+      color: white;
     }
   }
-  .login-right {
+  .nc-right {
     position: relative;
     flex: 1;
-    background-image: url('../../../assets/img/signin-background-right.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -103,26 +86,26 @@
   }
 }
 @media screen and (max-width: 1618px) {
-  .login-page {
-    .login-left {
+  .newcustomer-page {
+    .nc-left {
       padding: 0 100px;
       flex: 1;
     }
-    .login-right {
+    .nc-right {
       flex: 1;
     }
   }
 }
 @media screen and (max-width: 1024px) {
-  .login-page {
-    .login-right {
+  .newcustomer-page {
+    .nc-right {
       display: none;
     }
   }
 }
 @media screen and (max-width: 768px) {
-  .login-page {
-    .login-left {
+  .newcustomer-page {
+    .nc-left {
       padding: 0 32px;
 
       h1 {
@@ -133,8 +116,8 @@
   }
 }
 @media screen and (max-width: 291px) {
-  .login-page {
-    .login-left {
+  .newcustomer-page {
+    .nc-left {
       padding: 0 16px;
 
       h1 {

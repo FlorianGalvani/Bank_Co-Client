@@ -1,56 +1,10 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  font-family: 'Sora', sans-serif;
-
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
+/*___________________________________________________________________________
+ * Reset CSS BY Sky Infinity
+ * Inspired by
+ * (2012) YUI 3.5.0 - reset.css (http://developer.yahoo.com/yui/3/cssreset/)
+ * And
+ * (2019) A Modern CSS Reset (https://piccalil.li/blog/a-modern-css-reset)
+ * And
+ * Reseter.css (https://github.com/krishdevdb/reseter.css)
+ ___________________________________________________________________________*/
+@charset "UTF-8";blockquote,body,code,dd,div,dl,dt,fieldset,figure,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:400}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400}q:after,q:before{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}button,input,select,textarea{font-family:inherit;font-size:inherit;font-weight:inherit}legend{color:#000}*,::after,::before{box-sizing:border-box;scroll-behavior:smooth}ol[role=list],ul[role=list]{list-style:none}html{font:400 1rem/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";background:inherit;vertical-align:baseline;word-break:normal;color:inherit;margin:0;padding:0;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-behavior:smooth;height:100%}html:focus-within{scroll-behavior:smooth}body{min-height:100%;text-rendering:optimizeSpeed;line-height:1.5}#app{height:100%}footer{margin-top:auto;}a:not([class]){text-decoration-skip-ink:auto}img,picture{max-width:100%;display:block}.clear:after,.clear:before{content:' ';display:table}.clear:after{clear:both}@media (prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}*,::after,::before{animation-duration:0s!important;animation-iteration-count:1!important;transition-duration:0s!important;scroll-behavior:auto!important}}

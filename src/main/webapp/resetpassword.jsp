@@ -16,19 +16,22 @@
 
 </head>
 <body>
-    <form method="post" action="./resetpassword">
+    <div class="page resetpass-page">
+        <h1>Réinitialiser votre mot de passe</h1>
+        <form method="post" action="./resetpassword">
 
-        <div class="field">
-            <input type="text" placeholder="N° Client">
-            <div class="line"></div>
-        </div>
+            <div class="field">
+                <input type="text" placeholder="N° Client">
+                <div class="line"></div>
+            </div>
 
-        <div class="field">
-            <input type="text" placeholder="Adresse mail">
-            <div class="line"></div>
-        </div>
+            <div class="field">
+                <input type="text" placeholder="Adresse mail">
+                <div class="line"></div>
+            </div>
 
-        <input type="submit" value="Envoyer">
-    </form>
+            <input type="submit" value="Envoyer">
+        </form>
+    </div>
 </body>
 </html>

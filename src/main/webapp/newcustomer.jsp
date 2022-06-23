@@ -15,87 +15,117 @@
     <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
 
 </head>
-<body class="NewCustomer formPage">
-<div class="left">
+<body>
 
-    <h1>Faire une demande d'ouverture de compte</h1>
-    <div class="noAccount"><p>Déja un compte ? </p> <a href="login.jsp">Connectez vous</a></div>
-    <a class="goHome" href="index.jsp"><i class="ri-arrow-left-line"></i></a>
+    <div class="page newcustomer-page">
+        <div class="nc-block nc-left">
 
-    <form method="post" action="newcustomer" enctype="multipart/form-data">
+            <h1>Faire une demande d'ouverture de compte</h1>
+            <div class="noAccount"><p>Déja un compte ? </p> <a href="login.jsp">Connectez vous</a></div>
+            <a class="goHome" href="index.jsp"><i class="ri-arrow-left-line"></i></a>
 
-        <select name="title" id="title">
-            <option value="">Choix</option>
-            <option value="mr">Monsieur</option>
-            <option value="ms">Madame</option>
-        </select>
-        <c:if test="${errors.get('title').length() > 0 }">
-            <div class="error">${errors.get("title")}</div>
-        </c:if>
+            <form method="post" action="newcustomer" enctype="multipart/form-data">
 
-        <div class="field">
-            <input type="text" value="${formData.get("firstname") ? formData.get("firstname") : ""}" placeholder="Prénom" name="firstname" id="firstname">
-            <div class="line"></div>
+
+                <div class="field">
+                    <select name="title" id="title">
+                        <option value="">Choix</option>
+                        <option value="mr">Monsieur</option>
+                        <option value="ms">Madame</option>
+                    </select>
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('title').length() > 0 }">
+                    <div class="error">${errors.get("title")}</div>
+                </c:if>
+
+                <div class="field">
+                    <input type="text" value="${formData.get("firstname") ? formData.get("firstname") : ""}" placeholder="Prénom" name="firstname" id="firstname">
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('firstname').length() > 0 }">
+                    <div class="error">${errors.get("firstname")}</div>
+                </c:if>
+
+                <div class="field">
+                    <input type="text" value="${formData.get("lastname") ? formData.get("lastname") : ""}" placeholder="Nom" name="lastname" id="lastname">
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('lastname').length() > 0 }">
+                    <div class="error">${errors.get("lastname")}</div>
+                </c:if>
+
+                <div class="field">
+                    <input class="input" type="tel" placeholder="Tél." name="phone" id="phone">
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('phone').length() > 0 }">
+                    <div class="error">${errors.get("phone")}</div>
+                </c:if>
+
+                <div class="field">
+                    <input type="email" placeholder="E-mail" name="email" id="email">
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('email').length() > 0 }">
+                    <div class="error">${errors.get("email")}</div>
+                </c:if>
+
+                <input class="input" type="date" placeholder="Date de naissance" name="birthdate" id="birthdate">
+                <c:if test="${errors.get('birthdate').length() > 0 }">
+                    <div class="error">${errors.get("birthdate")}</div>
+                </c:if>
+
+                <div class="field">
+                    <input type="text" placeholder="Adresse de résidence" name="address" id="address">
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('address').length() > 0 }">
+                    <div class="error">${errors.get("address")}</div>
+                </c:if>
+
+                <div class="field">
+                    <input type="text" placeholder="Ville" name="city" id="city">
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('city').length() > 0 }">
+                    <div class="error">${errors.get("city")}</div>
+                </c:if>
+
+                <div class="field">
+                    <input type="text" placeholder="Code postal" name="postal" id="postal">
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('postal').length() > 0 }">
+                    <div class="error">${errors.get("postal")}</div>
+                </c:if>
+
+                <div class="field">
+                    <select name="country" id="country">
+                        <option value="">Choix</option>
+                        <option value="fr">France</option>
+                        <option value="us">United State</option>
+                    </select>
+                    <div class="line"></div>
+                </div>
+                <c:if test="${errors.get('country').length() > 0 }">
+                    <div class="error">${errors.get("country")}</div>
+                </c:if>
+
+                <input type="file" placeholder="Carte d'identité" name="idCard">
+                <c:if test="${errors.get('idCard').length() > 0 }">
+                    <div class="error">${errors.get("idCard")}</div>
+                </c:if>
+
+                <input type="submit" value="Envoyer">
+
+            </form>
         </div>
-        <c:if test="${errors.get('firstname').length() > 0 }">
-            <div class="error">${errors.get("firstname")}</div>
-        </c:if>
-        <input class="input" type="text" placeholder="Nom" name="lastname" id="lastname">
-        <c:if test="${errors.get('lastname').length() > 0 }">
-            <div class="error">${errors.get("lastname")}</div>
-        </c:if>
+        <div class="nc-block nc-right">
+            <img src="assets/img/signup.png" alt="Inscription">
+        </div>
+    </div>
 
-        <input class="input" type="tel" placeholder="Telephone" name="phone" id="phone">
-        <c:if test="${errors.get('phone').length() > 0 }">
-            <div class="error">${errors.get("phone")}</div>
-        </c:if>
-
-        <input class="input" type="email" placeholder="Email" name="email" id="email">
-        <c:if test="${errors.get('email').length() > 0 }">
-            <div class="error">${errors.get("email")}</div>
-        </c:if>
-
-        <input class="input" type="date" placeholder="Date de naissance" name="birthdate" id="birthdate">
-        <c:if test="${errors.get('birthdate').length() > 0 }">
-            <div class="error">${errors.get("birthdate")}</div>
-        </c:if>
-
-        <input class="input" type="text" placeholder="Addresse de résidence" name="address" id="address">
-        <c:if test="${errors.get('address').length() > 0 }">
-            <div class="error">${errors.get("address")}</div>
-        </c:if>
-
-        <input class="input" type="text" placeholder="Ville" name="city" id="city">
-        <c:if test="${errors.get('city').length() > 0 }">
-            <div class="error">${errors.get("city")}</div>
-        </c:if>
-
-        <input class="input" type="text" placeholder="Code postal" name="postal" id="postal">
-        <c:if test="${errors.get('postal').length() > 0 }">
-            <div class="error">${errors.get("postal")}</div>
-        </c:if>
-
-        <select name="country" id="country">
-            <option value="">Choix</option>
-            <option value="fr">France</option>
-            <option value="us">United State</option>
-        </select>
-        <c:if test="${errors.get('country').length() > 0 }">
-            <div class="error">${errors.get("country")}</div>
-        </c:if>
-
-        <input type="file" placeholder="Carte d'identité" name="idCard">
-        <c:if test="${errors.get('idCard').length() > 0 }">
-            <div class="error">${errors.get("idCard")}</div>
-        </c:if>
-
-        <input type="submit" value="Envoyer">
-
-    </form>
-</div>
-<div class="right">
-    <img src="assets/img/signup.png">
-</div>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

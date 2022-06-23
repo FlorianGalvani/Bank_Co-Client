@@ -1,9 +1,11 @@
 /** ====================================
 * Variables
 * ===================================== */
+
+
 :root {
   /* Colors */
-  --c-primary: hsl(172, 100%, 50%);
+  --c-primary: #00ffdd;
   --c-primary-rgb: 0, 255, 221;
   --c-primary-shade: hsl(172, 100%, 40%);
   --c-secondary: #182540;
@@ -20,6 +22,12 @@
   --c-text-shade: #cdcdcd;
   --c-text-alt: #000;
   --c-placeholder: #818181;
+  --c-error: #ff3333;
+  --c-error-rgb: 255, 51, 51;
+  --c-error-shade: hsl(0, 100%, 50%);
+  --c-success: #68df4b;
+  --c-success-rgb: 104, 223, 75;
+  --c-success-shade: hsl(108, 70%, 48%);
 
   /* Animation */
   --a-duration: 200ms;
@@ -27,7 +35,8 @@
   --a-transition: var(--a-duration) var(--a-easing);
 
   /* Sizes */
-  --s-header: 69px;
+  --s-header: 73px;
+  --s-constrained: 1440px;
 }
 
 
@@ -101,3 +110,4 @@
 /*        --c-text: #fff;*/
 /*        --c-text-shade: #cdcdcd;*/
 /*    }*/
+/*}*/

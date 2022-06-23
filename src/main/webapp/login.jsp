@@ -9,14 +9,14 @@
 <html lang="${cookie.get('lang') != null ? cookie.lang.value : 'fr'}">
 <head>
     <meta charset="UTF-8">
-    <title>A propos</title>
+    <title>Connexion</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.min.css">
     <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
 
 </head>
-<body class="Login splitted-page">
-    <div class="left">
+<body>
+    <!--<div class="left">
         <form method="post" action="login" id="loginForm">
 
             <a class="goHome" href="index.jsp">
@@ -60,6 +60,40 @@
     <div class="right">
         <div class="card">
             <img class="cardIMG" id="cardIMG" src="assets/img/bg-right__Card.png">
+        </div>
+    </div>-->
+
+
+    <div class="page login-page">
+        <div class="login-block login-left">
+            <div class="l-constrained">
+                <div class="btn-header">
+                    <a href="index.jsp">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <h1 data-aos="fade-left">Accéder à mon espace</h1>
+                <form action="" id="login-form">
+                    <div class="field">
+                        <input type="email" placeholder="Adresse e-mail" name="email" data-aos="fade-left" data-aos-delay="150">
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="field">
+                        <input type="password" class="password-field" name="password" placeholder="Mot de passe" data-aos="fade-left" data-aos-delay="300">
+                        <div class="line"></div>
+                    </div>
+                    <a data-aos="fade-left" data-aos-delay="450" class="forgot-password" href="resetpassword.jsp">Mot de passe oublié ?</a>
+                    <button data-aos="fade-left" data-aos-delay="600" class="button btn-primary login-submit">Se connecter</button>
+                </form>
+            </div>
+        </div>
+        <div class="login-block login-right">
+            <div class="l-constrained">
+                <img class="credit-card" src="assets/img/signin-card.png" alt="carte de crédit">
+                <img class="credit-card-shadow" src="assets/img/signin-card-shadow.png" alt="ombre">
+            </div>
         </div>
     </div>
 </body>

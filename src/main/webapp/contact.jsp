@@ -16,27 +16,6 @@
 
 </head>
 <body>
-
-    <div class="Home contactPage">
-        <div class="wrapper">
-            <header class="header">
-                <nav class="navbar">
-                    <a class="logo" href="index.jsp"><img src="assets/img/logo.png"></a>
-                    <ul>
-                        <li>
-                            <a href="about.jsp">A propos</a>
-                        </li>
-                        <li>
-                            <a href="contact.jsp">Nous contacter</a>
-                        </li>
-                        <li>
-                            <a class="button" href="login.jsp">Connexion</a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
-    </div>
-
+    <%@include file="components/layouts/header.jsp"%>
 </body>
 </html>
