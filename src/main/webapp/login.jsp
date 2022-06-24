@@ -74,9 +74,9 @@
                 </div>
 
                 <h1 data-aos="fade-left">Accéder à mon espace</h1>
-                <form action="" id="login-form">
+                <form action="login" id="login-form" method="post">
                     <div class="field">
-                        <input type="email" placeholder="Adresse e-mail" name="email" data-aos="fade-left" data-aos-delay="150">
+                        <input class="input" type="text" name="customerNumber" id="customerNumber" placeholder="N° Client" data-aos="fade-left" data-aos-delay="150">
                         <div class="line"></div>
                     </div>
 
@@ -85,7 +85,7 @@
                         <div class="line"></div>
                     </div>
                     <a data-aos="fade-left" data-aos-delay="450" class="forgot-password" href="resetpassword.jsp">Mot de passe oublié ?</a>
-                    <button data-aos="fade-left" data-aos-delay="600" class="button btn-primary login-submit">Se connecter</button>
+                    <button data-aos="fade-left" data-aos-delay="600" class="button btn-primary login-submit" type="submit">Se connecter</button>
                 </form>
             </div>
         </div>

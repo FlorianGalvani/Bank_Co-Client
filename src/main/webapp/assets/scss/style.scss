@@ -15,10 +15,14 @@
 @import "pages/newcustomer";
 @import "pages/reset";
 
+// dashboard
+@import "pages/dashboard/newcustomer";
+
 // Components
 @import "components/form/field";
 @import "components/button";
 @import "components/layouts/header";
+@import "components/layouts/formPage";
 
 body {
   font-family: 'Sora', sans-serif;

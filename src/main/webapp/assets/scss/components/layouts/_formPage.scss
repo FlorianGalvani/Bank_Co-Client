@@ -1,0 +1,43 @@
+.splitted-page {
+  display: flex;
+
+  .left {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .right {
+    width: 40%;
+    background-color: var(--c-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &--reversed {
+    display: flex;
+    flex-direction: row-reverse;
+    .left {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .right {
+      width: 40%;
+      background-color: var(--c-primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 55px;
+}

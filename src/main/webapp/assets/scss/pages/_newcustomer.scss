@@ -12,9 +12,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    .btn-header {
+      a {
+        font-size: 25px;
+      }
+    }
   }
   .nc-block {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .nc-left {
     padding: 0 222px;
@@ -29,6 +38,15 @@
     }
     p {
       color: white;
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      text-align: center;
     }
   }
   .nc-right {

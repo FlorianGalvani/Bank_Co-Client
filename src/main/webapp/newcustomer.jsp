@@ -20,9 +20,14 @@
     <div class="page newcustomer-page">
         <div class="nc-block nc-left">
 
+            <div class="btn-header">
+                <a href="index.jsp">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+            </div>
+
             <h1>Faire une demande d'ouverture de compte</h1>
-            <div class="noAccount"><p>Déja un compte ? </p> <a href="login.jsp">Connectez vous</a></div>
-            <a class="goHome" href="index.jsp"><i class="ri-arrow-left-line"></i></a>
+            <div class="noAccount"><p>Déja un compte ? <a href="login.jsp">Connectez vous</a></p></div>
 
             <form method="post" action="newcustomer" enctype="multipart/form-data">
 
@@ -71,7 +76,10 @@
                     <div class="error">${errors.get("email")}</div>
                 </c:if>
 
-                <input class="input" type="date" placeholder="Date de naissance" name="birthdate" id="birthdate">
+                <div class="field">
+                    <input class="input" type="date" placeholder="Date de naissance" name="birthdate" id="birthdate">
+                    <div class="line"></div>
+                </div>
                 <c:if test="${errors.get('birthdate').length() > 0 }">
                     <div class="error">${errors.get("birthdate")}</div>
                 </c:if>
@@ -112,12 +120,15 @@
                     <div class="error">${errors.get("country")}</div>
                 </c:if>
 
-                <input type="file" placeholder="Carte d'identité" name="idCard">
+                <div class="field">
+                    <input type="file" placeholder="Carte d'identité" name="idCard">
+                    <div class="line"></div>
+                </div>
                 <c:if test="${errors.get('idCard').length() > 0 }">
                     <div class="error">${errors.get("idCard")}</div>
                 </c:if>
 
-                <input type="submit" value="Envoyer">
+                <button class="button btn-primary" type="submit">Envoyer</button>
 
             </form>
         </div>
