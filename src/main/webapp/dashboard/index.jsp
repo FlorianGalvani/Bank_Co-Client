@@ -10,39 +10,50 @@
 
 <html>
 <head>
-    <title>Dashboard</title>
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
+    <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-<%--<div class="toaster">--%>
 
-<%--</div>--%>
-<a href="sendmoney.jsp">Envoyer de l'argent</a>
-<%--
-Recuperation et affichage des infos du compte client
---%>
-<a href="profile.jsp">${dashboardView.get(0).customerFirstname} ${dashboardView.get(0).customerLastname}</a>
-<a href="contact">Contacter votre banquier</a>
+    <div class="page dash-home-page">
+        <div class="l-constrained">
+            <nav>
+                <ul>
+                    <li><a href="sendmoney.jsp">Envoyer de l'argent</a></li>
+                    <li><a href="profile.jsp">${dashboardView.get(0).customerFirstname} ${dashboardView.get(0).customerLastname}</a></li>
+                    <li><a href="contact">Contacter votre banquier</a></li>
+                </ul>
+            </nav>
+            <%--
+            Recuperation et affichage des infos du compte client
+            --%>
 
-<%--
-Recuperation et affichage des comptes banquaire du client
---%>
-<div class="accounts">
-    <c:forEach var="view" items="${dashboardView}">
-        <div style="border: #000 1px solid">
-            <a href="account?id=${view.accountId}">
-                <p>N° de compte : ${view.accountNumber}</p>
-                <p>Solde : ${view.balance} €</p>
-                <p>Decouvert authorisé : ${view.authorizedDebt} €</p>
-            </a>
+
+
+            <%--
+            Recuperation et affichage des comptes banquaire du client
+            --%>
+            <div class="accounts">
+                <c:forEach var="view" items="${dashboardView}">
+                    <div class="account-card">
+                        <a href="account?id=${view.accountId}">
+
+                            <p>N° de compte : ${view.accountNumber}</p>
+                            <p>Solde : ${view.balance} €</p>
+                            <p>Découvert autorisé : ${view.authorizedDebt} €</p>
+                        </a>
+                    </div>
+                </c:forEach>
+            </div>
+
+
+            <a href="../logout" class="button btn-primary">Deconnexion</a>
         </div>
-    </c:forEach>
-</div>
-
-
-<a href="../logout" class="button">Deconnexion</a>
-
+    </div>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

@@ -1,1 +1,53 @@
-@import "newcustomer";
+.dash-home-page {
+  width: 100%;
+  height: 100%;
+
+  .l-constrained {
+    width: 100%;
+    height: 100%;
+    max-width: var(--s-constrained);
+    padding: 0 2rem;
+    margin: 0 auto;
+
+    .button {
+      margin: 0;
+    }
+
+    nav ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accounts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+
+      .account-card {
+        width: 100%;
+        height: 150px;
+        margin: 10px auto;
+        padding: 20px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: var(--c-secondary-lighter);
+
+        a {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          p {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

@@ -9,8 +9,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Envoyer de l'argent</title>
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
+    <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <form method="POST" action="sendmoney">

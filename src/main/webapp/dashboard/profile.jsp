@@ -8,9 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Profile</title>
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Profil</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
+    <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <a href="./">Retour</a>

@@ -1,100 +1,47 @@
-.Home {
-  background: var(--c-secondary) url("../../img/bg-left.png");
-  overflow: hidden;
+.home-page {
+  width: 100%;
+  height: calc(100% - 80px);
+  display: flex;
 
-  .wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 55px;
-  }
-
-  .header {
+  .l-constrained{
     width: 100%;
-    margin-bottom: 145px;
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .logo {
-        width: 175px;
-        background-color: #fff;
-        border-radius: 10px;
-        padding: 0 5px;
-
-        img {
-          width: 100%;
-        }
-      }
-
-      ul {
-        display: flex;
-        width: 35%;
-        justify-content: inherit;
-
-        li {
-          a {
-            color: var(--c-text);
-            text-decoration: none;
-          }
-
-        }
-      }
-    }
+    height: 100%;
+    max-width: var(--s-constrained);
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-
-  .left {
-    color: #fff;
-    width: 55%;
-
-    h1 {
-      font-size: 48px;
-      font-weight: bold;
-      position: relative;
-      margin-bottom: 55px;
-      line-height: 60px;
-
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: -25px;
-        left: 0;
-        width: 75px;
-        height: 10px;
-        background-color: var(--c-primary);
-      }
-    }
-
-    p {
-      line-height: 24px;
-      margin-bottom: 40px;
-      font-size: 14px;
-    }
-
-    a {
-      svg {
-        margin-left: 6px;
-      }
-    }
+  .home-block {
+    height: 100%;
   }
-
-  .right {
-    width: 40%;
-    padding-top: 30px;
+  .home-left {
+    padding: 0 222px;
+    flex: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+  }
+  h1 {
+    font-size: 48px !important;
+    max-width: 650px;
+  }
+  p {
+    color: white;
+  }
+  a {
+    margin-top: 15px;
+  }
+  .home-right {
+    position: relative;
+    flex: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 
     img {
-      transform: scale(110%);
+      width: 75%;
     }
-  }
-
-  .background-shape {
-    position: absolute;
-    right: 0;
-    background: var(--c-primary);
-    width: 54vw;
-    height: 140vh;
-    z-index: -1;
-    transform: rotate(45deg) translate(307px, -90px);
   }
 }

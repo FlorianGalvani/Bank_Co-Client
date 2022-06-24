@@ -30,15 +30,6 @@
         font-weight: bold;
         margin: 15px 0 65px 0;
         position: relative;
-        &::after {
-          content: "";
-          width: 100px;
-          height: 15px;
-          background-color: var(--c-primary);
-          position: absolute;
-          left: 0;
-          bottom: -35px;
-        }
       }
 
       .left {
@@ -50,5 +41,16 @@
 
       }
     }
+  }
+}
+
+.btn-container {
+  display: flex;
+
+  button {
+    width: 150px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
   }
 }
