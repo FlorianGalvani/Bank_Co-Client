@@ -1,0 +1,34 @@
+.dash-account-page {
+  width: 100%;
+  height: 100%;
+
+  .l-constrained {
+    width: 100%;
+    height: 100%;
+    max-width: var(--s-constrained);
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
+
+  table {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  th {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+  }
+  td {
+    color: white;
+    margin: 5px;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .account-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}

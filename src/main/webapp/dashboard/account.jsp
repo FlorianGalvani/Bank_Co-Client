@@ -9,42 +9,108 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Votre compte</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
+    <script src="https://kit.fontawesome.com/170ba6c352.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-<a href="./">Retour</a>
-<p>${account.accountNumber}</p>
-<p>${account.balance}</p>
-<h1>Credit</h1>
 
-<c:forEach items="${credits}" var="credit">
-    <p>${credit.date}</p>
-    <p>${credit.amount}</p>
-    <p>${credit.reason}</p>
-</c:forEach>
+ <div class="page dash-account-page">
+     <div class="l-constrained">
+         <div class="btn-header">
+             <a href="./">
+                 <i class="fa-solid fa-arrow-left"></i>
+             </a>
+         </div>
 
-<h1>Debt</h1>
+         <div class="user">
+             <p>N° de compte : ${account.accountNumber}</p>
+             <p>Solde : ${account.balance}</p>
+         </div>
 
-<c:forEach items="${debts}" var="debt">
-    <p>${debt.date}</p>
-    <p>-${debt.amount}</p>
-    <p>${debt.reason}</p>
-</c:forEach>
+         <div class="account-block credit">
+             <h1>Credit</h1>
 
-<h1>All</h1>
+             <table>
+                 <thead>
+                     <tr>
+                         <th>Date</th>
+                         <th>Montant</th>
+                         <th>Raison</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <c:forEach items="${credits}" var="credit">
+                         <tr>
+                             <td>${credit.date}</td>
+                             <td>${credit.amount}</td>
+                             <td>${credit.reason}</td>
+                         </tr>
+                     </c:forEach>
+                 </tbody>
+             </table>
 
-<c:forEach items="${transactions}" var="transactions">
-    <p>${transactions.date}</p>
-    <c:choose>
-        <c:when test="${transactions.fromAccount.id == account.id}">
-            <p>-${transactions.amount}</p>
-        </c:when>
-        <c:otherwise>
-            <p>${transactions.amount}</p>
-        </c:otherwise>
-    </c:choose>
-    <p>${transactions.reason}</p>
-</c:forEach>
+         </div>
+
+         <div class="account-block debt">
+             <h1>Debt</h1>
+
+             <table>
+                 <thead>
+                 <tr>
+                     <th>Date</th>
+                     <th>Montant</th>
+                     <th>Raison</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <c:forEach items="${debts}" var="debt">
+                     <tr>
+                         <td>${debt.date}</td>
+                         <td>${debt.amount}</td>
+                         <td>${debt.reason}</td>
+                     </tr>
+                 </c:forEach>
+                 </tbody>
+             </table>
+         </div>
+
+         <div class="account-block all">
+             <h1>All</h1>
+
+             <table>
+                 <thead>
+                 <tr>
+                     <th>Date</th>
+                     <th>Montant</th>
+                     <th>Montant</th>
+                     <th>Raison</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <c:forEach items="${transactions}" var="transactions">
+                     <tr>
+                         <td>${transactions.date}</td>
+                         <c:choose>
+                             <c:when test="${transactions.fromAccount.id == account.id}">
+                                 <td>-${transactions.amount}</td>
+                             </c:when>
+                             <c:otherwise>
+                                 <td>${transactions.amount}</td>
+                             </c:otherwise>
+                         </c:choose>
+                         <td>${transactions.amount}</td>
+                         <td>${transactions.reason}</td>
+                     </tr>
+                 </c:forEach>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+ </div>
 
 </body>
 </html>

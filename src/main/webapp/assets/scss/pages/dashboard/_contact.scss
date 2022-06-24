@@ -1,0 +1,32 @@
+.dash-contact-page {
+  width: 100%;
+  height: 100%;
+
+  .l-constrained {
+    width: 100%;
+    height: 100%;
+    max-width: var(--s-constrained);
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
+
+  .user-info {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        color: white;
+      }
+    }
+  }
+
+  .field {
+    margin: 10px 0;
+  }
+}

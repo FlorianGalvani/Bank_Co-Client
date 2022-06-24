@@ -17,5 +17,7 @@
 </head>
 <body>
     <%@include file="components/layouts/header.jsp"%>
+
+    <h2>Vous êtes sur la page A propos</h2>
 </body>
 </html>
